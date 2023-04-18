@@ -14,12 +14,16 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
  */
 public class Club extends WeaponItem {
 
+
     /**
      * Constructor
      */
     public Club() {
         super("Club", '!', 103, "bonks", 80);
     }
+
+
+    // WEAPON HAS GETSKILL THAT CAN RETURN THE ATTACK ACTION IN SKILL FORM
 
     @Override
     public void tick(Location currentLocation, Actor actor) {}
