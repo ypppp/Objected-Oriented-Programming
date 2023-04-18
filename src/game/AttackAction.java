@@ -36,9 +36,10 @@ public class AttackAction extends Action {
 	 */
 	private Weapon weapon;
 
+
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param target the Actor to attack
 	 * @param direction the direction where the attack should be performed (only used for display purposes)
 	 */
@@ -46,6 +47,7 @@ public class AttackAction extends Action {
 		this.target = target;
 		this.direction = direction;
 		this.weapon = weapon;
+
 	}
 
 	/**
@@ -58,6 +60,7 @@ public class AttackAction extends Action {
 		this.target = target;
 		this.direction = direction;
 	}
+
 
 	/**
 	 * When executed, the chance to hit of the weapon that the Actor used is computed to determine whether
@@ -78,14 +81,31 @@ public class AttackAction extends Action {
 			return actor + " misses " + target + ".";
 		}
 
-		int damage = weapon.damage();
+		int damage =  weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
+
 		if (!target.isConscious()) {
 			result += new DeathAction(actor).execute(target, map);
 		}
 
 		return result;
+	}
+
+	public Random getRand() {
+		return rand;
+	}
+
+	public Actor getTarget() {
+		return target;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
 	}
 
 	/**
@@ -97,5 +117,10 @@ public class AttackAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");
+	}
+
+	@Override
+	public String hotkey() {
+		return "1";
 	}
 }
