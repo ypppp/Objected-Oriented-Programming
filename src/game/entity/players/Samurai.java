@@ -1,4 +1,16 @@
 package game.entity.players;
 
-public class Samurai {
+import game.weapons.Uchigatana;
+
+public class Samurai extends Player {
+    /**
+     * Constructor for a Samurai class
+     */
+    public Samurai() {
+        super("Tarnished", '@', 300);
+        this.addWeaponToInventory(new Uchigatana());
+        this.setCombatClass(ClassType.SAMURAI);
+    }
+
+
 }
