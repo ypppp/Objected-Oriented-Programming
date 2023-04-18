@@ -64,9 +64,11 @@ public class Application {
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
 
+		// at here add a menu to select who what class
+
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300);
-		world.addPlayer(player, gameMap.at(36, 10));
+//		Player player = new Player("Tarnished", '@', 300);
+//		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();
 	}
