@@ -1,13 +1,11 @@
-package game;
+package game.action_types;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.DeathAction;
 
-import java.util.Random;
-
-public class UnsheatheAction extends AttackAction{
+public class UnsheatheAction extends AttackAction {
 
     /**
      * Constructor for the unsheathe action skill for Uchigatana where the damage is doubled and has a 60% chance of hitting

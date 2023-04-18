@@ -1,4 +1,4 @@
-package game.weapons;
+package game.action_types;
 
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -6,14 +6,13 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.AttackAction;
 import game.DeathAction;
 
 import java.util.List;
 import java.util.Random;
 
-public class MoveStabAction extends AttackAction {
-    public MoveStabAction(Actor target, String direction, Weapon weapon) {
+public class QuickStepAction extends AttackAction {
+    public QuickStepAction(Actor target, String direction, Weapon weapon) {
         super(target, direction, weapon);
     }
 

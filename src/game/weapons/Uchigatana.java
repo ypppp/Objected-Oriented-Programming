@@ -2,13 +2,8 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.capabilities.CapabilitySet;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.AttackAction;
-import game.UnsheatheAction;
-
-import java.util.Random;
+import game.action_types.UnsheatheAction;
 
 public class Uchigatana extends WeaponItem {
 
@@ -30,14 +25,13 @@ public class Uchigatana extends WeaponItem {
      * @param hitRate The chance for the weapon to hit
      */
     public Uchigatana(int damage, int hitRate) {
-        super("Uchigatana", '(', 230, "slashes", hitRate);
+        super("Uchigatana", '(', damage, "slashes", hitRate);
         this.addCapability(Abilities.UNSHEATHE);
     }
 
     @Override
     public Action getSkill(Actor target, String direction) {
-        Action skillAction = new UnsheatheAction(target,direction, new Uchigatana(230,60));
-        return skillAction;
+        return new UnsheatheAction(target,direction, new Uchigatana(230,60));
     }
 
     // WEAPON HAS GETSKILL THAT CAN RETURN THE ATTACK ACTION IN SKILL FORM
