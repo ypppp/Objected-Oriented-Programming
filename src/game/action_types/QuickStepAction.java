@@ -25,7 +25,6 @@ public class QuickStepAction extends AttackAction {
 
 
 
-
         if (!(getRand().nextInt(100) <= weapon.chanceToHit())) {
             return actor + " misses " + target + ".";
         }
@@ -50,5 +49,14 @@ public class QuickStepAction extends AttackAction {
 
 
         return result;
+    }
+
+    public String menuDescription(Actor actor) {
+        return actor + " attacks " + getTarget() + " at " + getDirection() + " with " + getWeapon();
+    }
+
+    @Override
+    public String hotkey() {
+        return "Q";
     }
 }

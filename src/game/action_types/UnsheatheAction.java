@@ -38,4 +38,13 @@ public class UnsheatheAction extends AttackAction {
 
         return result;
     }
+
+    @Override
+    public String hotkey() {
+        return "U";
+    }
+
+    public String menuDescription(Actor actor) {
+        return actor + " unsheathes and attack " + getTarget() + " at " + getDirection() + " with " + getWeapon();
+    }
 }
