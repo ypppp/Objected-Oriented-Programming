@@ -1,4 +1,4 @@
-package game;
+package game.action_types;
 
 import java.util.Random;
 
