@@ -6,7 +6,9 @@ package game;
  * @author Riordan D. Alfredo
  */
 public enum Status {
-    HOSTILE_TO_ENEMY,
+    HOSTILE_TO_ENEMY, //player
+    HOSTILE_TO_PLAYER, // enemy
     RESPAWNABLE,
-    RESTING
+    RESTING,
+    HAS_ATTACK_SKILL
 }
