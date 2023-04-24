@@ -51,6 +51,8 @@ public class Player extends Actor implements Resettable {
 			}
 		}
 
+		this.setInCombat(false);
+
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
