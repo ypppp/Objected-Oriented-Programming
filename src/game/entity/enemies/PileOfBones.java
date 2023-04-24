@@ -17,12 +17,12 @@ import java.util.HashMap;
 public class PileOfBones extends Enemy{
 
     private int counter = 3;
-    private Enemy revivedEnemy;
+    private Actor revivedEnemy;
 
     /**
      * Constructor.
      */
-    public PileOfBones(Enemy enemy) {
+    public PileOfBones(Actor enemy) {
         super("Pile of Bones", 'X',1);
         this.setBehaviours(new HashMap<>());
         this.addCapability(Status.REVIVABLE);
