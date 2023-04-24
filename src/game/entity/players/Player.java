@@ -6,8 +6,11 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.weapons.Weapon;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Resettable;
 import game.Status;
+import game.action_types.AOE_AttackAction;
 import game.weapons.playerweapons.Club;
 
 /**
@@ -21,6 +24,8 @@ import game.weapons.playerweapons.Club;
 public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
+
+	private boolean inCombat = false;
 
 	/**
 	 * Constructor.
@@ -38,11 +43,30 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
+		if(this.isInCombat()){
+			for(WeaponItem weapon: this.getWeaponInventory()){
+				if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
+					actions.add(weapon.getSkill(this));
+				}
+			}
+		}
+
+		this.setInCombat(false);
+
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
+	}
+
+
+	public boolean isInCombat() {
+		return inCombat;
+	}
+
+	public void setInCombat(boolean inCombat) {
+		this.inCombat = inCombat;
 	}
 
 	@Override

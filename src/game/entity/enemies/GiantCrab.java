@@ -1,20 +1,33 @@
 package game.entity.enemies;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
 
-public class GiantCrab extends Actor {
-    public GiantCrab () {
-        super("Giant Crab", 'c', 407);
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Species;
+import game.Status;
+import game.action_types.AOE_AttackAction;
+
+import java.util.ArrayList;
+
+public class GiantCrab extends Enemy{
+    /**
+     * Constructor.
+     */
+    public GiantCrab() {
+        super("GiantCrab", 'C',407);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
+        this.setSpeciesType(Species.CRUSTACEANS);
+        this.addCapability(Status.HAS_SKILL);
     }
 
     @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return null;
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(208, "pinches", 90);
     }
 
-
+    @Override
+    public Action getSkill(ArrayList<Actor> targets) {
+        return new AOE_AttackAction(targets,getIntrinsicWeapon());
+    }
 }

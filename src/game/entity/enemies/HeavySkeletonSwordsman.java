@@ -1,18 +1,34 @@
 package game.entity.enemies;
 
+
 import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Species;
+import game.Status;
+import game.weapons.enemyweapons.Grossmesser;
 
-public class HeavySkeletonSwordsman extends Actor {
+import java.util.ArrayList;
 
-    public HeavySkeletonSwordsman () {
-        super("Heavy Skeleton Swordsman", 'q', 102);
+
+public class HeavySkeletonSwordsman extends Enemy{
+    /**
+     * Constructor.
+     */
+    public HeavySkeletonSwordsman() {
+        super("Heavy Skeletal Swordsman", 'q',153);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
+        this.setSpeciesType(Species.BONE);
+        this.addWeaponToInventory(new Grossmesser());
     }
 
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(80, "punches", 85);
+    }
+
+    @Override
+    public Action getSkill(ArrayList<Actor> targets) {
         return null;
     }
 }
