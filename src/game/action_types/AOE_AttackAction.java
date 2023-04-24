@@ -11,7 +11,6 @@ import game.Status;
 import game.entity.enemies.Enemy;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class AOE_AttackAction extends Action {
 
