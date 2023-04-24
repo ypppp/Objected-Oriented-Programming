@@ -4,11 +4,13 @@ package game.entity.enemies;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -43,5 +45,10 @@ public class PileOfBones extends Enemy{
         counter--;
 
         return new DoNothingAction();
+    }
+
+    @Override
+    public Action getSkill(ArrayList<Actor> targets) {
+        return null;
     }
 }

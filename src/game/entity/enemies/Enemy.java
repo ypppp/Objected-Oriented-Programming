@@ -10,11 +10,13 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
 import game.Status;
 import game.action_types.AttackAction;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.entity.players.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +36,7 @@ public abstract class Enemy extends Actor {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addBehaviour(999,new WanderBehaviour());
+        this.addBehaviour(1, new AttackBehaviour());
     }
 
     public void addBehaviour(int key, Behaviour behaviour){
@@ -74,6 +77,8 @@ public abstract class Enemy extends Actor {
         }
         return new DoNothingAction();
     }
+
+    public abstract Action getSkill(ArrayList<Actor> targets);
 
     /**
      * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability

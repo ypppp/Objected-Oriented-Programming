@@ -1,9 +1,13 @@
 package game.entity.enemies;
 
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Species;
 import game.Status;
+
+import java.util.ArrayList;
 
 /**
  * BEHOLD, DOG!
@@ -26,7 +30,12 @@ public class LoneWolf extends Enemy {
         return new IntrinsicWeapon(97, "bites", 95);
     }
 
-//    /**
+    @Override
+    public Action getSkill(ArrayList<Actor> targets) {
+        return null;
+    }
+
+    //    /**
 //     * At each turn, select a valid action to perform.
 //     *
 //     * @param actions    collection of possible Actions for this Actor
