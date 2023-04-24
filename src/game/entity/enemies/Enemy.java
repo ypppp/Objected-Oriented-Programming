@@ -7,9 +7,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.RandomNumberGenerator;
 import game.Species;
 import game.Status;
 import game.action_types.AttackAction;
+import game.action_types.DespawnAction;
+import game.action_types.Despawnable;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor implements Despawnable{
 
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
@@ -59,6 +62,8 @@ public abstract class Enemy extends Actor {
         this.speciesType = speciesType;
     }
 
+    public Action despawn(){return new DespawnAction();}
+
     /**
      * At each turn, select a valid action to perform.
      *
@@ -68,13 +73,18 @@ public abstract class Enemy extends Actor {
      * @param display    the I/O object to which messages may be written
      * @return the valid action that can be performed in that iteration or null if no valid action is found
      */
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (RandomNumberGenerator.getRandomInt(100)<10){
+            return despawn();
+        }
         for (Behaviour behaviour : getBehaviours().values()) {
             Action action = behaviour.getAction(this, map);
-            if(action != null)
+            if (action != null)
                 return action;
-        }
+            }
+
         return new DoNothingAction();
     }
 
