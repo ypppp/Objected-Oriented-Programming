@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.RandomNumberGenerator;
 import game.Status;
 import game.entity.enemies.Enemy;
 
@@ -19,7 +20,6 @@ public class AOE_AttackAction extends Action {
 
     private Weapon weapon;
 
-    private Random rand = new Random();
 
     public AOE_AttackAction(Weapon weapon) {
 
@@ -41,7 +41,7 @@ public class AOE_AttackAction extends Action {
         }
 
         for(Actor target: targets){
-            if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
+            if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
                 return actor + " misses " + target + ".";
             }
             else{
