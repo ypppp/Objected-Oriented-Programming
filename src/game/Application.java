@@ -1,5 +1,7 @@
 package game;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -22,9 +24,11 @@ import game.entity.players.Wretch;
  */
 public class Application {
 
-	public static void main(String[] args) {
+	public static <Char> void main(String[] args) {
 
-		World world = new World(new Display());
+		Display display = new Display();
+
+		World world = new World(display);
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
 
@@ -70,25 +74,28 @@ public class Application {
 
 
 		// at here add a menu to select who what class
+		ArrayList<Character> validClasses = new ArrayList<>(Arrays.asList('S', 'B','W'));
+		char chosenClass;
 		Player player;
-		String selection;
-		Scanner sel = new Scanner(System.in);
+
 		do{
-			System.out.println("Choose your class");
-			System.out.println("1 for Samurai, 2 for Bandit and 3 for Wretch");
-			selection = sel.nextLine();
-		}while(Integer.parseInt(selection)<=0 || Integer.parseInt(selection)>3);
+			display.println("Choose a class\n S for Samurai\n B for Bandit\n W for Wretch");
+			chosenClass = display.readChar();
+		} while(!validClasses.contains(chosenClass));
 
-		if(Integer.parseInt(selection) == 1) {
-			player = new Samurai();
+		switch(chosenClass){
+			case 'S':
+				player = new Samurai();
+				break;
+			case 'B':
+				player = new Bandit();
+				break;
+			case 'W':
+				player = new Wretch();
+				break;
+			default:
+				player = new Samurai();
 		}
-		else if(Integer.parseInt(selection) == 2){
-			player = new Bandit();
-		}
-		else{
-			player = new Wretch();
-		}
-
 
 
 
