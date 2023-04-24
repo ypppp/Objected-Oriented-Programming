@@ -87,9 +87,11 @@ public abstract class Enemy extends Actor {
         ActionList actions = new ActionList();
         //if this otherActor is a player
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+
             ((Player)otherActor).setInCombat(true);
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
             this.addBehaviour(2,new FollowBehaviour(otherActor)); // let this enemy follow the player
+
             // if the player has more than one weapon then add an AttackAction for each weapon
             if(otherActor.getWeaponInventory().size()!=0){
                 for(WeaponItem weapon: otherActor.getWeaponInventory()){
