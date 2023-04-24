@@ -60,22 +60,33 @@ public class AOE_AttackAction extends Action {
     public ArrayList<Actor> getAllTargets(Actor actor,GameMap map){
         ArrayList<Actor> targets = new ArrayList<>();
         Location here = map.locationOf(actor);
-        for(Exit exits: here.getExits()){
+        for(Exit exits: here.getExits()) {
             Location destination = exits.getDestination();
-            if(destination.containsAnActor()){
+            if (destination.containsAnActor()) {
                 Actor destinationActor = destination.getActor();
-                //if it's a player
-                if(destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                    targets.add(destinationActor);
-                }
-                // else if it's an enemy that is not the same type
-                else if(destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)){
-                    Enemy target = (Enemy) destinationActor;
-                    if(target.getSpeciesType()!= ((Enemy) actor).getSpeciesType()){
+                //if the actor is a player
+                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+                    //if the target is an enemy
+                    if (destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
                         targets.add(destinationActor);
                     }
                 }
+                // else if the actor is an enemy
+                else if (actor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+                    // if the other target is a player
+                    if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+                        targets.add(destinationActor);
+                    }
+                    // else if the other target is an enemy of different type
+                    else if (destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+                        Enemy target = (Enemy) destinationActor;
+                        if (target.getSpeciesType() != ((Enemy) actor).getSpeciesType()) {
+                            targets.add(destinationActor);
+                        }
+                    }
+                }
             }
+
         }
         return targets;
 
