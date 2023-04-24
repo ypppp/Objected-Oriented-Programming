@@ -15,7 +15,6 @@ import game.entity.enemies.LoneWolf;
  */
 
 public class Graveyard extends Ground {
-    private RandomNumberGenerator rng = new RandomNumberGenerator();
 
     public Graveyard() {
         super('n');
