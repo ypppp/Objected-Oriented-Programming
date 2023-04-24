@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
+import game.Status;
 import game.entity.enemies.Enemy;
 import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.PileOfBones;
@@ -47,15 +48,16 @@ public class DeathAction extends Action {
         for (Action drop : dropActions)
             drop.execute(target, map);
         // remove actor
-        if (((Enemy) target).getSpeciesType() != Species.BONE){
-            map.removeActor(target);
-        }
-        else{
-            Location skeletonLoc = map.locationOf(target);
-            map.removeActor(target);
-            PileOfBones skeleton = new PileOfBones(target);
-            map.addActor(skeleton,skeletonLoc);
+        if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+            if (((Enemy) target).getSpeciesType() != Species.BONE) {
+                map.removeActor(target);
+            } else {
+                Location skeletonLoc = map.locationOf(target);
+                map.removeActor(target);
+                PileOfBones skeleton = new PileOfBones(target);
+                map.addActor(skeleton, skeletonLoc);
 
+            }
         }
         result += System.lineSeparator() + menuDescription(target);
         return result;

@@ -62,7 +62,7 @@ public abstract class Enemy extends Actor implements Despawnable{
         this.speciesType = speciesType;
     }
 
-    public Action despawn(){return new DespawnAction();}
+    public Action despawn() { return new DespawnAction(); }
 
     /**
      * At each turn, select a valid action to perform.
