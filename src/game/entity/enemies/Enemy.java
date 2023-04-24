@@ -29,6 +29,8 @@ public abstract class Enemy extends Actor implements Despawnable{
 
     private Species speciesType;
 
+    private boolean isFollow = false;
+
     /**
      * Constructor.
      *
@@ -76,7 +78,7 @@ public abstract class Enemy extends Actor implements Despawnable{
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (RandomNumberGenerator.getRandomInt(100)<10){
+        if ((RandomNumberGenerator.getRandomInt(100)<10) && !this.isFollow){
             return despawn();
         }
         for (Behaviour behaviour : getBehaviours().values()) {
@@ -106,6 +108,7 @@ public abstract class Enemy extends Actor implements Despawnable{
             ((Player)otherActor).setInCombat(true);
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
             this.addBehaviour(2,new FollowBehaviour(otherActor)); // let this enemy follow the player
+            this.isFollow = true;
 
             // if the player has more than one weapon then add an AttackAction for each weapon
             if(otherActor.getWeaponInventory().size()!=0){
