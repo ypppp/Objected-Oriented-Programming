@@ -14,6 +14,6 @@ public class DespawnAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "despawned";
+        return actor + " despawned";
     }
 }

@@ -41,14 +41,14 @@ public class AOE_AttackAction extends Action {
 
         for(Actor target: targets){
             if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
-                return actor + " misses " + target + ".";
+                result += actor + " misses " + target + "." ;
             }
             else{
                 int damage = weapon.damage();
-                result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+                result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
                 target.hurt(damage);
                 if (!target.isConscious()) {
-                    result += new DeathAction(actor).execute(target, map);
+                    result += new DeathAction(actor).execute(target, map) + "\n";
                 }
             }
         }
@@ -93,6 +93,6 @@ public class AOE_AttackAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " attacks the surrounding area with " + weapon;
+        return actor + " attacks the surrounding area with " + weapon + " for" + weapon.damage();
     }
 }

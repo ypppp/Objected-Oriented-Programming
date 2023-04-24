@@ -46,18 +46,16 @@ public class AttackBehaviour implements Behaviour {
 
         }
 
-
-
         if(!attackableList.isEmpty()){
-            System.out.println(actor.toString() + " " + attackableList.toString());
-            if (actor.hasCapability(Status.HAS_SKILL)){
-                if (RandomNumberGenerator.getRandomInt(100) < 50){
-                    Collection<Actor> values = attackableList.values();
-                    ArrayList<Actor> actorlists = new ArrayList<>(values);
-                    return ((Enemy) actor).getSkill(actorlists);
-                }
+
+            if (actor.hasCapability(Status.HAS_SKILL) && RandomNumberGenerator.getRandomInt(100) < 50){
+
+                Collection<Actor> values = attackableList.values();
+                ArrayList<Actor> actorlists = new ArrayList<>(values);
+                return ((Enemy) actor).getSkill(actorlists);
             }
             else{
+
                 Map.Entry<Integer,Actor> attackableIterator = attackableList.entrySet().iterator().next();
                 Map.Entry<Integer,Exit> coordinateIterator = enemyCoordinates.entrySet().iterator().next();
                 if(actor.getWeaponInventory().size()!=0){
