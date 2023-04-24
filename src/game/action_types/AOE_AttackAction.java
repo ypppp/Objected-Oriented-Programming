@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AOE_AttackAction extends Action {
 
 
-    private ArrayList<Actor> targets;
+    private ArrayList<Actor> targets = new ArrayList<>();
 
     private Weapon weapon;
 
@@ -93,6 +93,6 @@ public class AOE_AttackAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "attacks the surrounding area with " + weapon;
+        return actor + " attacks the surrounding area with " + weapon;
     }
 }

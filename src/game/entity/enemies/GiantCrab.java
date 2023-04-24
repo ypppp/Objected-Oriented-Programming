@@ -28,6 +28,7 @@ public class GiantCrab extends Enemy{
 
     @Override
     public Action getSkill(ArrayList<Actor> targets) {
+        System.out.println("doing skill");
         return new AOE_AttackAction(targets,getIntrinsicWeapon());
     }
 }
