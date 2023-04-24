@@ -48,7 +48,7 @@ public class DeathAction extends Action {
         for (Action drop : dropActions)
             drop.execute(target, map);
         // remove actor
-        map.removeActor(target);
+
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             if (((Enemy) target).getSpeciesType() != Species.BONE) {
                 map.removeActor(target);
@@ -58,6 +58,9 @@ public class DeathAction extends Action {
                 PileOfBones skeleton = new PileOfBones(target);
                 map.addActor(skeleton, skeletonLoc);
             }
+        }
+        else{
+            map.removeActor(target);
         }
         result += System.lineSeparator() + menuDescription(target);
         return result;
