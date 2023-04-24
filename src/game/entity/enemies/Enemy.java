@@ -84,10 +84,11 @@ public abstract class Enemy extends Actor {
      */
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
+        //if this otherActor is a player
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
-            this.addBehaviour(2,new FollowBehaviour(otherActor)); // if this other actor is a player then let this enemy follow the actor
-            // if the player has more than one weapon then add an attackaction for each weapon
+            this.addBehaviour(2,new FollowBehaviour(otherActor)); // let this enemy follow the player
+            // if the player has more than one weapon then add an AttackAction for each weapon
             if(otherActor.getWeaponInventory().size()!=0){
                 for(WeaponItem weapon: otherActor.getWeaponInventory()){
                     if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){ // if this weapon got skill then add the skill action
@@ -97,7 +98,9 @@ public abstract class Enemy extends Actor {
                 }
             }
 
+
         }
+
         return actions;
     }
 }
