@@ -15,16 +15,13 @@ import java.util.Random;
  */
 
 public class PuddleOfWater extends Ground {
-    private RandomNumberGenerator rng = new RandomNumberGenerator();
 
     public PuddleOfWater() {
         super('~');
     }
 
     public void tick(Location location) {
-        int randomInt = rng.getRandomInt(100);
-        randomInt = randomInt + 1;
-        if((randomInt > 0 && randomInt < 3) && !location.containsAnActor()){
+        if(RandomNumberGenerator.getRandomInt(100)<3 && !location.containsAnActor()){
             location.addActor(new GiantCrab());
         }
 
