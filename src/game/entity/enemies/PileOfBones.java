@@ -40,6 +40,7 @@ public class PileOfBones extends Enemy{
             Location here = map.locationOf(this);
             map.removeActor(this);
             map.addActor(revivedEnemy, here);
+            display.println(this.revivedEnemy + " has been revived");
         }
 
         counter--;
