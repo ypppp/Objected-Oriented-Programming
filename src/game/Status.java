@@ -10,5 +10,6 @@ public enum Status {
     HOSTILE_TO_PLAYER, // enemy
     RESPAWNABLE,
     RESTING,
+    HAS_AOE_ATTACK_SKILL,
     HAS_ATTACK_SKILL
 }

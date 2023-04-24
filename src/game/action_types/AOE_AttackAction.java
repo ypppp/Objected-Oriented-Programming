@@ -19,8 +19,6 @@ public class AOE_AttackAction extends Action {
 
     private Weapon weapon;
 
-
-
     private Random rand = new Random();
 
     public AOE_AttackAction(Weapon weapon) {
@@ -32,7 +30,6 @@ public class AOE_AttackAction extends Action {
     public AOE_AttackAction(ArrayList<Actor> targets, Weapon weapon){
         this.targets = targets;
         this.weapon = weapon;
-
     }
 
     @Override
