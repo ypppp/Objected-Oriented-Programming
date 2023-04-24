@@ -1,5 +1,9 @@
 package game.action_types;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
+
 /**
  * A resettable interface
  * Created by:
@@ -9,5 +13,5 @@ package game.action_types;
  */
 
 public interface Despawnable {
-    void despawn();
+    Action despawn();
 }
