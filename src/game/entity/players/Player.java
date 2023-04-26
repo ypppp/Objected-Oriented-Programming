@@ -11,6 +11,8 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Resettable;
 import game.Status;
 import game.action_types.AOE_AttackAction;
+import game.items.runes.Rune;
+import game.items.runes.RuneManager;
 import game.weapons.playerweapons.Club;
 
 /**
@@ -27,6 +29,8 @@ public class Player extends Actor implements Resettable {
 
 	private boolean inCombat = false;
 
+	private RuneManager runeManager;
+
 	/**
 	 * Constructor.
 	 *
@@ -38,6 +42,7 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
+		this.runeManager = RuneManager.getInstance();
 
 	}
 
