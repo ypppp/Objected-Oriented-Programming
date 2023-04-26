@@ -40,7 +40,7 @@ public abstract class Enemy extends Actor implements Despawnable{
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addBehaviour(999,new WanderBehaviour());
-        this.addBehaviour(1, new AttackBehaviour());
+        this.addBehaviour(2, new AttackBehaviour());
     }
 
     public void addBehaviour(int key, Behaviour behaviour){
