@@ -20,6 +20,7 @@ public class AttackBehaviour implements Behaviour {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
+        // GET ALL THE ATTACKABLE TARGETS
         HashMap<Integer, Actor> attackableList = new HashMap<Integer, Actor>();
         HashMap<Integer, Exit> enemyCoordinates = new HashMap<Integer, Exit>();
 
@@ -46,40 +47,33 @@ public class AttackBehaviour implements Behaviour {
 
         }
 
+        // IF THERE ARE TARGETS TO ATTACK
         if(!attackableList.isEmpty()){
-
-            if (actor.hasCapability(Status.HAS_SKILL) && RandomNumberGenerator.getRandomInt(100) < 50){
-
-                Collection<Actor> values = attackableList.values();
-                ArrayList<Actor> actorlists = new ArrayList<>(values);
-                return ((Enemy) actor).getSkill(actorlists);
+            // ELSE IT WILL JUST ATTACK THE FIRST TARGET WHICH IS PRIO TO PLAYER
+            Map.Entry<Integer,Actor> attackableIterator = attackableList.entrySet().iterator().next();
+            Map.Entry<Integer,Exit> coordinateIterator = enemyCoordinates.entrySet().iterator().next();
+            if(actor.getWeaponInventory().size()!=0){
+                WeaponItem attackWeapon = actor.getWeaponInventory().get(0);
+                if(attackWeapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
+                    return attackWeapon.getSkill(actor);
+                }
+                else{
+                    return new AttackAction(attackableIterator.getValue(),coordinateIterator.getValue().getName(),attackWeapon);
+                }
             }
-            else{
-
-                Map.Entry<Integer,Actor> attackableIterator = attackableList.entrySet().iterator().next();
-                Map.Entry<Integer,Exit> coordinateIterator = enemyCoordinates.entrySet().iterator().next();
-                if(actor.getWeaponInventory().size()!=0){
-                    WeaponItem attackWeapon = actor.getWeaponInventory().get(0);
-                    if(attackWeapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
-                        return attackWeapon.getSkill(actor);
-                    }
-                    else{
-                        return new AttackAction(attackableIterator.getValue(),coordinateIterator.getValue().getName(),attackWeapon);
-                    }
-                }
-                else {
-                    return new AttackAction(attackableIterator.getValue(),coordinateIterator.getValue().getName());
-                }
+            else {
+                return new AttackAction(attackableIterator.getValue(),coordinateIterator.getValue().getName());
+            }
 
 
 
             }
-
+            return null;
         }
 
 
-        return null;
 
-    }
 
 }
+
+

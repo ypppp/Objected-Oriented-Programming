@@ -36,12 +36,12 @@ public class AOE_AttackAction extends Action {
         String result = "";
         //if the aoe attack is from the player
         if(this.targets.size()==0){
-            this.targets = getAllTargets(actor,map);
+            this.targets = AOE_AttackAction.getAllTargets(actor,map);
         }
 
         for(Actor target: targets){
             if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
-                result += actor + " misses " + target + "." ;
+                result += actor + " misses " + target + ".\n" ;
             }
             else{
                 int damage = weapon.damage();
@@ -56,7 +56,7 @@ public class AOE_AttackAction extends Action {
 
     }
 
-    public ArrayList<Actor> getAllTargets(Actor actor,GameMap map){
+    public static ArrayList<Actor> getAllTargets(Actor actor,GameMap map){
         ArrayList<Actor> targets = new ArrayList<>();
         Location here = map.locationOf(actor);
         for(Exit exits: here.getExits()) {
