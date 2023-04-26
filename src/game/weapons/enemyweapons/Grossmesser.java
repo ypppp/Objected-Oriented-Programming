@@ -18,6 +18,7 @@ public class Grossmesser extends WeaponItem {
     public Grossmesser() {
         super("Grossmesser",'?',115,"Slashes",85);
         this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
+        this.addCapability(Status.SELLABLE);
 
     }
 
