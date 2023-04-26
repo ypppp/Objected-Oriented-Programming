@@ -13,4 +13,6 @@ public enum Status {
     HAS_AOE_ATTACK_SKILL,
     HAS_SKILL,
     HAS_ATTACK_SKILL,
+    SELLABLE,
+    PURCHASABLE
 }
