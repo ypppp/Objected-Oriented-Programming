@@ -31,6 +31,13 @@ public class AOE_AttackAction extends Action {
         this.weapon = weapon;
     }
 
+    /**
+     * Perform the Action.
+     *
+     * @param actor The actor performing the action.
+     * @param map   The map the actor is on.
+     * @return a description of what happened that can be displayed to the user.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = "";
@@ -91,6 +98,12 @@ public class AOE_AttackAction extends Action {
 
     }
 
+    /**
+     * Returns a descriptive string
+     *
+     * @param actor The actor performing the action.
+     * @return the text we put on the menu
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " attacks the surrounding area with " + weapon + " for" + weapon.damage();
