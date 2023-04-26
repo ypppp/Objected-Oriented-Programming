@@ -17,7 +17,7 @@ public class GiantCrab extends Enemy{
     public GiantCrab() {
         super("GiantCrab", 'C',407);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-        this.setSpeciesType(Species.CRUSTACEANS);
+        this.addCapability(Species.CRUSTACEANS);
         this.addCapability(Status.HAS_SKILL);
     }
 

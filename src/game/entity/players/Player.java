@@ -27,7 +27,7 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-	private boolean inCombat = false;
+
 
 	private RuneManager runeManager;
 
@@ -49,7 +49,7 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
-		if(this.isInCombat()){
+		if(this.hasCapability(Status.IN_COMBAT)){
 			for(WeaponItem weapon: this.getWeaponInventory()){
 				if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
 					actions.add(weapon.getSkill(this));
@@ -57,7 +57,7 @@ public class Player extends Actor implements Resettable {
 			}
 		}
 
-		this.setInCombat(false);
+		this.removeCapability(Status.IN_COMBAT);
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -67,13 +67,6 @@ public class Player extends Actor implements Resettable {
 	}
 
 
-	public boolean isInCombat() {
-		return inCombat;
-	}
-
-	public void setInCombat(boolean inCombat) {
-		this.inCombat = inCombat;
-	}
 
 	@Override
 	public void reset() {}

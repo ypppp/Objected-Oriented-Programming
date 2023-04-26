@@ -85,8 +85,7 @@ public class AOE_AttackAction extends Action {
                     }
                     // else if the other target is an enemy of different type
                     else if (destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-                        Enemy target = (Enemy) destinationActor;
-                        if (target.getSpeciesType() != ((Enemy) actor).getSpeciesType()) {
+                        if (destinationActor.getDisplayChar()!= actor.getDisplayChar()) {
                             targets.add(destinationActor);
                         }
                     }
