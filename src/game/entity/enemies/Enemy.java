@@ -27,7 +27,6 @@ public abstract class Enemy extends Actor implements Despawnable{
 
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
-    private Species speciesType;
 
     private boolean isFollow = false;
 
@@ -56,13 +55,6 @@ public abstract class Enemy extends Actor implements Despawnable{
         this.behaviours = behaviours;
     }
 
-    public Species getSpeciesType() {
-        return speciesType;
-    }
-
-    public void setSpeciesType(Species speciesType) {
-        this.speciesType = speciesType;
-    }
 
     public Action despawn() { return new DespawnAction(); }
 
@@ -105,7 +97,7 @@ public abstract class Enemy extends Actor implements Despawnable{
         //if this otherActor is a player
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
 
-            ((Player)otherActor).setInCombat(true);
+            otherActor.addCapability(Status.IN_COMBAT);
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
             this.addBehaviour(2,new FollowBehaviour(otherActor)); // let this enemy follow the player
             this.isFollow = true;

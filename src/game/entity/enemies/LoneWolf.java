@@ -22,7 +22,7 @@ public class LoneWolf extends Enemy {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-        this.setSpeciesType(Species.CANINE);
+        this.addCapability(Species.CANINE);
     }
 
     @Override

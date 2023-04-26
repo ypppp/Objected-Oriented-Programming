@@ -50,7 +50,7 @@ public class DeathAction extends Action {
         // remove actor
 
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-            if (((Enemy) target).getSpeciesType() != Species.BONE) {
+            if (!target.hasCapability(Species.BONE)) {
                 map.removeActor(target);
             } else {
                 Location skeletonLoc = map.locationOf(target);

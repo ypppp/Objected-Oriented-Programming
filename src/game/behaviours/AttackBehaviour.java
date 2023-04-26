@@ -30,7 +30,7 @@ public class AttackBehaviour implements Behaviour {
             if (destination.containsAnActor()) {
                 Actor destinationActor = destination.getActor();
                 if (destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-                    if(((Enemy) destinationActor).getSpeciesType()!= ((Enemy) actor).getSpeciesType()){
+                    if(destinationActor.getDisplayChar()!= actor.getDisplayChar()){
                         attackableList.put(counter,destinationActor);
                         enemyCoordinates.put(counter,exits);
                         counter++;
