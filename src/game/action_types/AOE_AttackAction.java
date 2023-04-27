@@ -48,7 +48,7 @@ public class AOE_AttackAction extends Action {
                 result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
                 target.hurt(damage);
                 if (!target.isConscious()) {
-                    result += new DeathAction(actor).execute(target, map) + "\n";
+                    result += new DeathAction(actor).execute(target, map)+ "\n";
                 }
             }
         }
