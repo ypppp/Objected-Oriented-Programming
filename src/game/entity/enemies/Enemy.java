@@ -83,7 +83,7 @@ public abstract class Enemy extends Actor implements Despawnable{
         return new DoNothingAction();
     }
 
-    public abstract Action getSkill(ArrayList<Actor> targets);
+
 
     /**
      * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability

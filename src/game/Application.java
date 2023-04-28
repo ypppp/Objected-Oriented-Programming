@@ -88,12 +88,15 @@ public class Application {
 
 		switch(chosenClass){
 			case 'S':
+			case 's':
 				player = new Samurai();
 				break;
 			case 'B':
+			case 'b':
 				player = new Bandit();
 				break;
 			case 'W':
+			case 'w':
 				player = new Wretch();
 				break;
 			default:

@@ -27,8 +27,5 @@ public class HeavySkeletonSwordsman extends Enemy{
         return new IntrinsicWeapon(80, "punches", 85);
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return null;
-    }
+
 }

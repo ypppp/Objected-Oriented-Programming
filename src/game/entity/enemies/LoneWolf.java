@@ -30,10 +30,7 @@ public class LoneWolf extends Enemy {
         return new IntrinsicWeapon(97, "bites", 95);
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return null;
-    }
+
 
     //    /**
 //     * At each turn, select a valid action to perform.

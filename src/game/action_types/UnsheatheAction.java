@@ -3,7 +3,7 @@ package game.action_types;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.DeathAction;
+
 
 public class UnsheatheAction extends AttackAction {
 

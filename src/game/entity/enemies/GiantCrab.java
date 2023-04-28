@@ -28,8 +28,5 @@ public class GiantCrab extends Enemy{
         return new IntrinsicWeapon(208, "pinches", 90);
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return new AOE_AttackAction(targets,getIntrinsicWeapon());
-    }
+
 }

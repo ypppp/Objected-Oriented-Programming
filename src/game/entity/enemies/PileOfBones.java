@@ -48,8 +48,5 @@ public class PileOfBones extends Enemy{
         return new DoNothingAction();
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return null;
-    }
+
 }
