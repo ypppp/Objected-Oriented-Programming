@@ -22,9 +22,6 @@ public class QuickStepAction extends AttackAction {
         Actor target = getTarget();
         Random rand = getRand();
 
-
-
-
         if (!(getRand().nextInt(100) <= weapon.chanceToHit())) {
             return actor + " misses " + target + ".";
         }

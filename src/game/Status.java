@@ -8,5 +8,6 @@ package game;
 public enum Status {
     HOSTILE_TO_ENEMY,
     RESPAWNABLE,
-    RESTING
+    RESTING,
+    HAS_SINGLE_ATTACK_ACTION
 }

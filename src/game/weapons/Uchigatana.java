@@ -3,6 +3,7 @@ package game.weapons;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Status;
 import game.action_types.UnsheatheAction;
 
 public class Uchigatana extends WeaponItem {
@@ -14,7 +15,7 @@ public class Uchigatana extends WeaponItem {
      */
     public Uchigatana() {
         super("Uchigatana",'(',115,"slashes",80);
-        this.addCapability(Abilities.UNSHEATHE);
+        this.addCapability(Status.HAS_SINGLE_ATTACK_ACTION);
 
     }
 
@@ -26,7 +27,7 @@ public class Uchigatana extends WeaponItem {
      */
     public Uchigatana(int damage, int hitRate) {
         super("Uchigatana", '(', damage, "slashes", hitRate);
-        this.addCapability(Abilities.UNSHEATHE);
+        this.addCapability(Status.HAS_SINGLE_ATTACK_ACTION);
     }
 
     @Override
