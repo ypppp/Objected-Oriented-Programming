@@ -10,10 +10,13 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.entity.enemies.GiantCrab;
+import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.players.Bandit;
 import game.entity.players.Player;
 import game.entity.players.Samurai;
 import game.entity.players.Wretch;
+import game.grounds.*;
 
 /**
  * The main class to start the game.
@@ -30,7 +33,7 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -38,18 +41,18 @@ public class Application {
 				"......................#..___....____#......................................",
 				"..................................__#......................................",
 				"......................._____........#......................................",
-				"......................#............_#......................................",
-				"......................#...........###......................................",
-				"...........................................................................",
-				"...........................................................................",
+				"......................#............_#.....................&................",
+				"......................#...........###....................&&................",
+				"......nn..................................................&................",
+				".......n...................................................................",
 				"..................................###___###................................",
 				"..................................________#................................",
 				"..................................#________................................",
 				"..................................#_______#................................",
 				"..................................###___###................................",
 				"....................................#___#..................................",
-				"...........................................................................",
-				"...........................................................................",
+				".......~~~.................................................................",
+				".......~...................................................................",
 				"...........................................................................",
 				"..####__##....................................................######..##...",
 				"..#.....__....................................................#....____....",
@@ -99,8 +102,13 @@ public class Application {
 
 
 
+		gameMap.at(56, 17).addActor(new LoneWolf());
+		gameMap.at(56, 16).addActor(new LoneWolf());
+		gameMap.at(57, 17).addActor(new GiantCrab());
+		gameMap.at(55, 17).addActor(new LoneWolf());
+		gameMap.at(33, 10).addActor(new HeavySkeletonSwordsman());
+
 		// HINT: what does it mean to prefer composition to inheritance?
-//		Player player = new Player("Tarnished", '@', 300);
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();

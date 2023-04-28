@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.weapons.Club;
 import game.Resettable;
 import game.Status;
@@ -39,6 +40,16 @@ public abstract class Player extends Actor implements Resettable {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
+		if(this.hasCapability(Status.IN_COMBAT)){
+			for(WeaponItem weapon: this.getWeaponInventory()){
+				if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
+					actions.add(weapon.getSkill(this));
+				}
+			}
+		}
+
+		this.removeCapability(Status.IN_COMBAT);
+
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
