@@ -1,35 +1,53 @@
 package game.action_types;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.RandomNumberGenerator;
+
+import java.util.Random;
 
 
-public class UnsheatheAction extends AttackAction {
+public class UnsheatheAction extends Action {
 
     /**
-     * Constructor for the unsheathe action skill for Uchigatana where the damage is doubled and has a 60% chance of hitting
-     * @param target The target of the skill
-     * @param direction The direction of the actor
-     * @param weapon The weapon used to attack
+     * The Actor that is to be attacked
      */
+    private Actor target;
+
+    /**
+     * The direction of incoming attack.
+     */
+    private String direction;
+
+
+    /**
+     * Weapon used for the attack
+     */
+    private Weapon weapon;
+
     public UnsheatheAction(Actor target, String direction, Weapon weapon) {
-        super(target, direction, weapon);
+        this.target = target;
+        this.direction = direction;
+        this.weapon = weapon;
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @param map   The map the actor is on.
+     * @return A string that is the execution of the action
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
-
-        Weapon weapon = getWeapon();
-        Actor target = getTarget();
-
-
-        if (!(getRand().nextInt(100) <= weapon.chanceToHit())) {
+        // check if miss or not
+        if (!(RandomNumberGenerator.getRandomInt(100) < 60)) {
             return actor + " misses " + target + ".";
         }
-
-        int damage =  weapon.damage();
-        String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+        // else do dmg where the dmg is *2
+        int damage =  weapon.damage()*2;
+        String result = actor + " unsheathes and " + weapon.verb() + " " + target + " for " + damage + " damage.";
         target.hurt(damage);
 
         if (!target.isConscious()) {
@@ -39,12 +57,12 @@ public class UnsheatheAction extends AttackAction {
         return result;
     }
 
+    /**
+     * @param actor The actor performing the action.
+     * @return
+     */
     @Override
-    public String hotkey() {
-        return "U";
-    }
-
     public String menuDescription(Actor actor) {
-        return actor + " unsheathes and attack " + getTarget() + " at " + getDirection() + " with " + getWeapon();
+        return actor + " unsheathes to attack " + target + " at " + direction + " with " + weapon;
     }
 }
