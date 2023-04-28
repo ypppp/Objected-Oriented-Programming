@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Species;
 import game.Status;
 import game.weapons.enemyweapons.Grossmesser;
+import game.weapons.enemyweapons.Scimitar;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class SkeletonBandit extends Enemy{
         super("Skeleton Bandit", 'b',184);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.BONE);
-//        this.addWeaponToInventory(new Grossmesser());
+        this.addWeaponToInventory(new Scimitar());
     }
 
     @Override
