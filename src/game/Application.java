@@ -1,10 +1,7 @@
 package game;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
@@ -12,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.entity.enemies.GiantCrab;
 import game.entity.enemies.HeavySkeletonSwordsman;
+import game.entity.enemies.LoneWolf;
 import game.entity.players.Bandit;
 import game.entity.players.Player;
 import game.entity.players.Samurai;
@@ -75,33 +73,24 @@ public class Application {
 
 		gameMap.at(23, 17).addActor(new LoneWolf());
 
+		HashMap<Character,Player> classesMap = new HashMap<Character, Player>();
+		classesMap.put('S',new Samurai());
+		classesMap.put('s', new Samurai());
+		classesMap.put('W',new Wretch());
+		classesMap.put('w',new Wretch());
+		classesMap.put('B', new Bandit());
+		classesMap.put('b',new Bandit());
 
 		// at here add a menu to select who what class
-		ArrayList<Character> validClasses = new ArrayList<>(Arrays.asList('S', 'B','W'));
 		char chosenClass;
 		Player player;
-
+		//use hashmap to storethe classes and use contains key and get(key)
 		do{
 			display.println("Choose a class\n S for Samurai\n B for Bandit\n W for Wretch");
 			chosenClass = display.readChar();
-		} while(!validClasses.contains(chosenClass));
+		} while(!classesMap.containsKey(chosenClass));
 
-		switch(chosenClass){
-			case 'S':
-			case 's':
-				player = new Samurai();
-				break;
-			case 'B':
-			case 'b':
-				player = new Bandit();
-				break;
-			case 'W':
-			case 'w':
-				player = new Wretch();
-				break;
-			default:
-				player = new Samurai();
-		}
+		player = classesMap.get(chosenClass);
 
 
 
@@ -115,5 +104,6 @@ public class Application {
 		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();
+
 	}
 }
