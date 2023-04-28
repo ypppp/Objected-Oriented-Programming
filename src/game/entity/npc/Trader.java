@@ -12,6 +12,8 @@ import game.Status;
 import game.action_types.BuyWeaponAction;
 import game.action_types.SellWeaponAction;
 import game.weapons.playerweapons.Club;
+import game.weapons.playerweapons.GreatKnife;
+import game.weapons.playerweapons.Uchigatana;
 
 import java.util.HashMap;
 
@@ -26,6 +28,8 @@ public class Trader extends Actor {
     public Trader() {
         super("Kale", 'K',0);
         weaponPrice.put("Club",100);
+        weaponPrice.put("Great Knife",350);
+        weaponPrice.put("Uchigatana",500);
 
     }
 
@@ -48,6 +52,8 @@ public class Trader extends Actor {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new BuyWeaponAction(this, new Club(),600));
+            actions.add(new BuyWeaponAction(this, new GreatKnife(),3500));
+            actions.add(new BuyWeaponAction(this, new Uchigatana(),5000));
             for(WeaponItem weapon: otherActor.getWeaponInventory()){
                 if(weapon.hasCapability(Status.SELLABLE)){
                     String weaponName = weapon.toString();

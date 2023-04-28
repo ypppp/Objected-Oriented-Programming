@@ -17,6 +17,8 @@ public class Uchigatana extends WeaponItem {
     public Uchigatana() {
         super("Uchigatana",'(',115,"slashes",80);
         this.addCapability(Status.HAS_ATTACK_SKILL);
+        this.addCapability(Status.SELLABLE);
+        this.addCapability(Status.PURCHASABLE);
 
     }
 

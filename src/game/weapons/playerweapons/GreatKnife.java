@@ -15,6 +15,8 @@ public class GreatKnife extends WeaponItem {
     public GreatKnife() {
         super("Great Knife", '/',75, "stabs", 70);
         this.addCapability(Status.HAS_ATTACK_SKILL);
+        this.addCapability(Status.SELLABLE);
+        this.addCapability(Status.PURCHASABLE);
     }
 
     @Override
