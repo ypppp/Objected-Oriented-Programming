@@ -40,7 +40,8 @@ public class RuneManager {
         int min = runeAmount.get(displayChar)[0];
         int max = runeAmount.get(displayChar)[1];
         int runesAmountDropped = RandomNumberGenerator.getRandomInt(min, max);
-        return addRunes(runesAmountDropped);
+        addRunes(runesAmountDropped);
+        return runesAmountDropped + " ";
     }
 
     public String removeRunes(int amount){
