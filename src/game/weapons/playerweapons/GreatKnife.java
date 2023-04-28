@@ -1,4 +1,4 @@
-package game.weapons;
+package game.weapons.playerweapons;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -14,12 +14,12 @@ public class GreatKnife extends WeaponItem {
      */
     public GreatKnife() {
         super("Great Knife", '/',75, "stabs", 70);
-        this.addCapability(Status.HAS_SINGLE_ATTACK_ACTION);
+        this.addCapability(Status.HAS_ATTACK_SKILL);
     }
 
     @Override
     public Action getSkill(Actor target, String direction) {
-        return new QuickStepAction(target,direction, new GreatKnife());
+        return new QuickStepAction(target,direction, this);
     }
 
     // WEAPON HAS GETSKILL THAT CAN RETURN THE ATTACK ACTION IN SKILL FORM
