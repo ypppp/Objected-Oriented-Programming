@@ -1,6 +1,6 @@
 package game.entity.players;
 
-import game.weapons.Club;
+import game.weapons.playerweapons.Club;
 
 public class Wretch extends Player{
     /**

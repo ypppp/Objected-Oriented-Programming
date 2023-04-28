@@ -1,6 +1,6 @@
 package game.entity.players;
 
-import game.weapons.Uchigatana;
+import game.weapons.playerweapons.Uchigatana;
 
 public class Samurai extends Player {
     /**

@@ -1,6 +1,6 @@
 package game.entity.players;
 
-import game.weapons.GreatKnife;
+import game.weapons.playerweapons.GreatKnife;
 
 public class Bandit extends Player{
     /**
