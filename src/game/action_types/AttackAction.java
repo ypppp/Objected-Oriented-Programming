@@ -120,8 +120,5 @@ public class AttackAction extends Action {
 		return actor + " attacks " + target + " at " + direction + " with " + (weapon != null ? weapon : "Intrinsic Weapon");
 	}
 
-	@Override
-	public String hotkey() {
-		return "1";
-	}
+
 }
