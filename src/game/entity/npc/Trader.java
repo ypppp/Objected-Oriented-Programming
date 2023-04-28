@@ -13,14 +13,20 @@ import game.action_types.BuyWeaponAction;
 import game.action_types.SellWeaponAction;
 import game.weapons.playerweapons.Club;
 
+import java.util.HashMap;
+
 public class Trader extends Actor {
 
+
+    HashMap<String,Integer> weaponPrice = new HashMap<>();
 
     /**
      * Constructor.
      */
     public Trader() {
         super("Kale", 'K',0);
+        weaponPrice.put("Club",100);
+
     }
 
     /**
@@ -45,11 +51,7 @@ public class Trader extends Actor {
             for(WeaponItem weapon: otherActor.getWeaponInventory()){
                 if(weapon.hasCapability(Status.SELLABLE)){
                     String weaponName = weapon.toString();
-                    switch(weaponName){
-                        case "Club":
-                            actions.add(new SellWeaponAction(this, weapon,100));
-                            break;
-                    }
+                    actions.add(new SellWeaponAction(this, weapon,weaponPrice.get(weaponName)));
                 }
 
 
