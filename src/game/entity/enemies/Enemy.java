@@ -106,7 +106,7 @@ public abstract class Enemy extends Actor implements Despawnable{
             // if the player has more than one weapon then add an AttackAction for each weapon
             if(otherActor.getWeaponInventory().size()!=0){
                 for(WeaponItem weapon: otherActor.getWeaponInventory()){
-                    if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){ // if this weapon got skill then add the skill action
+                    if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){ // if this weapon got targeted skill then add the skill action
                         actions.add(weapon.getSkill(this,direction));
                     }
                     actions.add(new AttackAction(this,direction,weapon));
