@@ -39,8 +39,9 @@ public abstract class Enemy extends Actor implements Despawnable{
      */
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
-        this.addBehaviour(999,new WanderBehaviour());
         this.addBehaviour(2, new AttackBehaviour());
+        this.addBehaviour(999,new WanderBehaviour());
+
     }
 
     public void addBehaviour(int key, Behaviour behaviour){
@@ -99,7 +100,7 @@ public abstract class Enemy extends Actor implements Despawnable{
 
             otherActor.addCapability(Status.IN_COMBAT);
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
-            this.addBehaviour(2,new FollowBehaviour(otherActor)); // let this enemy follow the player
+            this.addBehaviour(3,new FollowBehaviour(otherActor)); // let this enemy follow the player
             this.isFollow = true;
 
             // if the player has more than one weapon then add an AttackAction for each weapon
