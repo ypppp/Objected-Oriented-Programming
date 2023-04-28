@@ -12,6 +12,7 @@ import game.Resettable;
 import game.Status;
 import game.action_types.AOE_AttackAction;
 
+import game.weapons.enemyweapons.Scimitar;
 import game.weapons.playerweapons.Club;
 
 /**
@@ -41,6 +42,7 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
+		this.addWeaponToInventory(new Scimitar());
 
 	}
 

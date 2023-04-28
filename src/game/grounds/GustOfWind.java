@@ -22,11 +22,18 @@ public class GustOfWind extends Ground {
     }
 
     public void tick(Location location) {
-        if (location.x() > 40 && (RandomNumberGenerator.getRandomInt(100)<5 && !location.containsAnActor())){
-            location.addActor(new GiantDog());}
-        else if ((RandomNumberGenerator.getRandomInt(100)<34 && !location.containsAnActor()))
-        {
-            location.addActor(new LoneWolf());}
+        if (location.x() >= 40) {
+            if ((RandomNumberGenerator.getRandomInt(100) < 5 && !location.containsAnActor()))
+            {
+                location.addActor(new GiantDog());
+            }
+        } else if (location.x() < 40) {
+            if (((RandomNumberGenerator.getRandomInt(100) < 34 && !location.containsAnActor())))
+            {
+                location.addActor(new LoneWolf());
+            }
 
+
+        }
     }
 }
