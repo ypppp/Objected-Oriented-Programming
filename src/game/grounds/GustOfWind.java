@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
 import game.entity.enemies.GiantCrab;
+import game.entity.enemies.GiantCrayfish;
+import game.entity.enemies.GiantDog;
 import game.entity.enemies.LoneWolf;
 
 /**
@@ -20,9 +22,11 @@ public class GustOfWind extends Ground {
     }
 
     public void tick(Location location) {
-        if(RandomNumberGenerator.getRandomInt(100)<34 && !location.containsAnActor()){
-            location.addActor(new LoneWolf());
-        }
+        if (location.x() > 40 && (RandomNumberGenerator.getRandomInt(100)<5 && !location.containsAnActor())){
+            location.addActor(new GiantDog());}
+        else if ((RandomNumberGenerator.getRandomInt(100)<34 && !location.containsAnActor()))
+        {
+            location.addActor(new LoneWolf());}
 
     }
 }
