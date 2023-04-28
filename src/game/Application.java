@@ -92,8 +92,6 @@ public class Application {
 
 		player = classesMap.get(chosenClass);
 
-
-
 		gameMap.at(56, 17).addActor(new LoneWolf());
 		gameMap.at(56, 16).addActor(new LoneWolf());
 		gameMap.at(57, 17).addActor(new GiantCrab());
