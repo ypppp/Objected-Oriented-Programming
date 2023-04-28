@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.entity.enemies.GiantCrab;
 import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.LoneWolf;
+import game.entity.npc.Trader;
 import game.entity.players.Player;
 import game.grounds.*;
 
@@ -72,11 +73,11 @@ public class Application {
 		gameMap.at(56, 16).addActor(new LoneWolf());
 		gameMap.at(57, 17).addActor(new GiantCrab());
 		gameMap.at(55, 17).addActor(new LoneWolf());
-		gameMap.at(33, 10).addActor(new HeavySkeletonSwordsman());
+		gameMap.at(40, 11).addActor(new Trader());
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
-		world.addPlayer(player, gameMap.at(34, 10));
+		world.addPlayer(player, gameMap.at(36, 10));
 
 		world.run();
 	}
