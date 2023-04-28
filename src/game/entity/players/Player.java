@@ -12,6 +12,8 @@ import game.Resettable;
 import game.Status;
 import game.action_types.AOE_AttackAction;
 
+import game.items.runes.Rune;
+import game.items.runes.RuneManager;
 import game.weapons.playerweapons.Club;
 
 /**

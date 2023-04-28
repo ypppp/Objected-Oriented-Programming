@@ -12,6 +12,8 @@ import game.Status;
 import game.entity.enemies.Enemy;
 import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.PileOfBones;
+import game.items.runes.Rune;
+import game.items.runes.RuneManager;
 
 /**
  * An action executed if an actor is killed.
@@ -49,6 +51,8 @@ public class DeathAction extends Action {
             drop.execute(target, map);
         // remove actor
 
+//        implement rune drops here - check if the attacker is player [if yes, get the rune drop values from infomanager and displaychar
+
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             if (!target.hasCapability(Species.BONE)) {
                 map.removeActor(target);
@@ -58,14 +62,23 @@ public class DeathAction extends Action {
                 PileOfBones skeleton = new PileOfBones(target);
                 map.addActor(skeleton, skeletonLoc);
             }
-        }
-        else{
+        } else {
             map.removeActor(target);
         }
-        result += System.lineSeparator() + menuDescription(target);
-        return result;
-    }
+        result += System.lineSeparator() + menuDescription(target) + "\n";
 
+        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            if (target.hasCapability(Species.BONE) && target.hasCapability(Status.RESPAWNABLE)) {
+                String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
+                result += attacker + " gets " + runeAmount + "runes from " + target;
+            } else if (!target.hasCapability(Species.BONE)){
+                String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
+                result += attacker + " gets " + runeAmount + "runes from " + target;
+            }
+        }
+        return result;
+
+    }
     @Override
     public String menuDescription(Actor actor) {
         return actor + " is killed.";

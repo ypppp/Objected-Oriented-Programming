@@ -1,12 +1,24 @@
 package game.items.runes;
 
+import game.RandomNumberGenerator;
+
+import java.util.HashMap;
+
 public class RuneManager {
 
     private static RuneManager runeManager = null;
     private Rune rune;
+    private HashMap<Character, int[]> runeAmount;
 
     public RuneManager() {
         this.rune = new Rune();
+        runeAmount = new HashMap<>();
+        runeAmount.put('X',new int[]{35,892});
+        runeAmount.put('h',new int[]{55,1470});
+        runeAmount.put('C',new int[]{318,4961});
+        runeAmount.put('b',new int[]{35,892});
+        runeAmount.put('G',new int[]{313,1808});
+        runeAmount.put('R',new int[]{500,2374});
     }
 
     public static RuneManager getInstance(){
@@ -24,6 +36,13 @@ public class RuneManager {
         return  true;
     }
 
+    public String runesDroppedByEnemies(Character displayChar){
+        int min = runeAmount.get(displayChar)[0];
+        int max = runeAmount.get(displayChar)[1];
+        int runesAmountDropped = RandomNumberGenerator.getRandomInt(min, max);
+        return addRunes(runesAmountDropped);
+    }
+
     public String removeRunes(int amount){
         rune.setAmount(rune.getAmount()-amount);
         return rune.getAmount() + " ";
@@ -34,4 +53,7 @@ public class RuneManager {
         return rune.getAmount() + " ";
     }
 
+    public Rune getRune() {
+        return rune;
+    }
 }

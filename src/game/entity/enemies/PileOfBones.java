@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Species;
 import game.Status;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class PileOfBones extends Enemy{
         super("Pile of Bones", 'X',1);
         this.setBehaviours(new HashMap<>());
         this.addCapability(Status.RESPAWNABLE);
+        this.addCapability(Species.BONE);
         this.revivedEnemy = enemy;
 
 
