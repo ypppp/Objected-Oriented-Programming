@@ -6,8 +6,10 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.action_types.QuickStepAction;
 import game.action_types.UnsheatheAction;
+import game.items.Purchasable;
+import game.items.Sellable;
 
-public class Uchigatana extends WeaponItem {
+public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
 
 
 
@@ -18,13 +20,36 @@ public class Uchigatana extends WeaponItem {
         super("Uchigatana",'(',115,"slashes",80);
         this.addCapability(Status.HAS_ATTACK_SKILL);
         this.addCapability(Status.SELLABLE);
-        this.addCapability(Status.PURCHASABLE);
 
     }
 
     @Override
     public Action getSkill(Actor target, String direction) {
         return new UnsheatheAction(target,direction,this);
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public int getPurchasePrice() {
+        return 5000;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public WeaponItem getPurchaseItem() {
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public int getSellPrice() {
+        return 500;
     }
 
 

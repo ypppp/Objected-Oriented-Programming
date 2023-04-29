@@ -9,11 +9,9 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Resettable;
 import game.Status;
-import game.action_types.AOE_AttackAction;
 
-import game.items.runes.Rune;
 import game.items.runes.RuneManager;
-import game.weapons.playerweapons.Club;
+
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -38,7 +36,7 @@ public abstract class Player extends Actor implements Resettable {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addWeaponToInventory(new Club());
+
 
 	}
 
@@ -64,7 +62,13 @@ public abstract class Player extends Actor implements Resettable {
 		return menu.showMenu(this, actions, display);
 	}
 
+	public ClassType getCombatClass() {
+		return combatClass;
+	}
 
+	public void setCombatClass(ClassType combatClass) {
+		this.combatClass = combatClass;
+	}
 
 	@Override
 	public void reset() {}

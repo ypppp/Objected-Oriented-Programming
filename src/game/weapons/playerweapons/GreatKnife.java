@@ -5,8 +5,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.action_types.QuickStepAction;
+import game.items.Purchasable;
+import game.items.Sellable;
 
-public class GreatKnife extends WeaponItem {
+public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
 
 
     /**
@@ -16,7 +18,6 @@ public class GreatKnife extends WeaponItem {
         super("Great Knife", '/',75, "stabs", 70);
         this.addCapability(Status.HAS_ATTACK_SKILL);
         this.addCapability(Status.SELLABLE);
-        this.addCapability(Status.PURCHASABLE);
     }
 
     @Override
@@ -24,5 +25,28 @@ public class GreatKnife extends WeaponItem {
         return new QuickStepAction(target,direction, this);
     }
 
-    // WEAPON HAS GETSKILL THAT CAN RETURN THE ATTACK ACTION IN SKILL FORM
+
+    /**
+     * @return
+     */
+    @Override
+    public int getPurchasePrice() {
+        return 3500;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public WeaponItem getPurchaseItem() {
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public int getSellPrice() {
+        return 350;
+    }
 }

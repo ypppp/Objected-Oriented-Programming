@@ -14,6 +14,8 @@ import game.action_types.SellWeaponAction;
 import game.items.Purchasable;
 import game.items.Sellable;
 import game.weapons.playerweapons.Club;
+import game.weapons.playerweapons.GreatKnife;
+import game.weapons.playerweapons.Uchigatana;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +32,11 @@ public class Trader extends Actor {
     public Trader() {
         super("Kale", 'K',0);
         weaponPrice.put("Club",new Club());
+        weaponPrice.put("Uchigatana", new Uchigatana());
+        weaponPrice.put("Great Knife", new GreatKnife());
         purchasables.add(new Club());
+        purchasables.add(new Uchigatana());
+        purchasables.add(new GreatKnife());
 
 
     }
@@ -56,10 +62,6 @@ public class Trader extends Actor {
             for(Purchasable purchasable: purchasables){
                 actions.add(new BuyWeaponAction(this, purchasable.getPurchaseItem(), purchasable.getPurchasePrice()));
             }
-
-
-
-
 
 
             for(WeaponItem weapon: otherActor.getWeaponInventory()){
