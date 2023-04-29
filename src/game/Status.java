@@ -14,7 +14,6 @@ public enum Status {
     HAS_SKILL,
     HAS_ATTACK_SKILL,
     SELLABLE,
-    PURCHASABLE,
     IN_COMBAT,
     CAN_DROP_RUNES
 }
