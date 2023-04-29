@@ -45,7 +45,7 @@ public class BuyWeaponAction extends Action {
             return result;
         }
         else{
-            return actor + "does not have enough runes";
+            return actor + " does not have enough runes";
         }
 
     }
