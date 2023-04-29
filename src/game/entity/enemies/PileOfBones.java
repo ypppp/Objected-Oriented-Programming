@@ -26,7 +26,7 @@ public class PileOfBones extends Enemy{
     public PileOfBones(Actor enemy) {
         super("Pile of Bones", 'X',1);
         this.setBehaviours(new HashMap<>());
-        this.addCapability(Status.RESPAWNABLE);
+        this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Species.BONE);
         this.revivedEnemy = enemy;
 

@@ -68,10 +68,7 @@ public class DeathAction extends Action {
         result += System.lineSeparator() + menuDescription(target) + "\n";
 
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            if (target.hasCapability(Species.BONE) && target.hasCapability(Status.RESPAWNABLE)) {
-                String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
-                result += attacker + " gets " + runeAmount + "runes from " + target;
-            } else if (!target.hasCapability(Species.BONE)){
+            if (target.hasCapability(Status.CAN_DROP_RUNES)){
                 String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
                 result += attacker + " gets " + runeAmount + "runes from " + target;
             }
