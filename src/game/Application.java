@@ -73,6 +73,7 @@ public class Application {
 		gameMap.at(56, 16).addActor(new LoneWolf());
 		gameMap.at(57, 17).addActor(new GiantCrab());
 		gameMap.at(55, 17).addActor(new LoneWolf());
+
 		gameMap.at(40, 11).addActor(new Trader());
 
 		// HINT: what does it mean to prefer composition to inheritance?
