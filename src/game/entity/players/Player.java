@@ -4,15 +4,14 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Resettable;
+import game.items.FlaskOfCrimsonTears;
+import game.reset.Resettable;
 import game.Status;
-import game.action_types.AOE_AttackAction;
 
-import game.items.runes.Rune;
 import game.items.runes.RuneManager;
 import game.weapons.playerweapons.Club;
 
@@ -43,6 +42,7 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
+		this.addItemToInventory(new FlaskOfCrimsonTears());
 
 	}
 
@@ -62,12 +62,11 @@ public class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-		display.println(this + " has " + RuneManager.getInstance().getRune().getAmount() + " runes ");
+		display.println(this + this.printHp() + ", runes: " + RuneManager.getInstance().getRune().getAmount());
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
-
 
 
 	@Override
