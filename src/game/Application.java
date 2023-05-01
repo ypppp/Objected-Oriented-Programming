@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.entity.enemies.GiantCrab;
 import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.LoneWolf;
 import game.entity.players.Bandit;
