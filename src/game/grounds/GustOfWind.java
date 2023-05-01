@@ -1,5 +1,6 @@
 package game.grounds;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
@@ -15,25 +16,52 @@ import game.entity.enemies.LoneWolf;
  *
  */
 
-public class GustOfWind extends Ground {
+public class GustOfWind extends SpawningGrounds {
 
     public GustOfWind() {
         super('&');
     }
 
     public void tick(Location location) {
-        if (location.x() >= 40) {
-            if ((RandomNumberGenerator.getRandomInt(100) < 5 && !location.containsAnActor()))
-            {
-                location.addActor(new GiantDog());
+        if(location.x()>=40){
+            if(getFactory()==null){
+                this.setFactory(new EastEnemyFactory());
             }
-        } else if (location.x() < 40) {
-            if (((RandomNumberGenerator.getRandomInt(100) < 34 && !location.containsAnActor())))
-            {
-                location.addActor(new LoneWolf());
+            this.spawn(location);
+
+        }
+        else if(location.x()<40){
+            if(getFactory()==null){
+                this.setFactory(new WestEnemyFactory());
             }
+            this.spawn(location);
+        }
 
 
+
+//        if (location.x() >= 40) {
+//            if ((RandomNumberGenerator.getRandomInt(100) < 5 && !location.containsAnActor()))
+//            {
+//                location.addActor(new GiantDog());
+//            }
+//        } else if (location.x() < 40) {
+//            if (((RandomNumberGenerator.getRandomInt(100) < 34 && !location.containsAnActor())))
+//            {
+//                location.addActor(new LoneWolf());
+//            }
+//
+//
+//        }
+    }
+
+    /**
+     * @param location
+     */
+    @Override
+    public void spawn(Location location) {
+        Actor enemy = getFactory().spawnEnemy(location, this.getDisplayChar());
+        if(enemy != null){
+            location.addActor(enemy);
         }
     }
 }
