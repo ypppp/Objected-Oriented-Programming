@@ -1,6 +1,8 @@
 package game.items.runes;
 
+import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
+import game.action_types.reset.ResetManager;
 
 import java.util.HashMap;
 
@@ -9,6 +11,33 @@ public class RuneManager {
     private static RuneManager runeManager = null;
     private Rune rune;
     private HashMap<Character, int[]> runeAmount;
+    private Location playerLocation;
+    private Location runeLocation;
+    private Rune droppedRunes;
+
+    public Rune getDroppedRunes() {
+        return droppedRunes;
+    }
+
+    public void setDroppedRunes(Rune droppedRunes) {
+        this.droppedRunes = droppedRunes;
+    }
+
+    public Location getPlayerLocation() {
+        return playerLocation;
+    }
+
+    public void setPlayerLocation(Location playerLocation) {
+        this.playerLocation = playerLocation;
+    }
+
+    public Location getRuneLocation() {
+        return runeLocation;
+    }
+
+    public void setRuneLocation(Location runeLocation) {
+        this.runeLocation = runeLocation;
+    }
 
     public RuneManager() {
         this.rune = new Rune();
@@ -19,6 +48,7 @@ public class RuneManager {
         runeAmount.put('b',new int[]{35,892});
         runeAmount.put('G',new int[]{313,1808});
         runeAmount.put('R',new int[]{500,2374});
+        ResetManager.getInstance().registerResettable(rune);
     }
 
     public static RuneManager getInstance(){
@@ -33,7 +63,7 @@ public class RuneManager {
         if(rune.getAmount()<amount){
             return false;
         }
-        return  true;
+        return true;
     }
 
     public String runesDroppedByEnemies(Character displayChar){
@@ -57,4 +87,5 @@ public class RuneManager {
     public Rune getRune() {
         return rune;
     }
+
 }

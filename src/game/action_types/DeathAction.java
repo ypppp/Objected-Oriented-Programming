@@ -9,11 +9,11 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
 import game.Status;
-import game.entity.enemies.Enemy;
-import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.PileOfBones;
 import game.items.runes.Rune;
 import game.items.runes.RuneManager;
+import game.action_types.reset.ResetAction;
+import game.action_types.reset.ResetManager;
 
 /**
  * An action executed if an actor is killed.
@@ -43,32 +43,48 @@ public class DeathAction extends Action {
 
         ActionList dropActions = new ActionList();
         // drop all items
-        for (Item item : target.getItemInventory())
-            dropActions.add(item.getDropAction(target));
-        for (WeaponItem weapon : target.getWeaponInventory())
-            dropActions.add(weapon.getDropAction(target));
-        for (Action drop : dropActions)
-            drop.execute(target, map);
+
+        if (!target.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            for (Item item : target.getItemInventory())
+                dropActions.add(item.getDropAction(target));
+            for (WeaponItem weapon : target.getWeaponInventory())
+                dropActions.add(weapon.getDropAction(target));
+            for (Action drop : dropActions)
+                drop.execute(target, map);
+        }
         // remove actor
 
 //        implement rune drops here - check if the attacker is player [if yes, get the rune drop values from infomanager and displaychar
 
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-            if (!target.hasCapability(Species.BONE)) {
+            if ((!target.hasCapability(Species.BONE))|| target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
-            } else {
+            }
+            else {
                 Location skeletonLoc = map.locationOf(target);
                 map.removeActor(target);
                 PileOfBones skeleton = new PileOfBones(target);
                 map.addActor(skeleton, skeletonLoc);
             }
-        } else {
-            map.removeActor(target);
+        }
+        else {
+            if (RuneManager.getInstance().getRuneLocation() != null){
+                RuneManager.getInstance().getRuneLocation().removeItem(RuneManager.getInstance().getDroppedRunes());
+            }
+            Rune runes = new Rune();
+            runes.setAmount(RuneManager.getInstance().getRune().getAmount());
+            RuneManager.getInstance().setDroppedRunes(runes);
+            RuneManager.getInstance().getPlayerLocation().addItem(runes); // drops the rune
+            RuneManager.getInstance().setRuneLocation(RuneManager.getInstance().getPlayerLocation()); // saves the rune location
+            map.removeActor(target); // player dies
+
+            return new ResetAction().execute(target, map);
         }
         result += System.lineSeparator() + menuDescription(target) + "\n";
 
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            if (target.hasCapability(Status.CAN_DROP_RUNES)){
+//
+            if (target.hasCapability(Status.CAN_DROP_RUNES)) {
                 String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
                 result += attacker + " gets " + runeAmount + "runes from " + target;
             }

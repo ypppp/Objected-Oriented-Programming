@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.entity.enemies.GiantCrab;
 import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.LoneWolf;
 import game.entity.players.Bandit;
@@ -16,6 +15,9 @@ import game.entity.players.Player;
 import game.entity.players.Samurai;
 import game.entity.players.Wretch;
 import game.grounds.*;
+import game.items.runes.Rune;
+import game.items.runes.RuneManager;
+import game.action_types.reset.ResetManager;
 
 /**
  * The main class to start the game.
@@ -32,7 +34,7 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new TheSiteOfLostGrace());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -46,7 +48,7 @@ public class Application {
 				".......n...................................................................",
 				"..................................###___###................................",
 				"..................................________#................................",
-				"..................................#________................................",
+				"..................................#___U____................................",
 				"..................................#_______#................................",
 				"..................................###___###................................",
 				"....................................#___#..................................",
@@ -72,7 +74,10 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new LoneWolf());
+//		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
+//
+//		gameMap.at(56, 17).addActor(new LoneWolf());
+//		gameMap.at(56, 16).addActor(new LoneWolf());
 
 		HashMap<Character,Player> classesMap = new HashMap<Character, Player>();
 		classesMap.put('S',new Samurai());
@@ -99,6 +104,14 @@ public class Application {
 		gameMap.at(55, 17).addActor(new LoneWolf());
 		gameMap.at(40, 11).addActor(new Trader());
 
+		gameMap.at(38,11).setGround(new TheSiteOfLostGrace());
+		Rune rune = new Rune();
+		rune.setAmount(200);
+//		gameMap.at(32,10).addItem(rune);
+//		gameMap.at(31, 10).addActor(new GiantCrab());
+		gameMap.at(28, 10).addActor(new HeavySkeletonSwordsman());
+		RuneManager.getInstance().getRune().setAmount(200);
+		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(36, 10));
 

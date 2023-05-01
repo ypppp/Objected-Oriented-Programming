@@ -1,11 +1,16 @@
 package game.items.runes;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.items.Item;
+import game.action_types.RecoverRuneAction;
+import game.action_types.reset.Resettable;
 
-public class Rune extends Item {
+import java.util.List;
+
+public class Rune extends Item implements Resettable {
 
     private int amount;
-
 
     /***
      * Constructor.
@@ -21,5 +26,18 @@ public class Rune extends Item {
 
     public void setAmount(int amount) {
         this.amount = Math.max(amount,0);
+    }
+
+    @Override
+    public List<Action> getAllowableActions() {
+        ActionList actions = new ActionList();
+        actions.add(new RecoverRuneAction(this));
+
+        return actions.getUnmodifiableActionList();
+    }
+
+    @Override
+    public void reset() {
+        this.amount = 0;
     }
 }
