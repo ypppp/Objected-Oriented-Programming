@@ -1,9 +1,6 @@
-package game.reset;
+package game.action_types.reset;
 
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.action_types.RestAction;
-import game.grounds.TheSiteOfLostGrace;
 
 import java.util.ArrayList;
 import java.util.List;

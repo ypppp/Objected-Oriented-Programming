@@ -3,23 +3,17 @@ package game.action_types;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.positions.World;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.FancyMessage;
 import game.Species;
 import game.Status;
-import game.entity.enemies.Enemy;
-import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.PileOfBones;
 import game.items.runes.Rune;
 import game.items.runes.RuneManager;
-import game.reset.ResetAction;
-import game.reset.ResetManager;
+import game.action_types.reset.ResetAction;
+import game.action_types.reset.ResetManager;
 
 /**
  * An action executed if an actor is killed.
@@ -80,7 +74,6 @@ public class DeathAction extends Action {
             Rune runes = new Rune();
             runes.setAmount(RuneManager.getInstance().getRune().getAmount());
             RuneManager.getInstance().setDroppedRunes(runes);
-            RuneManager.getInstance().removeRunes(RuneManager.getInstance().getRune().getAmount()); // player loses all the runes
             RuneManager.getInstance().getPlayerLocation().addItem(runes); // drops the rune
             RuneManager.getInstance().setRuneLocation(RuneManager.getInstance().getPlayerLocation()); // saves the rune location
             map.removeActor(target); // player dies

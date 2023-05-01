@@ -5,8 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.grounds.TheSiteOfLostGrace;
-import game.reset.ResetAction;
-import game.reset.ResetManager;
+import game.action_types.reset.ResetAction;
+import game.action_types.reset.ResetManager;
 
 public class RestAction extends Action {
 

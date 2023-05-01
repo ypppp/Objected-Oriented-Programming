@@ -1,10 +1,8 @@
 package game.items.runes;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
-import game.Status;
-import game.entity.players.Player;
+import game.action_types.reset.ResetManager;
 
 import java.util.HashMap;
 
@@ -50,6 +48,7 @@ public class RuneManager {
         runeAmount.put('b',new int[]{35,892});
         runeAmount.put('G',new int[]{313,1808});
         runeAmount.put('R',new int[]{500,2374});
+        ResetManager.getInstance().registerResettable(rune);
     }
 
     public static RuneManager getInstance(){

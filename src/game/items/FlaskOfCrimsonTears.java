@@ -3,14 +3,13 @@ package game.items;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.action_types.ConsumeAction;
-import game.reset.Resettable;
+import game.action_types.reset.Resettable;
 
 import java.util.List;
 
-public class FlaskOfCrimsonTears extends Item implements Resettable {
+public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables {
 
     private int maxUses = 2;
     private int uses = 2;
@@ -44,7 +43,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable {
     @Override
     public List<Action> getAllowableActions() {
         ActionList actions = new ActionList();
-        actions.add(new ConsumeAction(this));
+        actions.add(consume());
 
         return actions.getUnmodifiableActionList();
     }
@@ -53,6 +52,11 @@ public class FlaskOfCrimsonTears extends Item implements Resettable {
     public void reset() {
         this.setUses(maxUses);
         //System.out.println(this.getUses());
+    }
+
+    @Override
+    public Action consume() {
+        return new ConsumeAction(this);
     }
 }
 
