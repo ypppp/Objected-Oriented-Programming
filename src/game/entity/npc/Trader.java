@@ -57,11 +57,6 @@ public class Trader extends Actor {
                 actions.add(new BuyWeaponAction(this, purchasable.getPurchaseItem(), purchasable.getPurchasePrice()));
             }
 
-
-
-
-
-
             for(WeaponItem weapon: otherActor.getWeaponInventory()){
                 if(weapon.hasCapability(Status.SELLABLE)){
                     String weaponName = weapon.toString();
