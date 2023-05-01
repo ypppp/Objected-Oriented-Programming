@@ -16,5 +16,6 @@ public enum Status {
     SELLABLE,
     PURCHASABLE,
     IN_COMBAT,
-    HEAL
+    HEAL,
+    RESET
 }

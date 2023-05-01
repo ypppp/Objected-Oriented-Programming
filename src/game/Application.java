@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.entity.enemies.GiantCrab;
 import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.LoneWolf;
+import game.entity.enemies.PileOfBones;
 import game.entity.npc.Trader;
 import game.entity.players.Player;
 import game.grounds.*;
@@ -27,7 +28,7 @@ public class Application {
 
 		World world = new World(new Display());
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new TheSiteOfLostGrace());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -41,7 +42,7 @@ public class Application {
 				".......n...................................................................",
 				"..................................###___###................................",
 				"..................................________#................................",
-				"..................................#________................................",
+				"..................................#___U____................................",
 				"..................................#_______#................................",
 				"..................................###___###................................",
 				"....................................#___#..................................",
@@ -67,7 +68,7 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new LoneWolf());
+		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
 
 		gameMap.at(56, 17).addActor(new LoneWolf());
 		gameMap.at(56, 16).addActor(new LoneWolf());
@@ -76,9 +77,11 @@ public class Application {
 
 		gameMap.at(40, 11).addActor(new Trader());
 
+		gameMap.at(38,11).setGround(new TheSiteOfLostGrace());
+
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
-		world.addPlayer(player, gameMap.at(36, 10));
+		world.addPlayer(player, gameMap.at(37, 10));
 
 		world.run();
 	}
