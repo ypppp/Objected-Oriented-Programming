@@ -11,21 +11,27 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.action_types.BuyWeaponAction;
 import game.action_types.SellWeaponAction;
+import game.items.Purchasable;
+import game.items.Sellable;
 import game.weapons.playerweapons.Club;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Trader extends Actor {
 
 
-    HashMap<String,Integer> weaponPrice = new HashMap<>();
+    HashMap<String, Sellable> weaponPrice = new HashMap<>();
+    ArrayList<Purchasable> purchasables = new ArrayList<>();
 
     /**
      * Constructor.
      */
     public Trader() {
         super("Kale", 'K',0);
-        weaponPrice.put("Club",100);
+        weaponPrice.put("Club",new Club());
+        purchasables.add(new Club());
+
 
     }
 
@@ -47,11 +53,14 @@ public class Trader extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            actions.add(new BuyWeaponAction(this, new Club(),600));
+            for(Purchasable purchasable: purchasables){
+                actions.add(new BuyWeaponAction(this, purchasable.getPurchaseItem(), purchasable.getPurchasePrice()));
+            }
+
             for(WeaponItem weapon: otherActor.getWeaponInventory()){
                 if(weapon.hasCapability(Status.SELLABLE)){
                     String weaponName = weapon.toString();
-                    actions.add(new SellWeaponAction(this, weapon,weaponPrice.get(weaponName)));
+                    actions.add(new SellWeaponAction(this, weapon,weaponPrice.get(weaponName).getSellPrice()));
                 }
 
 

@@ -45,7 +45,7 @@ public class BuyWeaponAction extends Action {
             return result;
         }
         else{
-            return actor + "does not have enough runes";
+            return actor + " does not have enough runes";
         }
 
     }
@@ -61,8 +61,4 @@ public class BuyWeaponAction extends Action {
         return "I am Kale, Purveyor of fine goods. Would you like to buy a " + weapon;
     }
 
-    @Override
-    public String hotkey() {
-        return "B";
-    }
 }
