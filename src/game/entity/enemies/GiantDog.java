@@ -15,6 +15,7 @@ public class GiantDog extends Enemy{
         super("Giant Dog", 'G', 693);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.CANINE);
+        this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
         this.addBehaviour(1, new AOE_SkillBehaviour());
     }
@@ -24,8 +25,5 @@ public class GiantDog extends Enemy{
         return new IntrinsicWeapon(314, "slams", 90);
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return new AOE_AttackAction(targets,getIntrinsicWeapon());
-    }
+
 }

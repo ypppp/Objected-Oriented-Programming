@@ -19,6 +19,7 @@ public class GiantCrayfish extends Enemy{
             super("GiantCrayFish", 'R',4803);
             this.addCapability(Status.HOSTILE_TO_PLAYER);
             this.addCapability(Species.CRUSTACEANS);
+            this.addCapability(Status.CAN_DROP_RUNES);
             this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
             this.addBehaviour(1, new AOE_SkillBehaviour());
         }
@@ -28,9 +29,5 @@ public class GiantCrayfish extends Enemy{
             return new IntrinsicWeapon(527, "pinches", 100);
         }
 
-        @Override
-        public Action getSkill(ArrayList<Actor> targets) {
-            return new AOE_AttackAction(targets,getIntrinsicWeapon());
-        }
 
 }

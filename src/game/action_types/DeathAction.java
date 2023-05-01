@@ -57,7 +57,7 @@ public class DeathAction extends Action {
 //        implement rune drops here - check if the attacker is player [if yes, get the rune drop values from infomanager and displaychar
 
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-            if ((!target.hasCapability(Species.BONE))|| target.hasCapability(Status.RESPAWNABLE)) {
+            if ((!target.hasCapability(Species.BONE)) || target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
             }
             else {
