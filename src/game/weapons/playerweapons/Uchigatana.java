@@ -41,7 +41,7 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
      */
     @Override
     public WeaponItem getPurchaseItem() {
-        return this;
+        return new Uchigatana();
     }
 
     /**

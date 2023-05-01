@@ -39,7 +39,7 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
      */
     @Override
     public WeaponItem getPurchaseItem() {
-        return this;
+        return new GreatKnife();
     }
 
     /**
