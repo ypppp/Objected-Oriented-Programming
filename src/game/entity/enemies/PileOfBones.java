@@ -12,6 +12,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
 import game.Status;
 import game.weapons.enemyweapons.Grossmesser;
+import game.weapons.enemyweapons.Scimitar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,11 +32,18 @@ public class PileOfBones extends Enemy{
         this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Status.RESPAWNABLE);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
+//        System.out.println(enemy.getDisplayChar());
+//        if(enemy.getDisplayChar() == 'q'){
+//            this.addWeaponToInventory(new Grossmesser());
+//        }
+//        else if(enemy.getDisplayChar() == 'b'){
+//            this.addWeaponToInventory(new Scimitar());
+//        }
         WeaponItem weapon = enemy.getWeaponInventory().get(0);
         weapon.togglePortability();
         this.addWeaponToInventory(weapon);
+        enemy.removeWeaponFromInventory(weapon);
         this.revivedEnemy = enemy;
-
 
     }
 
@@ -51,6 +59,9 @@ public class PileOfBones extends Enemy{
         if(counter==0){
             Location here = map.locationOf(this);
             map.removeActor(this);
+            WeaponItem weapon = this.getWeaponInventory().get(0);
+            weapon.togglePortability();
+            revivedEnemy.addWeaponToInventory(weapon);
             map.addActor(revivedEnemy, here);
             display.println(this.revivedEnemy + " has been revived");
         }
