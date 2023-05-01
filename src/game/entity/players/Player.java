@@ -76,7 +76,7 @@ public abstract class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-		display.println(this + this.printHp() + ", runes: " + RuneManager.getInstance().getRune().getAmount());
+		display.println(this + this.printHp() + ", runes:" + RuneManager.getInstance().getRune().getAmount());
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
