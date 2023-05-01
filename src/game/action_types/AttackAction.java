@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.Status;
 
 /**
  * An Action to attack another Actor.
@@ -81,7 +82,7 @@ public class AttackAction extends Action {
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
-		if (!target.isConscious()) {
+		if (!target.isConscious() && target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
 			result += new DeathAction(actor).execute(target, map);
 		}
 

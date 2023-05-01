@@ -14,6 +14,16 @@ public class RuneManager {
     private Rune rune;
     private HashMap<Character, int[]> runeAmount;
     private Location playerLocation;
+    private Location runeLocation;
+    private Rune droppedRunes;
+
+    public Rune getDroppedRunes() {
+        return droppedRunes;
+    }
+
+    public void setDroppedRunes(Rune droppedRunes) {
+        this.droppedRunes = droppedRunes;
+    }
 
     public Location getPlayerLocation() {
         return playerLocation;
@@ -21,6 +31,14 @@ public class RuneManager {
 
     public void setPlayerLocation(Location playerLocation) {
         this.playerLocation = playerLocation;
+    }
+
+    public Location getRuneLocation() {
+        return runeLocation;
+    }
+
+    public void setRuneLocation(Location runeLocation) {
+        this.runeLocation = runeLocation;
     }
 
     public RuneManager() {

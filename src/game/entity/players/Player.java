@@ -9,6 +9,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.FancyMessage;
+import game.action_types.DeathAction;
 import game.action_types.DespawnAction;
 import game.items.FlaskOfCrimsonTears;
 import game.reset.ResetAction;
@@ -46,10 +48,22 @@ public class Player extends Actor implements Resettable {
 		this.addItemToInventory(flaskOfCrimsonTears);
 		ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
 		ResetManager.getInstance().registerResettable(this);
+
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		if (!this.isConscious()){
+			for (String line : FancyMessage.YOU_DIED.split("\n")) { // display "YOU DIED"
+				new Display().println(line);
+				try {
+					Thread.sleep(200);
+				} catch (Exception exception) {
+					exception.printStackTrace();
+				}
+			}
+			return new DeathAction(this);
+		}
 		RuneManager.getInstance().setPlayerLocation(map.locationOf(this));
 		// Handle multi-turn Actions
 		if(this.hasCapability(Status.IN_COMBAT)){

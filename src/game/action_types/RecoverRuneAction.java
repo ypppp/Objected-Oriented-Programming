@@ -1,10 +1,21 @@
 package game.action_types;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Status;
+import game.items.runes.Rune;
+import game.items.runes.RuneManager;
 
 public class RecoverRuneAction extends Action {
+
+    private Rune runes;
+
+    public RecoverRuneAction(Rune runes) {
+        this.runes = runes;
+    }
+
     /**
      * Perform the Action.
      *
@@ -14,7 +25,16 @@ public class RecoverRuneAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        return null;
+        String result = "";
+
+        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            result += actor + " retrieved Runes (value: " +runes.getAmount() + ")";
+            RuneManager.getInstance().addRunes(runes.getAmount());
+            map.locationOf(actor).removeItem(runes);
+            RuneManager.getInstance().setRuneLocation(null);
+        }
+
+        return result;
     }
 
     /**
@@ -25,6 +45,6 @@ public class RecoverRuneAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return actor + " retrieves Runes (value: " + runes.getAmount() + ")";
     }
 }

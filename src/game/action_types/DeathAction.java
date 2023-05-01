@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.positions.World;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.FancyMessage;
 import game.Species;
@@ -17,6 +18,7 @@ import game.entity.enemies.HeavySkeletonSwordsman;
 import game.entity.enemies.PileOfBones;
 import game.items.runes.Rune;
 import game.items.runes.RuneManager;
+import game.reset.ResetAction;
 import game.reset.ResetManager;
 
 /**
@@ -47,12 +49,15 @@ public class DeathAction extends Action {
 
         ActionList dropActions = new ActionList();
         // drop all items
-        for (Item item : target.getItemInventory())
-            dropActions.add(item.getDropAction(target));
-        for (WeaponItem weapon : target.getWeaponInventory())
-            dropActions.add(weapon.getDropAction(target));
-        for (Action drop : dropActions)
-            drop.execute(target, map);
+
+        if (!target.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            for (Item item : target.getItemInventory())
+                dropActions.add(item.getDropAction(target));
+            for (WeaponItem weapon : target.getWeaponInventory())
+                dropActions.add(weapon.getDropAction(target));
+            for (Action drop : dropActions)
+                drop.execute(target, map);
+        }
         // remove actor
 
 //        implement rune drops here - check if the attacker is player [if yes, get the rune drop values from infomanager and displaychar
@@ -69,21 +74,18 @@ public class DeathAction extends Action {
             }
         }
         else {
+            if (RuneManager.getInstance().getRuneLocation() != null){
+                RuneManager.getInstance().getRuneLocation().removeItem(RuneManager.getInstance().getDroppedRunes());
+            }
             Rune runes = new Rune();
             runes.setAmount(RuneManager.getInstance().getRune().getAmount());
-            RuneManager.getInstance().removeRunes(RuneManager.getInstance().getRune().getAmount()); // player loses all the runes\
-            RuneManager.getInstance().getPlayerLocation().addItem(runes);
+            RuneManager.getInstance().setDroppedRunes(runes);
+            RuneManager.getInstance().removeRunes(RuneManager.getInstance().getRune().getAmount()); // player loses all the runes
+            RuneManager.getInstance().getPlayerLocation().addItem(runes); // drops the rune
+            RuneManager.getInstance().setRuneLocation(RuneManager.getInstance().getPlayerLocation()); // saves the rune location
             map.removeActor(target); // player dies
-            ResetManager.getInstance().run(); // reset the map
-            for (String line : FancyMessage.YOU_DIED.split("\n")) { // display "YOU DIED"
-                new Display().println(line);
-                try {
-                    Thread.sleep(200);
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-            }
-            return result;
+
+            return new ResetAction().execute(target, map);
         }
         result += System.lineSeparator() + menuDescription(target) + "\n";
 

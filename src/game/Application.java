@@ -15,6 +15,8 @@ import game.entity.npc.Trader;
 import game.entity.players.Player;
 import game.grounds.*;
 import game.items.runes.Rune;
+import game.items.runes.RuneManager;
+import game.reset.ResetManager;
 
 /**
  * The main class to start the game.
@@ -81,13 +83,14 @@ public class Application {
 		gameMap.at(38,11).setGround(new TheSiteOfLostGrace());
 		Rune rune = new Rune();
 		rune.setAmount(200);
-		gameMap.at(32,10).addItem(rune);
-		gameMap.at(31, 10).addActor(new GiantCrab());
-		gameMap.at(32, 10).addActor(new HeavySkeletonSwordsman());
-
+//		gameMap.at(32,10).addItem(rune);
+//		gameMap.at(31, 10).addActor(new GiantCrab());
+		gameMap.at(28, 10).addActor(new HeavySkeletonSwordsman());
+		RuneManager.getInstance().getRune().setAmount(200);
+		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 30000);
-		world.addPlayer(player, gameMap.at(37, 10));
+		Player player = new Player("Tarnished", '@', 1);
+		world.addPlayer(player, gameMap.at(29, 10));
 
 		world.run();
 	}
