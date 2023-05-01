@@ -20,6 +20,7 @@ public class GiantCrab extends Enemy{
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.CRUSTACEANS);
         this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
+        this.addCapability(Status.CAN_DROP_RUNES);
         this.addBehaviour(1, new AOE_SkillBehaviour());
     }
 
@@ -28,8 +29,5 @@ public class GiantCrab extends Enemy{
         return new IntrinsicWeapon(208, "pinches", 90);
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return new AOE_AttackAction(targets,getIntrinsicWeapon());
-    }
+
 }

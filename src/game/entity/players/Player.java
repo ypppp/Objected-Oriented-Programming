@@ -6,14 +6,17 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.Resettable;
+import game.FancyMessage;
+import game.action_types.DeathAction;
+import game.items.FlaskOfCrimsonTears;
+import game.action_types.reset.ResetAction;
+import game.action_types.reset.ResetManager;
+import game.action_types.reset.Resettable;
 import game.Status;
-import game.action_types.AOE_AttackAction;
 
-import game.weapons.enemyweapons.Scimitar;
-import game.weapons.playerweapons.Club;
+import game.items.runes.RuneManager;
+
 
 /**
  * Class representing the Player. It implements the Resettable interface.
@@ -23,13 +26,10 @@ import game.weapons.playerweapons.Club;
  * Modified by:
  *
  */
-public class Player extends Actor implements Resettable {
+public abstract class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
-
-
-
-
+	private ClassType combatClass;
 
 	/**
 	 * Constructor.
@@ -41,13 +41,27 @@ public class Player extends Actor implements Resettable {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addWeaponToInventory(new Club());
-		this.addWeaponToInventory(new Scimitar());
+		FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
+		this.addItemToInventory(flaskOfCrimsonTears);
+		ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
+		ResetManager.getInstance().registerResettable(this);
 
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		if (!this.isConscious()){
+			for (String line : FancyMessage.YOU_DIED.split("\n")) { // display "YOU DIED"
+				new Display().println(line);
+				try {
+					Thread.sleep(200);
+				} catch (Exception exception) {
+					exception.printStackTrace();
+				}
+			}
+			return new DeathAction(this);
+		}
+		RuneManager.getInstance().setPlayerLocation(map.locationOf(this));
 		// Handle multi-turn Actions
 		if(this.hasCapability(Status.IN_COMBAT)){
 			for(WeaponItem weapon: this.getWeaponInventory()){
@@ -62,12 +76,22 @@ public class Player extends Actor implements Resettable {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
+		display.println(this + this.printHp() + ", runes: " + RuneManager.getInstance().getRune().getAmount());
+
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
 
+	public ClassType getCombatClass() {
+		return combatClass;
+	}
 
+	public void setCombatClass(ClassType combatClass) {
+		this.combatClass = combatClass;
+	}
 
 	@Override
-	public void reset() {}
+	public void reset() {
+		this.resetMaxHp(getMaxHp());
+	}
 }

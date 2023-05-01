@@ -8,7 +8,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Species;
 import game.Status;
+import game.weapons.enemyweapons.Grossmesser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +28,12 @@ public class PileOfBones extends Enemy{
     public PileOfBones(Actor enemy) {
         super("Pile of Bones", 'X',1);
         this.setBehaviours(new HashMap<>());
+        this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Status.RESPAWNABLE);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
+        WeaponItem weapon = enemy.getWeaponInventory().get(0);
+        weapon.togglePortability();
+        this.addWeaponToInventory(weapon);
         this.revivedEnemy = enemy;
 
 
@@ -35,6 +43,10 @@ public class PileOfBones extends Enemy{
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // if counter becomes 0 then revive to the revivedEnemy
         // by removing the actor on that location then adding the revivedEnemy.
+        if (this.hasCapability(Status.RESET)){
+            this.removeCapability(Status.RESET);
+            return despawn();
+        }
 
         if(counter==0){
             Location here = map.locationOf(this);
@@ -48,8 +60,5 @@ public class PileOfBones extends Enemy{
         return new DoNothingAction();
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return null;
-    }
+
 }

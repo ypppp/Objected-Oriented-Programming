@@ -1,4 +1,4 @@
-package game;
+package game.action_types.reset;
 
 /**
  * A resettable interface
@@ -9,4 +9,5 @@ package game;
  */
 public interface Resettable {
     void reset();
+
 }

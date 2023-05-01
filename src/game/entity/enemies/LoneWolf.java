@@ -22,6 +22,7 @@ public class LoneWolf extends Enemy {
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
+        this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Species.CANINE);
     }
 
@@ -30,10 +31,7 @@ public class LoneWolf extends Enemy {
         return new IntrinsicWeapon(97, "bites", 95);
     }
 
-    @Override
-    public Action getSkill(ArrayList<Actor> targets) {
-        return null;
-    }
+
 
     //    /**
 //     * At each turn, select a valid action to perform.
