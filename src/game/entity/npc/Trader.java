@@ -13,6 +13,7 @@ import game.action_types.BuyWeaponAction;
 import game.action_types.SellWeaponAction;
 import game.items.Purchasable;
 import game.items.Sellable;
+import game.weapons.enemyweapons.Scimitar;
 import game.weapons.playerweapons.Club;
 import game.weapons.playerweapons.GreatKnife;
 import game.weapons.playerweapons.Uchigatana;
@@ -34,9 +35,11 @@ public class Trader extends Actor {
         weaponPrice.put("Club",new Club());
         weaponPrice.put("Uchigatana", new Uchigatana());
         weaponPrice.put("Great Knife", new GreatKnife());
+        weaponPrice.put("Scimitar", new Scimitar());
         purchasables.add(new Club());
         purchasables.add(new Uchigatana());
         purchasables.add(new GreatKnife());
+        purchasables.add(new Scimitar());
 
 
     }
