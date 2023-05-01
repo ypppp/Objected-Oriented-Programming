@@ -15,5 +15,7 @@ public enum Status {
     HAS_ATTACK_SKILL,
     SELLABLE,
     IN_COMBAT,
-    CAN_DROP_RUNES
+    CAN_DROP_RUNES,
+    RESET,
+    HEAL
 }

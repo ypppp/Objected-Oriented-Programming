@@ -52,7 +52,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable {
     @Override
     public void reset() {
         this.setUses(maxUses);
-        System.out.println(this.getUses());
+        //System.out.println(this.getUses());
     }
 }
 
