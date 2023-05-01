@@ -14,6 +14,7 @@ import game.entity.enemies.PileOfBones;
 import game.entity.npc.Trader;
 import game.entity.players.Player;
 import game.grounds.*;
+import game.items.runes.Rune;
 
 /**
  * The main class to start the game.
@@ -78,6 +79,9 @@ public class Application {
 		gameMap.at(40, 11).addActor(new Trader());
 
 		gameMap.at(38,11).setGround(new TheSiteOfLostGrace());
+		Rune rune = new Rune();
+		rune.setAmount(200);
+		gameMap.at(32,10).addItem(rune);
 
 		// HINT: what does it mean to prefer composition to inheritance?
 		Player player = new Player("Tarnished", '@', 300);
