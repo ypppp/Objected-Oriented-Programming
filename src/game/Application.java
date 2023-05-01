@@ -69,12 +69,12 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
+//		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
+//
+//		gameMap.at(56, 17).addActor(new LoneWolf());
+//		gameMap.at(56, 16).addActor(new LoneWolf());
 
-		gameMap.at(56, 17).addActor(new LoneWolf());
-		gameMap.at(56, 16).addActor(new LoneWolf());
-		gameMap.at(57, 17).addActor(new GiantCrab());
-		gameMap.at(55, 17).addActor(new LoneWolf());
+//		gameMap.at(55, 17).addActor(new LoneWolf());
 
 		gameMap.at(40, 11).addActor(new Trader());
 
@@ -82,9 +82,11 @@ public class Application {
 		Rune rune = new Rune();
 		rune.setAmount(200);
 		gameMap.at(32,10).addItem(rune);
+		gameMap.at(31, 10).addActor(new GiantCrab());
+		gameMap.at(32, 10).addActor(new HeavySkeletonSwordsman());
 
 		// HINT: what does it mean to prefer composition to inheritance?
-		Player player = new Player("Tarnished", '@', 300);
+		Player player = new Player("Tarnished", '@', 30000);
 		world.addPlayer(player, gameMap.at(37, 10));
 
 		world.run();

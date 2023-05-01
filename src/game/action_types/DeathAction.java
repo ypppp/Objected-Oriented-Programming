@@ -58,15 +58,17 @@ public class DeathAction extends Action {
 //        implement rune drops here - check if the attacker is player [if yes, get the rune drop values from infomanager and displaychar
 
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-            if (!target.hasCapability(Species.BONE)) {
+            if ((!target.hasCapability(Species.BONE))|| target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
-            } else {
+            }
+            else {
                 Location skeletonLoc = map.locationOf(target);
                 map.removeActor(target);
                 PileOfBones skeleton = new PileOfBones(target);
                 map.addActor(skeleton, skeletonLoc);
             }
-        } else {
+        }
+        else {
             Rune runes = new Rune();
             runes.setAmount(RuneManager.getInstance().getRune().getAmount());
             RuneManager.getInstance().removeRunes(RuneManager.getInstance().getRune().getAmount()); // player loses all the runes\
@@ -87,10 +89,7 @@ public class DeathAction extends Action {
 
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 //
-            if (target.hasCapability(Species.BONE) && target.hasCapability(Status.RESPAWNABLE)) {
-                String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
-                result += attacker + " gets " + runeAmount + "runes from " + target;
-            } else if (!target.hasCapability(Species.BONE)){
+            if (target.hasCapability(Status.CAN_DROP_RUNES)) {
                 String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
                 result += attacker + " gets " + runeAmount + "runes from " + target;
             }
