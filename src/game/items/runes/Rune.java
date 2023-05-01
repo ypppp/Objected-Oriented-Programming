@@ -11,7 +11,7 @@ public class Rune extends Item {
      * Constructor.
      */
     public Rune() {
-        super("Rune", '$', false);
+        super("Rune", '$', true);
         this.amount = 0;
     }
 
