@@ -37,7 +37,10 @@ public class PileOfBones extends Enemy{
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // if counter becomes 0 then revive to the revivedEnemy
         // by removing the actor on that location then adding the revivedEnemy.
-
+        if (this.hasCapability(Status.RESET)){
+            this.removeCapability(Status.RESET);
+            return despawn();
+        }
         if(counter==0){
             Location here = map.locationOf(this);
             map.removeActor(this);

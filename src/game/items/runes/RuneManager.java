@@ -1,6 +1,10 @@
 package game.items.runes;
 
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
+import game.Status;
+import game.entity.players.Player;
 
 import java.util.HashMap;
 
@@ -9,6 +13,15 @@ public class RuneManager {
     private static RuneManager runeManager = null;
     private Rune rune;
     private HashMap<Character, int[]> runeAmount;
+    private Location playerLocation;
+
+    public Location getPlayerLocation() {
+        return playerLocation;
+    }
+
+    public void setPlayerLocation(Location playerLocation) {
+        this.playerLocation = playerLocation;
+    }
 
     public RuneManager() {
         this.rune = new Rune();
@@ -33,7 +46,7 @@ public class RuneManager {
         if(rune.getAmount()<amount){
             return false;
         }
-        return  true;
+        return true;
     }
 
     public String runesDroppedByEnemies(Character displayChar){
@@ -57,4 +70,5 @@ public class RuneManager {
     public Rune getRune() {
         return rune;
     }
+
 }

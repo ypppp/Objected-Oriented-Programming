@@ -1,15 +1,10 @@
-package game.reset;
+package game.action_types;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
-import game.Status;
-import game.action_types.DespawnAction;
 
-import javax.swing.plaf.synth.SynthTableUI;
-
-public class ResetAction extends Action {
+public class RecoverRuneAction extends Action {
     /**
      * Perform the Action.
      *
@@ -19,12 +14,7 @@ public class ResetAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-             Location spawnpoint = ResetManager.getInstance().getSpawnPoint();
-             map.at(spawnpoint.x(), spawnpoint.y()).addActor(actor);
-        }
-        ResetManager.getInstance().run();
-        return actor + " respawn at The First Step";
+        return null;
     }
 
     /**

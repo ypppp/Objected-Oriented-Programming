@@ -7,8 +7,12 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.action_types.DespawnAction;
 import game.items.FlaskOfCrimsonTears;
+import game.reset.ResetAction;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.Status;
 
@@ -27,10 +31,6 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 
-
-
-
-
 	/**
 	 * Constructor.
 	 *
@@ -42,12 +42,15 @@ public class Player extends Actor implements Resettable {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addWeaponToInventory(new Club());
-		this.addItemToInventory(new FlaskOfCrimsonTears());
-
+		FlaskOfCrimsonTears flaskOfCrimsonTears = new FlaskOfCrimsonTears();
+		this.addItemToInventory(flaskOfCrimsonTears);
+		ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
+		ResetManager.getInstance().registerResettable(this);
 	}
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		RuneManager.getInstance().setPlayerLocation(map.locationOf(this));
 		// Handle multi-turn Actions
 		if(this.hasCapability(Status.IN_COMBAT)){
 			for(WeaponItem weapon: this.getWeaponInventory()){
@@ -70,5 +73,7 @@ public class Player extends Actor implements Resettable {
 
 
 	@Override
-	public void reset() {}
+	public void reset() {
+		this.resetMaxHp(getMaxHp());
+	}
 }

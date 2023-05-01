@@ -48,6 +48,6 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String menuDescription(Actor player) {
-        return player + " consumed Flask of Crimson Tears" + flaskOfCrimsonTears.printNumberOfUses();
+        return player + " consumes Flask of Crimson Tears" + flaskOfCrimsonTears.printNumberOfUses();
     }
 }
