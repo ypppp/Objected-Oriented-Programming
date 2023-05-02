@@ -52,10 +52,8 @@ public class DeathAction extends Action {
             for (Action drop : dropActions)
                 drop.execute(target, map);
         }
+
         // remove actor
-
-//        implement rune drops here - check if the attacker is player [if yes, get the rune drop values from infomanager and displaychar
-
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             if ((!target.hasCapability(Species.BONE))) {
                 map.removeActor(target);
@@ -70,15 +68,22 @@ public class DeathAction extends Action {
                 map.addActor(skeleton, skeletonLoc);
             }
         }
+
+        // drop runes
         else {
-            if (RuneManager.getInstance().getRuneLocation() != null){
-                RuneManager.getInstance().getRuneLocation().removeItem(RuneManager.getInstance().getDroppedRunes());
+            RuneManager runeManager = RuneManager.getInstance();
+            // if there is a rune on the map remove it
+            if (runeManager.getRuneLocation() != null){
+                runeManager.getRuneLocation().removeItem(runeManager.getDroppedRunes());
             }
+            // create a new rune object to drop it on the ground
             Rune runes = new Rune();
-            runes.setAmount(RuneManager.getInstance().getRune().getAmount());
-            RuneManager.getInstance().setDroppedRunes(runes);
-            RuneManager.getInstance().getPlayerLocation().addItem(runes); // drops the rune
-            RuneManager.getInstance().setRuneLocation(RuneManager.getInstance().getPlayerLocation()); // saves the rune location
+            runes.setAmount(runeManager.getRune().getAmount());
+            runeManager.setDroppedRunes(runes);
+
+            // drop the rune and save the location for it for future removal
+            runeManager.getPlayerLocation().addItem(runes); // drops the rune
+            runeManager.setRuneLocation(runeManager.getPlayerLocation()); // saves the rune location
             map.removeActor(target); // player dies
 
             return new ResetAction().execute(target, map);

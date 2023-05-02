@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class RuneManager {
 
     private static RuneManager runeManager = null;
-    private Rune rune;
+    private Rune playerRune;
     private HashMap<Character, int[]> runeAmount;
     private Location playerLocation;
     private Location runeLocation;
@@ -40,7 +40,7 @@ public class RuneManager {
     }
 
     public RuneManager() {
-        this.rune = new Rune();
+        this.playerRune = new Rune();
         runeAmount = new HashMap<>();
         runeAmount.put('X',new int[]{35,892});
         runeAmount.put('h',new int[]{55,1470});
@@ -48,7 +48,7 @@ public class RuneManager {
         runeAmount.put('b',new int[]{35,892});
         runeAmount.put('G',new int[]{313,1808});
         runeAmount.put('R',new int[]{500,2374});
-        ResetManager.getInstance().registerResettable(rune);
+        ResetManager.getInstance().registerResettable(playerRune);
     }
 
     public static RuneManager getInstance(){
@@ -60,7 +60,7 @@ public class RuneManager {
     }
 
     public boolean canMakePurchase(int amount){
-        if(rune.getAmount()<amount){
+        if(playerRune.getAmount()<amount){
             return false;
         }
         return true;
@@ -75,17 +75,17 @@ public class RuneManager {
     }
 
     public String removeRunes(int amount){
-        rune.setAmount(rune.getAmount()-amount);
-        return rune.getAmount() + " ";
+        playerRune.setAmount(playerRune.getAmount()-amount);
+        return playerRune.getAmount() + " ";
     }
 
     public String addRunes(int amount){
-        rune.setAmount(rune.getAmount()+amount);
-        return rune.getAmount() + " ";
+        playerRune.setAmount(playerRune.getAmount()+amount);
+        return playerRune.getAmount() + " ";
     }
 
     public Rune getRune() {
-        return rune;
+        return playerRune;
     }
 
 }
