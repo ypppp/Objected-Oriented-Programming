@@ -71,19 +71,7 @@ public class DeathAction extends Action {
 
         // drop runes
         else {
-            RuneManager runeManager = RuneManager.getInstance();
-            // if there is a rune on the map remove it
-            if (runeManager.getRuneLocation() != null){
-                runeManager.getRuneLocation().removeItem(runeManager.getDroppedRunes());
-            }
-            // create a new rune object to drop it on the ground
-            Rune runes = new Rune();
-            runes.setAmount(runeManager.getRune().getAmount());
-            runeManager.setDroppedRunes(runes);
-
-            // drop the rune and save the location for it for future removal
-            runeManager.getPlayerLocation().addItem(runes); // drops the rune
-            runeManager.setRuneLocation(runeManager.getPlayerLocation()); // saves the rune location
+            RuneManager.getInstance().dropRuneByDeath();
             map.removeActor(target); // player dies
 
             return new ResetAction().execute(target, map);

@@ -11,7 +11,7 @@ public class RuneManager {
     private static RuneManager runeManager = null;
     private Rune playerRune;
     private HashMap<Character, int[]> runeAmount;
-    private Location playerLocation;
+    private Location previousLocation;
     private Location runeLocation;
     private Rune droppedRunes;
 
@@ -23,12 +23,12 @@ public class RuneManager {
         this.droppedRunes = droppedRunes;
     }
 
-    public Location getPlayerLocation() {
-        return playerLocation;
+    public Location getPreviousLocation() {
+        return previousLocation;
     }
 
-    public void setPlayerLocation(Location playerLocation) {
-        this.playerLocation = playerLocation;
+    public void setPreviousLocation(Location previousLocation) {
+        this.previousLocation = previousLocation;
     }
 
     public Location getRuneLocation() {
@@ -48,7 +48,6 @@ public class RuneManager {
         runeAmount.put('b',new int[]{35,892});
         runeAmount.put('G',new int[]{313,1808});
         runeAmount.put('R',new int[]{500,2374});
-        ResetManager.getInstance().registerResettable(playerRune);
     }
 
     public static RuneManager getInstance(){
@@ -87,5 +86,22 @@ public class RuneManager {
     public Rune getRune() {
         return playerRune;
     }
+
+    public void dropRuneByDeath(){
+        // if there is a rune on the map remove it
+        if (getRuneLocation() != null){
+            getRuneLocation().removeItem(runeManager.getDroppedRunes());
+        }
+        // create a new rune object to drop it on the ground
+        Rune runes = new Rune();
+        runes.setAmount(getRune().getAmount());
+        setDroppedRunes(runes);
+        getRune().setAmount(0);
+
+        // drop the rune and save the location for it for future removal
+        getPreviousLocation().addItem(runes); // drops the rune
+        setRuneLocation(getPreviousLocation()); // saves the rune location
+    }
+
 
 }

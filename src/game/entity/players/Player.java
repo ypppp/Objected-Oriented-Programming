@@ -61,7 +61,7 @@ public abstract class Player extends Actor implements Resettable {
 			}
 			return new DeathAction(this);
 		}
-		RuneManager.getInstance().setPlayerLocation(map.locationOf(this));
+		RuneManager.getInstance().setPreviousLocation(map.locationOf(this));
 		// Handle multi-turn Actions
 		if(this.hasCapability(Status.IN_COMBAT)){
 			for(WeaponItem weapon: this.getWeaponInventory()){
