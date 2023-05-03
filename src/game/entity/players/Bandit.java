@@ -9,6 +9,5 @@ public class Bandit extends Player{
     public Bandit() {
         super("Tarnished", '@', 300);
         this.addWeaponToInventory(new GreatKnife());
-        this.setCombatClass(ClassType.BANDIT);
     }
 }

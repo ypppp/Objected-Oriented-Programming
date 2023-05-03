@@ -9,7 +9,7 @@ public class Samurai extends Player {
     public Samurai() {
         super("Tarnished", '@', 300);
         this.addWeaponToInventory(new Uchigatana());
-        this.setCombatClass(ClassType.SAMURAI);
+
     }
 
 

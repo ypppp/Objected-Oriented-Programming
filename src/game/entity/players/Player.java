@@ -29,7 +29,6 @@ import game.items.runes.RuneManager;
 public abstract class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
-	private ClassType combatClass;
 
 	/**
 	 * Constructor.
@@ -82,13 +81,6 @@ public abstract class Player extends Actor implements Resettable {
 		return menu.showMenu(this, actions, display);
 	}
 
-	public ClassType getCombatClass() {
-		return combatClass;
-	}
-
-	public void setCombatClass(ClassType combatClass) {
-		this.combatClass = combatClass;
-	}
 
 	@Override
 	public void reset() {
