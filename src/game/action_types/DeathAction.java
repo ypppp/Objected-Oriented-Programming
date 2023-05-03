@@ -68,14 +68,7 @@ public class DeathAction extends Action {
             }
         }
         else {
-            if (RuneManager.getInstance().getRuneLocation() != null){
-                RuneManager.getInstance().getRuneLocation().removeItem(RuneManager.getInstance().getDroppedRunes());
-            }
-            Rune runes = new Rune();
-            runes.setAmount(RuneManager.getInstance().getRune().getAmount());
-            RuneManager.getInstance().setDroppedRunes(runes);
-            RuneManager.getInstance().getPlayerLocation().addItem(runes); // drops the rune
-            RuneManager.getInstance().setRuneLocation(RuneManager.getInstance().getPlayerLocation()); // saves the rune location
+            RuneManager.getInstance().dropRuneByDeath(); // saves the rune location
             map.removeActor(target); // player dies
 
             return new ResetAction().execute(target, map);
