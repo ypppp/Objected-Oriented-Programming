@@ -35,7 +35,7 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new TheSiteOfLostGrace());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -105,7 +105,7 @@ public class Application {
 		gameMap.at(55, 17).addActor(new LoneWolf());
 		gameMap.at(40, 11).addActor(new Trader());
 
-		gameMap.at(38,11).setGround(new TheSiteOfLostGrace());
+		gameMap.at(38,11).setGround(new TheSiteOfLostGrace("The First Step"));
 		Rune rune = new Rune();
 		rune.setAmount(200);
 //		gameMap.at(32,10).addItem(rune);
