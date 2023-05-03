@@ -76,7 +76,7 @@ public class DeathAction extends Action {
 
             return new ResetAction().execute(target, map);
         }
-        result += System.lineSeparator() + menuDescription(target) + "\n";
+        result += System.lineSeparator() + menuDescription(target);
 
         if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 //
