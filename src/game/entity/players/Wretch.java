@@ -7,7 +7,7 @@ public class Wretch extends Player{
      * Constructor for a Wretch class
      */
     public Wretch() {
-        super("Tarnished", '@', 300);
+        super("Tarnished", '@', 414);
         this.addWeaponToInventory(new Club());
         this.setCombatClass(ClassType.WRETCH);
     }
