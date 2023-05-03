@@ -9,9 +9,18 @@ import game.Status;
 import game.action_types.RestAction;
 
 public class TheSiteOfLostGrace extends Ground {
-//    private String name;
-    public TheSiteOfLostGrace() {
+    private String name;
+    public TheSiteOfLostGrace(String name) {
         super('U');
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
