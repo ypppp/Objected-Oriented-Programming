@@ -7,7 +7,7 @@ public class Samurai extends Player {
      * Constructor for a Samurai class
      */
     public Samurai() {
-        super("Tarnished", '@', 300);
+        super("Tarnished", '@', 445);
         this.addWeaponToInventory(new Uchigatana());
 
     }
