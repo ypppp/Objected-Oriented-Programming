@@ -79,6 +79,7 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (((RandomNumberGenerator.getRandomInt(100)<10) && !this.isFollow) || this.hasCapability(Status.RESET)){
             this.removeCapability(Status.RESET);
+            ResetManager.getInstance().removeResettable(this);
             return despawn();
         }
 
