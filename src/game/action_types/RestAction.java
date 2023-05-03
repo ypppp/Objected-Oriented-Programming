@@ -13,7 +13,7 @@ public class RestAction extends Action {
     private TheSiteOfLostGrace theSiteOfLostGrace;
 
     public RestAction(TheSiteOfLostGrace theSiteOfLostGrace) {
-        this.theSiteOfLostGrace = new TheSiteOfLostGrace();
+        this.theSiteOfLostGrace = theSiteOfLostGrace;
     }
 
     /**
@@ -29,6 +29,7 @@ public class RestAction extends Action {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             ResetManager.getInstance().run();
         }
+        result += actor + " rests at " + theSiteOfLostGrace.getName();
         return result;
     }
 
@@ -40,6 +41,6 @@ public class RestAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " rests at The First Step";
+        return actor + " rests at " + theSiteOfLostGrace.getName();
     }
 }

@@ -105,6 +105,6 @@ public class AOE_AttackAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " attacks the surrounding area with " + weapon + " for " + weapon.damage();
+        return actor + " attacks the surrounding area with " + weapon;
     }
 }
