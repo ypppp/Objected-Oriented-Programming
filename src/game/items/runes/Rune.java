@@ -8,7 +8,7 @@ import game.action_types.reset.Resettable;
 
 import java.util.List;
 
-public class Rune extends Item implements Resettable {
+public class Rune extends Item  {
 
     private int amount;
 
@@ -36,8 +36,5 @@ public class Rune extends Item implements Resettable {
         return actions.getUnmodifiableActionList();
     }
 
-    @Override
-    public void reset() {
-        this.amount = 0;
-    }
+
 }
