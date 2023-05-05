@@ -10,7 +10,16 @@ import game.behaviours.AOE_SkillBehaviour;
 
 import java.util.ArrayList;
 
+/**
+ * The giant dog that spawns in the gust of winds
+ * @author Tong Jet Kit
+ * @see Enemy
+ */
 public class GiantDog extends Enemy{
+
+    /**
+     * Constructor.
+     */
     public GiantDog() {
         super("Giant Dog", 'G', 693);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
@@ -20,6 +29,10 @@ public class GiantDog extends Enemy{
         this.addBehaviour(1, new AOE_SkillBehaviour());
     }
 
+    /**
+     * Creates and returns an intrinsic weapon.
+     * @return A newly instantiated intrinsic weapon
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(314, "slams", 90);

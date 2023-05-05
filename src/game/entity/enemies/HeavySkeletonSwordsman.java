@@ -11,7 +11,11 @@ import game.weapons.enemyweapons.Grossmesser;
 
 import java.util.ArrayList;
 
-
+/**
+ * The heavy skeleton swordsman that spawns in the gust of winds
+ * @author Tong Jet Kit
+ * @see Enemy
+ */
 public class HeavySkeletonSwordsman extends Enemy{
     /**
      * Constructor.
@@ -25,6 +29,10 @@ public class HeavySkeletonSwordsman extends Enemy{
         this.addWeaponToInventory(weapon);
     }
 
+    /**
+     * Creates and returns an intrinsic weapon.
+     * @return A newly instantiated intrinsic weapon
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(80, "punches", 85);

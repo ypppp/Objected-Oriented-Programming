@@ -2,6 +2,11 @@ package game.entity.players;
 
 import game.weapons.playerweapons.Club;
 
+/**
+ * A Wretch role class that has a club as its signature weapon
+ * @author Tong Jet Kit
+ * @see Player
+ */
 public class Wretch extends Player{
     /**
      * Constructor for a Wretch class

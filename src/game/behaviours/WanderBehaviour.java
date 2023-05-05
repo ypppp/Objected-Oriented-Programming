@@ -17,7 +17,10 @@ import game.behaviours.Behaviour;
  *
  */
 public class WanderBehaviour implements Behaviour {
-	
+
+	/**
+	 * A random object to perform a randomize selection
+	 */
 	private final Random random = new Random();
 
 	/**

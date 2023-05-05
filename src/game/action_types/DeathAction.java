@@ -88,6 +88,12 @@ public class DeathAction extends Action {
         return result;
 
     }
+
+    /**
+     * Describes which actor died
+     * @param actor The actor performing the action.
+     * @return a description used for the menu UI
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " is killed.";

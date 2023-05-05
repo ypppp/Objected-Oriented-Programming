@@ -17,7 +17,11 @@ import game.weapons.enemyweapons.Scimitar;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/**
+ * The pile of bones that spawns after a skeleton enemy dies and will respawn after not being hit
+ * @author Tong Jet Kit
+ * @see Enemy
+ */
 public class PileOfBones extends Enemy{
 
     private int counter = 3;
@@ -32,13 +36,6 @@ public class PileOfBones extends Enemy{
         this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Status.RESPAWNABLE);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
-//        System.out.println(enemy.getDisplayChar());
-//        if(enemy.getDisplayChar() == 'q'){
-//            this.addWeaponToInventory(new Grossmesser());
-//        }
-//        else if(enemy.getDisplayChar() == 'b'){
-//            this.addWeaponToInventory(new Scimitar());
-//        }
         WeaponItem weapon = enemy.getWeaponInventory().get(0);
         weapon.togglePortability();
         this.addWeaponToInventory(weapon);
@@ -47,6 +44,15 @@ public class PileOfBones extends Enemy{
 
     }
 
+    /**
+     * At each turn, select a valid action to perform.
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the valid action that can be performed in that iteration or null if no valid action is found
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         // if counter becomes 0 then revive to the revivedEnemy

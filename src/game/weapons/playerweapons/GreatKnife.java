@@ -8,6 +8,13 @@ import game.action_types.QuickStepAction;
 import game.items.Purchasable;
 import game.items.Sellable;
 
+/**
+ * The signature weapon for the Bandit class which is sellable and purchasable
+ * @author Tong Jet Kit
+ * @see WeaponItem
+ * @see Purchasable
+ * @see Sellable
+ */
 public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
 
 
@@ -20,6 +27,12 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
         this.addCapability(Status.SELLABLE);
     }
 
+    /**
+     * To get the skill of the weapon which is a targeted quickstep attack
+     * @param target the actor to attack
+     * @param direction the direction where the attack should be performed (only used for display purposes)
+     * @return The skill action of the weapon which is the QuickStepAction
+     */
     @Override
     public Action getSkill(Actor target, String direction) {
         return new QuickStepAction(target,direction, this);
@@ -27,7 +40,8 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
 
 
     /**
-     * @return
+     * To return the purchase price of the weapon
+     * @return An integer which is the purchase price of the weapon
      */
     @Override
     public int getPurchasePrice() {
@@ -35,7 +49,8 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return
+     * To return a newly instantiated purchasable weapon
+     * @return A newly instantiated weapon which is itself
      */
     @Override
     public WeaponItem getPurchaseItem() {
@@ -43,7 +58,8 @@ public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return
+     * To return the selling price of the weapon
+     * @return An integer which is the selling price of the weapon
      */
     @Override
     public int getSellPrice() {

@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * An action to perform the GreatKnife skill which is to move away after attacking the other actor
+ * @author Tong Jet Kit
+ * @see Action
+ */
 public class QuickStepAction extends Action {
 
     /**
@@ -32,7 +37,12 @@ public class QuickStepAction extends Action {
      */
     private Weapon weapon;
 
-
+    /**
+     * Constructor for the action
+     * @param target The actor to be attack
+     * @param direction the direction where the attack should be performed (only used for display purposes)
+     * @param weapon The weapon that is used to attack
+     */
     public QuickStepAction(Actor target, String direction, Weapon weapon) {
        this.target = target;
        this.direction = direction;
@@ -43,7 +53,7 @@ public class QuickStepAction extends Action {
     /**
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
-     * @return
+     * @return the result of the attack, e.g. whether the target is killed, etc.
      */
     @Override
     public String execute(Actor actor, GameMap map) {
@@ -85,9 +95,9 @@ public class QuickStepAction extends Action {
         return result;
     }
 
-    /**
+    /** Describes which target the actor is attacking with which weapon
      * @param actor The actor performing the action.
-     * @return
+     * @return a description used for the menu UI
      */
     @Override
     public String menuDescription(Actor actor) {

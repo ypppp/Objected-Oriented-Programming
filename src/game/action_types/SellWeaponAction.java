@@ -7,14 +7,33 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.entity.npc.Trader;
 import game.items.runes.RuneManager;
 
-
+/**
+ * An action to sell a weapon to the trader
+ */
 public class SellWeaponAction extends Action {
 
+    /**
+     * The trader that the player will be selling its weapon to
+     */
     private Trader trader;
+
+    /**
+     * The market selling amount of the weapon
+     */
     private int buyAmount;
+
+    /**
+     * The weapon that is sold to the trader
+     */
     private WeaponItem weapon;
 
 
+    /**
+     * Constructor for the action to sell a weapon
+     * @param trader The trader that the player will be selling to
+     * @param weapon The weapon that the player is selling
+     * @param buyAmount The selling amount of the player
+     */
     public SellWeaponAction(Trader trader, WeaponItem weapon, int buyAmount) {
         this.trader = trader;
         this.buyAmount = buyAmount;

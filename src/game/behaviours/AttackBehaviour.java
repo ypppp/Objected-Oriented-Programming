@@ -14,10 +14,19 @@ import game.entity.enemies.Enemy;
 import java.util.*;
 
 
+/**
+ * The behaviour of the enemy to do an attack action on a player or enemy of different type where the player is prioritised first
+ * @author Tong Jet Kit
+ * @see Behaviour
+ */
 public class AttackBehaviour implements Behaviour {
 
-    private final Random random = new Random();
-
+    /**
+     * Obtain the action to be executed by this behaviour
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         ArrayList<Action> actions = new ArrayList<>();
@@ -59,7 +68,7 @@ public class AttackBehaviour implements Behaviour {
         }
 
         if(!actions.isEmpty()){
-            return actions.get(random.nextInt(actions.size()));
+            return actions.get(RandomNumberGenerator.getRandomInt(actions.size()));
         }
         else{
             return null;

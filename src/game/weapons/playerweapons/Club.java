@@ -10,11 +10,12 @@ import game.items.Purchasable;
 import game.items.Sellable;
 
 /**
+ * The Wretch class's signature weapon which is purchasable and sellable
  * A simple weapon that can be used to attack the enemy.
  * It deals 103 damage with 80% hit rate
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tong Jet Kit
  *
  */
 public class Club extends WeaponItem implements Purchasable, Sellable {
@@ -29,12 +30,13 @@ public class Club extends WeaponItem implements Purchasable, Sellable {
     }
 
 
-    // WEAPON HAS GETSKILL THAT CAN RETURN THE ATTACK ACTION IN SKILL FORM
+
 
     @Override
     public void tick(Location currentLocation, Actor actor) {}
 
     /**
+     * To get the purchase price of the weapon
      * @return An integer that is the purchase price of this weapon
      */
     @Override
@@ -43,7 +45,8 @@ public class Club extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return A weapon which is itself
+     * To return a newly instantiated purchasable weapon
+     * @return A newly instantiated weapon which is itself
      */
     @Override
     public WeaponItem getPurchaseItem() {
@@ -51,6 +54,7 @@ public class Club extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
+     * To get the selling price of the weapon
      * @return An integer that is the selling price of this weapon
      */
     @Override

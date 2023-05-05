@@ -9,6 +9,13 @@ import game.action_types.UnsheatheAction;
 import game.items.Purchasable;
 import game.items.Sellable;
 
+/**
+ * The signature weapon for the Samurai class which is sellable and purchasable
+ * @author Tong Jet Kit
+ * @see WeaponItem
+ * @see Purchasable
+ * @see Sellable
+ */
 public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
 
 
@@ -23,13 +30,20 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
 
     }
 
+    /**
+     * To get the skill of the weapon which is a targeted unsheathe attack
+     * @param target the actor to attack
+     * @param direction the direction where the attack should be performed (only used for display purposes)
+     * @return The skill action of the weapon which is the QuickStepAction
+     */
     @Override
     public Action getSkill(Actor target, String direction) {
         return new UnsheatheAction(target,direction,this);
     }
 
     /**
-     * @return
+     * To return the purchase price of the weapon
+     * @return An integer which is the purchase price of the weapon
      */
     @Override
     public int getPurchasePrice() {
@@ -37,7 +51,8 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return
+     * To return a newly instantiated purchasable weapon
+     * @return A newly instantiated weapon which is itself
      */
     @Override
     public WeaponItem getPurchaseItem() {
@@ -45,7 +60,8 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return
+     * To return the selling price of the weapon
+     * @return An integer which is the selling price of the weapon
      */
     @Override
     public int getSellPrice() {
@@ -53,5 +69,5 @@ public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
     }
 
 
-    // WEAPON HAS GETSKILL THAT CAN RETURN THE ATTACK ACTION IN SKILL FORM
+
 }

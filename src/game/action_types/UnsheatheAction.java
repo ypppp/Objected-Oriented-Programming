@@ -9,7 +9,11 @@ import game.RandomNumberGenerator;
 
 import java.util.Random;
 
-
+/**
+ * An action to perform the skill of Uchigatana
+ * @author Tong Jet Kit
+ * @see Action
+ */
 public class UnsheatheAction extends Action {
 
     /**
@@ -27,6 +31,13 @@ public class UnsheatheAction extends Action {
      * Weapon used for the attack
      */
     private Weapon weapon;
+
+    /**
+     * Constructor
+     * @param target The actor to attack
+     * @param direction The direction where the attack should be performed (only used for display purposes)
+     * @param weapon The weapon used in the attack
+     */
 
     public UnsheatheAction(Actor target, String direction, Weapon weapon) {
         this.target = target;
@@ -57,9 +68,9 @@ public class UnsheatheAction extends Action {
         return result;
     }
 
-    /**
+    /** Describes which target the actor is attacking with which weapon
      * @param actor The actor performing the action.
-     * @return
+     * @return a description used for the menu UI
      */
     @Override
     public String menuDescription(Actor actor) {

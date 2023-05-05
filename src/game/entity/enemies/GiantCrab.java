@@ -11,6 +11,11 @@ import game.behaviours.AOE_SkillBehaviour;
 
 import java.util.ArrayList;
 
+/**
+ * The giant crab that spawns in the puddle of water
+ * @author Tong Jet Kit
+ * @see Enemy
+ */
 public class GiantCrab extends Enemy{
     /**
      * Constructor.
@@ -24,6 +29,10 @@ public class GiantCrab extends Enemy{
         this.addBehaviour(1, new AOE_SkillBehaviour());
     }
 
+    /**
+     * Creates and returns an intrinsic weapon.
+     * @return A newly instantiated intrinsic weapon
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(208, "pinches", 90);

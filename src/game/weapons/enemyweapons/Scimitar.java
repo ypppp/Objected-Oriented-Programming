@@ -8,6 +8,13 @@ import game.action_types.AOE_AttackAction;
 import game.items.Purchasable;
 import game.items.Sellable;
 
+/**
+ * The weapon for the SkeletonBandit which is sellable and purchasable
+ * @author Tong Jet Kit, Yew Yee Peng
+ * @see WeaponItem
+ * @see Purchasable
+ * @see Sellable
+ */
 public class Scimitar extends WeaponItem implements Purchasable, Sellable {
     public Scimitar() {
         super("Scimitar",'s',118,"Slashes",88);
@@ -16,12 +23,19 @@ public class Scimitar extends WeaponItem implements Purchasable, Sellable {
 
     }
 
+    /**
+     * To get the skill of the scimitar which is an untargeted spinning attack action
+     * @param holder The holder of the weapon
+     * @return An aoe attack action
+     */
+    @Override
     public Action getSkill(Actor holder){
         return new AOE_AttackAction(this);
     }
 
     /**
-     * @return
+     * To get the purchase price of the weapon
+     * @return An integer which is the purchase price of the weapon
      */
     @Override
     public int getPurchasePrice() {
@@ -29,7 +43,8 @@ public class Scimitar extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return
+     * To return newly instantiated purchasable weapon
+     * @return A newly instantiated weapon which is itself
      */
     @Override
     public WeaponItem getPurchaseItem() {

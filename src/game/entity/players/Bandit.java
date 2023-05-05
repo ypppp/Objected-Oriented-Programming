@@ -2,6 +2,11 @@ package game.entity.players;
 
 import game.weapons.playerweapons.GreatKnife;
 
+/**
+ * A bandit role class that has a greatknife as its signature weapon
+ * @author Tong Jet Kit
+ * @see Player
+ */
 public class Bandit extends Player{
     /**
      * Constructor for a Bandit class

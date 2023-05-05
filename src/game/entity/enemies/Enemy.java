@@ -23,11 +23,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An enemy abstract class that contains all the attributes/methods of an enemy
+ * @author Tong Jet Kit
+ * @see Actor
+ * @see Despawnable
+ * @see Resettable
+ */
 public abstract class Enemy extends Actor implements Despawnable, Resettable {
 
+    /**
+     * A hashmap of behaviours that is sorted against its priority which will be the key
+     */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
-
+    /**
+     * A boolean value to determine if the enemy is following a player or not
+     */
     private boolean isFollow = false;
 
     /**
@@ -45,21 +57,40 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
 
     }
 
+    /**
+     * To add a behaviour into the hashmap of behaviours
+     * @param key The priority of the behaviour
+     * @param behaviour The behaviour
+     */
     public void addBehaviour(int key, Behaviour behaviour){
         behaviours.put(key,behaviour);
     }
 
+    /**
+     * A getter to return the hashmap of behaviours
+     * @return A hashmap which contains the behaviour which is sorted in priority
+     */
     public Map<Integer, Behaviour> getBehaviours() {
         return behaviours;
     }
 
+    /**
+     * A setter to set the hashmap of behaviours
+     * @param behaviours The hashmap of behaviours
+     */
     public void setBehaviours(Map<Integer, Behaviour> behaviours) {
         this.behaviours = behaviours;
     }
 
-
+    /**
+     * To despawn the enemy
+     * @return An action to despawn the enemy
+     */
     public Action despawn() { return new DespawnAction(); }
 
+    /**
+     * To reset the enemy
+     */
     @Override
     public void reset() {
         this.addCapability(Status.RESET);
@@ -95,7 +126,7 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
 
 
     /**
-     * The lone wolf can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
+     * To return the actions that the otherActor can do to itself
      *
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor

@@ -7,8 +7,16 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.entity.npc.Trader;
 import game.items.runes.RuneManager;
 
+/**
+ * An action to buy a weapon from the trader
+ * @author Tong Jet Kit
+ * @see Action
+ */
 public class BuyWeaponAction extends Action {
 
+    /**
+     * The weapon to buy from the
+     */
     private WeaponItem weapon;
 
     private int sellingAmount;
@@ -54,7 +62,7 @@ public class BuyWeaponAction extends Action {
      * Returns a descriptive string
      *
      * @param actor The actor performing the action.
-     * @return the text we put on the menu
+     * @return a description used for the menu UI
      */
     @Override
     public String menuDescription(Actor actor) {

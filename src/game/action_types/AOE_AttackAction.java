@@ -12,20 +12,38 @@ import game.entity.enemies.Enemy;
 
 import java.util.ArrayList;
 
+/**
+ * An Action to attack the surrounding area
+ * @author Tong Jet Kit
+ * @see Action
+ */
 public class AOE_AttackAction extends Action {
 
-
+    /**
+     * An array of targets that the actor will attack
+     */
     private ArrayList<Actor> targets = new ArrayList<>();
 
+    /**
+     * The weapon used to attack the surrounding area
+     */
     private Weapon weapon;
 
-
+    /**
+     * Constructor where the targets are unknown to the actor
+     * @param weapon A weapon data that represents the weapon used to attack the surrounding area
+     */
     public AOE_AttackAction(Weapon weapon) {
 
         this.weapon = weapon;
 
     }
 
+    /**
+     * Constructor where the targets are known to the actor
+     * @param targets An array of actors which represents the targets the actor will damage
+     * @param weapon A weapon data that represents the weapon used to attack the surrounding area.
+     */
     public AOE_AttackAction(ArrayList<Actor> targets, Weapon weapon){
         this.targets = targets;
         this.weapon = weapon;
@@ -63,6 +81,14 @@ public class AOE_AttackAction extends Action {
 
     }
 
+    /**
+     * To obtain all the targets that the actor can attack
+     * For enemies: Players and other Enemies of different types
+     * For players: Enemies
+     * @param actor The actor that is performing the action
+     * @param map The map of the game
+     * @return An arraylist of actor which contains the targets that the enemy can attack
+     */
     public static ArrayList<Actor> getAllTargets(Actor actor,GameMap map){
         ArrayList<Actor> targets = new ArrayList<>();
         Location here = map.locationOf(actor);
@@ -101,7 +127,7 @@ public class AOE_AttackAction extends Action {
      * Returns a descriptive string
      *
      * @param actor The actor performing the action.
-     * @return the text we put on the menu
+     * @return a description used for the menu UI
      */
     @Override
     public String menuDescription(Actor actor) {

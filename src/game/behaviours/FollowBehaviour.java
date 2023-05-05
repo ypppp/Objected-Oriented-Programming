@@ -20,6 +20,9 @@ import game.behaviours.Behaviour;
  */
 public class FollowBehaviour implements Behaviour {
 
+	/**
+	 * The target that the enemy will be following
+	 */
 	private final Actor target;
 
 	/**
@@ -31,6 +34,12 @@ public class FollowBehaviour implements Behaviour {
 		this.target = subject;
 	}
 
+	/**
+	 * Obtain the action to be executed by this behaviour
+	 * @param actor the Actor acting
+	 * @param map the GameMap containing the Actor
+	 * @return An action to be executed
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		if(!map.contains(target) || !map.contains(actor))

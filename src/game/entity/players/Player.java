@@ -19,15 +19,17 @@ import game.items.runes.RuneManager;
 
 
 /**
- * Class representing the Player. It implements the Resettable interface.
- * It carries around a club to attack a hostile creature in the Lands Between.
+ * Abstract Class that represents the Player. It implements the Resettable interface.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tong Jet Kit
  *
  */
 public abstract class Player extends Actor implements Resettable {
 
+	/**
+	 * The menu UI for the player to choose their action
+	 */
 	private final Menu menu = new Menu();
 
 	/**
@@ -47,6 +49,15 @@ public abstract class Player extends Actor implements Resettable {
 
 	}
 
+	/**
+	 * At each turn, select a valid action to perform.
+	 *
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return the valid action that can be performed in that iteration or null if no valid action is found
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		if (!this.isConscious()){
@@ -81,7 +92,9 @@ public abstract class Player extends Actor implements Resettable {
 		return menu.showMenu(this, actions, display);
 	}
 
-
+	/**
+	 * To reset the player's hp to full
+	 */
 	@Override
 	public void reset() {
 		this.resetMaxHp(getMaxHp());

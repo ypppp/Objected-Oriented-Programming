@@ -12,11 +12,18 @@ import game.entity.enemies.Enemy;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * The behaviour of the enemy to do an aoe skill action
+ * @author Tong Jet Kit
+ * @see Behaviour
+ */
 public class AOE_SkillBehaviour implements Behaviour {
+
     /**
+     * Obtain the action to be executed by this behaviour
      * @param actor the Actor acting
-     * @param map   the GameMap containing the Actor
-     * @return An action that the Actor can do
+     * @param map the GameMap containing the Actor
+     * @return An action to be executed
      */
 
     @Override

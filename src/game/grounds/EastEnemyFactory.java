@@ -10,9 +10,16 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+/**
+ * An enemy factory to spawn an enemy at the east
+ * @author Tong Jet Kit
+ * @see EnemyFactory
+ */
 public class EastEnemyFactory extends EnemyFactory{
 
-
+    /**
+     * Constructor for the enemy factory
+     */
     public EastEnemyFactory() {
 
         HashMap<Character,Actor> enemyInstance = new HashMap<>(){{
@@ -31,6 +38,12 @@ public class EastEnemyFactory extends EnemyFactory{
         this.setEnemyInstance(enemyInstance);
     }
 
+    /**
+     * To return an enemy to be spawned at a certain location at east
+     * @param location The location where the enemy will be spawning
+     * @param displayChar The display character of the ground
+     * @return An actor which will the enemy to be spawned on the location if granted; null otherwise
+     */
     public Actor spawnEnemy(Location location, Character displayChar){
         try {
             Actor actorToAdd = getEnemyInstance().get(displayChar);

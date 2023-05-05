@@ -21,10 +21,21 @@ import game.weapons.playerweapons.Uchigatana;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The trader to trade weapons with the player
+ * @author Tong Jet Kit
+ * @see Actor
+ */
 public class Trader extends Actor {
 
-
+    /**
+     * A hashmap of sellable weapons that the trader can buy from the player
+     */
     HashMap<String, Sellable> weaponPrice = new HashMap<>();
+
+    /**
+     * An arraylist of purchasable weapons that the trader can sell to the player
+     */
     ArrayList<Purchasable> purchasables = new ArrayList<>();
 
     /**
@@ -58,6 +69,14 @@ public class Trader extends Actor {
         return new DoNothingAction();
     }
 
+    /**
+     * Returns a new collection of the Actions that the otherActor can do to the current Actor.
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return A collection of Actions.
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
