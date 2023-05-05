@@ -29,6 +29,7 @@ public class WestEnemyFactory extends EnemyFactory{
         this.setEnemyInstance(enemyInstance);
     }
 
+
     public Actor spawnEnemy(Location location, Character displayChar){
         try {
             Actor actorToAdd = getEnemyInstance().get(displayChar);
