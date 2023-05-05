@@ -6,16 +6,17 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
+import game.items.Consumables;
 import game.items.FlaskOfCrimsonTears;
 
 import java.nio.file.StandardCopyOption;
 
 public class ConsumeAction extends Action {
 
-    private FlaskOfCrimsonTears flaskOfCrimsonTears;
+    private Consumables consumables;
 
-    public ConsumeAction(FlaskOfCrimsonTears flaskOfCrimsonTears) {
-        this.flaskOfCrimsonTears = flaskOfCrimsonTears;
+    public ConsumeAction(Consumables consumables) {
+        this.consumables = consumables;
     }
 
     /**
@@ -29,12 +30,12 @@ public class ConsumeAction extends Action {
     public String execute(Actor player, GameMap map) {
         String result = "";
 
-        if (flaskOfCrimsonTears.getUses()>0 && player.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            player.heal(flaskOfCrimsonTears.getHealAmount());
-            result += player + " consumed Flask of Crimson Tears" + flaskOfCrimsonTears.printNumberOfUses() + " for " + flaskOfCrimsonTears.getHealAmount() + " hp";
-            flaskOfCrimsonTears.setUses(flaskOfCrimsonTears.getUses()-1);
+        if (consumables.getUses()>0 && player.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            player.heal(consumables.getHealAmount());
+            result += player + " consumed Flask of Crimson Tears" + consumables.printNumberOfUses() + " for " + consumables.getHealAmount() + " hp";
+            consumables.setUses(consumables.getUses()-1);
         } else {
-            result += "Flask of Crimson Tears" + flaskOfCrimsonTears.printNumberOfUses() + " is empty";
+            result += consumables + consumables.printNumberOfUses() + " is empty";
         }
 
         return result;
@@ -48,6 +49,6 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String menuDescription(Actor player) {
-        return player + " consumes Flask of Crimson Tears" + flaskOfCrimsonTears.printNumberOfUses();
+        return player + " consumes " + consumables + consumables.printNumberOfUses();
     }
 }

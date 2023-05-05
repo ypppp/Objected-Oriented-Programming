@@ -27,6 +27,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
         return uses;
     }
 
+
     public void setUses(int uses) {
         this.uses = uses;
     }
