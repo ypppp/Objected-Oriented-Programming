@@ -43,6 +43,10 @@ public abstract class SpawningGrounds extends Ground {
         this.factory = factory;
     }
 
+    /**
+     * To spawn the enemy at that current location
+     * @param location The location of where the enemy will spawn
+     */
     public void spawn(Location location){
         Actor enemy = getFactory().spawnEnemy(location, this.getDisplayChar());
         if(enemy != null){
@@ -50,6 +54,10 @@ public abstract class SpawningGrounds extends Ground {
         }
     }
 
+    /**
+     * To allow the ground to experience the joy of time.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         if(!hasFactory){
