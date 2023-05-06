@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 /**
  * An interface for items that are purchasable
+ * @Version 1.0
  * @author Tong Jet Kit
  */
 public interface Purchasable {

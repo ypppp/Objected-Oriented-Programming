@@ -17,6 +17,7 @@ import java.util.*;
 /**
  * The behaviour of the enemy to do an attack action on a player or enemy of different type where the player is prioritised first
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Behaviour
  */
 public class AttackBehaviour implements Behaviour {

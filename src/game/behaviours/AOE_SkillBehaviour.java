@@ -15,6 +15,7 @@ import java.util.Collection;
 /**
  * The behaviour of the enemy to do an aoe skill action
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Behaviour
  */
 public class AOE_SkillBehaviour implements Behaviour {

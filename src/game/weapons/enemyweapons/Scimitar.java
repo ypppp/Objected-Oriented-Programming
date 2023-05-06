@@ -14,6 +14,7 @@ import game.items.Sellable;
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable
+ * @Version 1.0
  */
 public class Scimitar extends WeaponItem implements Purchasable, Sellable {
     public Scimitar() {

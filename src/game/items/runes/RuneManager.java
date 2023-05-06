@@ -9,6 +9,7 @@ import java.util.HashMap;
 /**
  * A manager class to manage the runes and its operation
  * @author Tong Jet Kit
+ * @Version 1.0
  */
 public class RuneManager {
 

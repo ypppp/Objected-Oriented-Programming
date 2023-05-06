@@ -20,6 +20,7 @@ import java.util.HashMap;
 /**
  * The pile of bones that spawns after a skeleton enemy dies and will respawn after not being hit
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Enemy
  */
 public class PileOfBones extends Enemy{

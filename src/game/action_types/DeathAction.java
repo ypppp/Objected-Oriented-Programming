@@ -19,17 +19,26 @@ import game.action_types.reset.ResetManager;
  * An action executed if an actor is killed.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tong Jet Kit Aaren Wong Cong Ming
  *
  */
 public class DeathAction extends Action {
+
+    /**
+     * The attacker in this kill situation
+     */
     private Actor attacker;
 
+    /**
+     * Constructor
+     * @param actor An actor which is the attacker
+     */
     public DeathAction(Actor actor) {
         this.attacker = actor;
     }
 
     /**
+     * Perform the action to die if killed
      * When the target is killed, the items & weapons carried by target
      * will be dropped to the location in the game map where the target was
      *

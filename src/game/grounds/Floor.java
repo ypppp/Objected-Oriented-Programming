@@ -12,10 +12,19 @@ import game.Status;
  *
  */
 public class Floor extends Ground {
+
+	/**
+	 * Constructor for a floor ground
+	 */
 	public Floor() {
 		super('_');
 	}
 
+	/**
+	 * To determine if an actor can move to the ground
+	 * @param actor the Actor to check
+	 * @return True if the actor can enter; false otherwise
+	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		return actor.hasCapability(Status.HOSTILE_TO_ENEMY);

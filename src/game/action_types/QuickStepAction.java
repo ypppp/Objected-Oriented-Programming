@@ -17,6 +17,7 @@ import java.util.Random;
 /**
  * An action to perform the GreatKnife skill which is to move away after attacking the other actor
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Action
  */
 public class QuickStepAction extends Action {
@@ -51,6 +52,8 @@ public class QuickStepAction extends Action {
 
 
     /**
+     * Perform a quickstep skill action
+     *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
      * @return the result of the attack, e.g. whether the target is killed, etc.

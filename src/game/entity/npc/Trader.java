@@ -24,6 +24,7 @@ import java.util.HashMap;
 /**
  * The trader to trade weapons with the player
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Actor
  */
 public class Trader extends Actor {

@@ -12,6 +12,7 @@ import java.util.Random;
 /**
  * An action to perform the skill of Uchigatana
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Action
  */
 public class UnsheatheAction extends Action {
@@ -46,6 +47,8 @@ public class UnsheatheAction extends Action {
     }
 
     /**
+     * Perform an unsheathe skill action
+     *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
      * @return A string that is the execution of the action

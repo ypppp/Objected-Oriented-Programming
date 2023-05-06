@@ -9,6 +9,9 @@ import game.items.runes.RuneManager;
 
 /**
  * An action to sell a weapon to the trader
+ * @Version 1.0
+ * @author Tong Jet Kit
+ * @see Action
  */
 public class SellWeaponAction extends Action {
 
@@ -41,7 +44,7 @@ public class SellWeaponAction extends Action {
     }
 
     /**
-     * Perform the Action.
+     * Perform the Action to sell a weapon.
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

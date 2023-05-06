@@ -13,7 +13,7 @@ import game.entity.enemies.LoneWolf;
  * Created by:
  * @author Aaren Wong Cong Ming
  * Modified by: Yew Yee Perng
- *
+ * @Version 1.0
  */
 
 public class GustOfWind extends SpawningGrounds {

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  * The heavy skeleton swordsman that spawns in the gust of winds
  * @author Tong Jet Kit
+ * @Version 1.0
  * @see Enemy
  */
 public class HeavySkeletonSwordsman extends Enemy{
