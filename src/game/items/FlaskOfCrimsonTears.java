@@ -39,14 +39,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
     public FlaskOfCrimsonTears() {
         super("Flask of Crimson Tears", ' ', false);
         this.addCapability(Status.HEAL);
-    }
-
-    @Override
-    public List<Action> getAllowableActions() {
-        ActionList actions = new ActionList();
-        actions.add(consume());
-
-        return actions.getUnmodifiableActionList();
+        this.addAction(consume());
     }
 
     @Override
