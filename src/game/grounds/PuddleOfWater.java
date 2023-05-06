@@ -13,12 +13,14 @@ import java.util.Random;
 /**
  * Created by:
  * @author Aaren Wong Cong Ming
- * Modified by:
+ * Modified by: Yew Yee Perng
  *
  */
 
 public class PuddleOfWater extends SpawningGrounds {
-
+    /**
+     * Constructor.
+     */
     public PuddleOfWater() {
         super('~');
     }
