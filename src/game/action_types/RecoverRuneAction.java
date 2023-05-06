@@ -8,16 +8,28 @@ import game.Status;
 import game.items.runes.Rune;
 import game.items.runes.RuneManager;
 
+/**
+ * The RecoverRuneAction that allows the player to recover the dropped runes
+ * @author Aaren Wong
+ * @see Action
+ * @version 1.0.0
+ */
 public class RecoverRuneAction extends Action {
-
+    /**
+     * A Rune class attriu=bute
+     */
     private Rune runes;
 
+    /**
+     * The constructor of the RecoverRuneAction class
+     * @param runes
+     */
     public RecoverRuneAction(Rune runes) {
         this.runes = runes;
     }
 
     /**
-     * Perform the Action.
+     * Perform the recover runes action that allows the player to pick up the dropped runes and updates the rune count of the player
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

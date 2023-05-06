@@ -8,16 +8,28 @@ import game.grounds.TheSiteOfLostGrace;
 import game.action_types.reset.ResetAction;
 import game.action_types.reset.ResetManager;
 
+/**
+ * The RestAction class which allows the player to rest at the site
+ * @author Aaren Wong
+ * @see Action
+ * @version 1.0.0
+ */
 public class RestAction extends Action {
-
+    /**
+     * A TheSiteOfLostGrace class attribute
+     */
     private TheSiteOfLostGrace theSiteOfLostGrace;
 
+    /**
+     * The constructor of the RestAction class
+     * @param theSiteOfLostGrace
+     */
     public RestAction(TheSiteOfLostGrace theSiteOfLostGrace) {
         this.theSiteOfLostGrace = theSiteOfLostGrace;
     }
 
     /**
-     * Perform the Action.
+     * Perform the rest action which allows a player to rest at the site and causes a reset
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

@@ -6,12 +6,14 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * A resettable interface
- * Created by:
  * @author Aaren Wong Cong Ming
- * Modified by:
+ * @version 1.0.0
  *
  */
-
 public interface Despawnable {
+    /**
+     * Applies the despawn to any despawnable entities
+     * @return the despawn action
+     */
     Action despawn ();
 }

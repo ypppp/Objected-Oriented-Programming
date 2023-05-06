@@ -4,10 +4,16 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+/**
+ * The DespawnAction class that will despawn actors
+ * @author Aaren Wong
+ * @see Action
+ * @version 1.0.0
+ */
 public class DespawnAction extends Action {
 
     /**
-     * Perform the Action.
+     * Perform the despawn action that will despawn the actor
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

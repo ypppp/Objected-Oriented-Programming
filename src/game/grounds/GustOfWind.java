@@ -10,12 +10,12 @@ import game.entity.enemies.GiantDog;
 import game.entity.enemies.LoneWolf;
 
 /**
- * Created by:
+ * The GustOfWind class which is one of the spawning grounds in the game
  * @author Aaren Wong Cong Ming
  * Modified by: Yew Yee Perng
+ * @see SpawningGrounds
  * @Version 1.0
  */
-
 public class GustOfWind extends SpawningGrounds {
     /**
      * Constructor.

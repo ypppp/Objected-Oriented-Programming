@@ -4,17 +4,16 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 
 /**
- * Created by:
+ * The Graveyard class which is one of the spawning grounds in the game
  * @author Aaren Wong Cong Ming
  * Modified by: Yew Yee Perng
+ * @see SpawningGrounds
  * @Version 1.0
  */
-
 public class Graveyard extends SpawningGrounds {
     /**
      * Constructor.
      */
-
     public Graveyard() {
         super('n');
     }

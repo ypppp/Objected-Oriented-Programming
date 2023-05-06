@@ -11,16 +11,28 @@ import game.items.FlaskOfCrimsonTears;
 
 import java.nio.file.StandardCopyOption;
 
+/**
+ * The ConsumeActionclass that will allow the player to consume an item
+ * @author Aaren Wong
+ * @see Action
+ * @version 1.0.0
+ */
 public class ConsumeAction extends Action {
-
+    /**
+     * A Consumables class attribute
+     */
     private Consumables consumables;
 
+    /**
+     * The constructor of the ConsumeAction class
+     * @param consumables
+     */
     public ConsumeAction(Consumables consumables) {
         this.consumables = consumables;
     }
 
     /**
-     * Perform the Action.
+     * Perform the consume action which will heal the player if there are still uses left
      *
      * @param player The actor performing the action.
      * @param map   The map the actor is on.

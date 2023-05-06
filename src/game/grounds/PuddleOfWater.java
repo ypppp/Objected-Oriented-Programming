@@ -11,12 +11,12 @@ import game.entity.enemies.LoneWolf;
 import java.util.Random;
 
 /**
- * Created by:
+ * The PuddleOfWater class which is one of the spawning grounds in the game
  * @author Aaren Wong Cong Ming
  * Modified by: Yew Yee Perng
+ * @see SpawningGrounds
  * @Version 1.0
  */
-
 public class PuddleOfWater extends SpawningGrounds {
     /**
      * Constructor.

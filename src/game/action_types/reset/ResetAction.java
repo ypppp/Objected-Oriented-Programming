@@ -6,9 +6,15 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 
+/**
+ * The ResetAction class that will cause a reset
+ * @author Aaren Wong
+ * @see Action
+ * @version 1.0.0
+ */
 public class ResetAction extends Action {
     /**
-     * Perform the Action.
+     * Perform the reset action
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
