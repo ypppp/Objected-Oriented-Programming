@@ -35,7 +35,7 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new Cliff());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -48,7 +48,7 @@ public class Application {
 				"......nn..................................................&................",
 				".......n...................................................................",
 				"..................................###___###..................n.............",
-				"..................................________#.................n..............",
+				".................................+________#.................n..............",
 				"..........&.......................#________..................n.............",
 				"..................................#_______#................................",
 				"..................................###___###................................",
