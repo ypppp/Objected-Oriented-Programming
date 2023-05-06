@@ -10,7 +10,7 @@ import game.items.Sellable;
 
 /**
  * The weapon for the SkeletonBandit which is sellable and purchasable
- * @author Tong Jet Kit, Yew Yee Peng
+ * @author Tong Jet Kit, Yew Yee Perng
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable
