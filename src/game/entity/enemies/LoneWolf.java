@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Tong Jet Kit
  *
  */
 public class LoneWolf extends Enemy {
