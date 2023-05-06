@@ -12,12 +12,14 @@ import game.entity.enemies.LoneWolf;
 /**
  * Created by:
  * @author Aaren Wong Cong Ming
- * Modified by:
+ * Modified by: Yew Yee Perng
  *
  */
 
 public class GustOfWind extends SpawningGrounds {
-
+    /**
+     * Constructor.
+     */
     public GustOfWind() {
         super('&');
     }
