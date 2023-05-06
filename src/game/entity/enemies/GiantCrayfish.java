@@ -10,6 +10,12 @@ import game.behaviours.AOE_SkillBehaviour;
 
 import java.util.ArrayList;
 
+/**
+ * The giant crab that spawns in the puddle of water
+ * @author Yew Yee Perng
+ * @see Enemy
+ */
+
 public class GiantCrayfish extends Enemy{
 
         /**
