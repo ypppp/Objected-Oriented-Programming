@@ -60,7 +60,7 @@ public abstract class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		if (!this.isConscious() || hasCapability(Status.FALL_FROM_CLIFF)){
+		if (!this.isConscious()){
 			for (String line : FancyMessage.YOU_DIED.split("\n")) { // display "YOU DIED"
 				new Display().println(line);
 				try {
@@ -69,7 +69,6 @@ public abstract class Player extends Actor implements Resettable {
 					exception.printStackTrace();
 				}
 			}
-			removeCapability(Status.FALL_FROM_CLIFF);
 			return new DeathAction(this);
 		}
 		RuneManager.getInstance().setPreviousLocation(map.locationOf(this));

@@ -17,6 +17,5 @@ public enum Status {
     IN_COMBAT,
     CAN_DROP_RUNES,
     RESET,
-    HEAL,
-    FALL_FROM_CLIFF
+    HEAL
 }
