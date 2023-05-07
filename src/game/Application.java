@@ -62,8 +62,69 @@ public class Application {
 				"..####__###..................................................._.....__.#...",
 				"..............................................................###..__###...",
 				"...........................................................................");
+
+		List<String> roundTable = Arrays.asList(
+				"##################",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"########___#######"
+		);
+
+//		List<String> StormVeilCastle = Arrays.asList(
+//				"...........................................................................",
+//				"..................<...............<........................................",
+//				"...........................................................................",
+//				"##############################################...##########################",
+//				"............................#................#.......B..............B......",
+//				".....B...............B......#................#.............................",
+//				"...............................<.........<.................................",
+//				".....B...............B......#................#.......B..............B......",
+//				"............................#................#.............................",
+//				"#####################..#############...############.####..#########...#####",
+//				"...............#++++++++++++#................#++++++++++++#................",
+//				"...............#++++++++++++...<.........<...#++++++++++++#................",
+//				"...............#++++++++++++..................++++++++++++#................",
+//				"...............#++++++++++++#................#++++++++++++#................",
+//				"#####...##########.....#############...#############..#############...#####",
+//				".._______........................B......B........................B.....B...",
+//				"_____..._..____....&&........<..............<..............................",
+//				".........____......&&......................................................",
+//				"...._______..................<..............<....................<.....<...",
+//				"#####....##...###..#####...##########___###############......##.....####...",
+//				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++",
+//				"+++++++++++++++++++++++++++....................#+++++++++++++++++++++++++++",
+//				"+++++++++++++++++++++++++++#....................+++++++++++++++++++++++++++",
+//				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++"
+//		);
+//
+//		List<String> bossRoom = Arrays.asList(
+//				"+++++++++++++++++++++++++",
+//				".........................",
+//				"..=......................",
+//				".........................",
+//				".........................",
+//				".........................",
+//				".........................",
+//				".........................",
+//				"+++++++++++++++++++++++++"
+//		);
+
 		GameMap gameMap = new GameMap(groundFactory, map);
+		GameMap roundTableMap = new GameMap(groundFactory,roundTable);
+//		GameMap stormVeilMap = new GameMap(groundFactory,StormVeilCastle);
+//		GameMap bossMap = new GameMap(groundFactory, bossRoom);
+
 		world.addGameMap(gameMap);
+//		world.addGameMap(stormVeilMap);
+//		world.addGameMap(bossMap);
+		world.addGameMap(roundTableMap);
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
@@ -99,18 +160,32 @@ public class Application {
 
 		player = classesMap.get(chosenClass);
 
-		gameMap.at(56, 17).addActor(new LoneWolf());
-		gameMap.at(56, 16).addActor(new LoneWolf());
-		gameMap.at(57, 17).addActor(new GiantCrab());
-		gameMap.at(55, 17).addActor(new LoneWolf());
+		//add the trader to the map
 		gameMap.at(40, 11).addActor(new Trader());
 
+		// add the first site of lost grace
 		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
 		firstSite.setHasActivate(true);
 		gameMap.at(38,11).setGround(firstSite);
-		gameMap.at(34,8).setGround(new TheSiteOfLostGrace("The Second Step"));
 
-		gameMap.at(28, 10).addActor(new HeavySkeletonSwordsman());
+		// created the site of lost grace for all the maps
+		roundTableMap.at(9,5).setGround(new TheSiteOfLostGrace("Table of Lost Grace"));
+//		stormVeilMap.at(38,20).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
+//		bossMap.at(20,4).setGround(new TheSiteOfLostGrace("Godrick the Grafted"));
+
+		//add the doorway to the roundtable map
+		gameMap.at(34,8).setGround(new Door(roundTableMap.at(9,10),"Roundtable Hold"));
+		roundTableMap.at(9,10).setGround(new Door(gameMap.at(34,8),"Limgrave"));
+
+		//add the doorway to the stormveil map
+//		gameMap.at(28,3).setGround(new Door(stormVeilMap.at(36,23),"StormVeil Castle"));
+//		stormVeilMap.at(28,3).setGround(new Door(gameMap.at(28,3),"Limgrave"));
+
+		//add the doorway to the boss room map
+//		gameMap.at(6,20).setGround(new Door(bossMap.at(13,7),"Boss Room"));
+//		BossMap.at(13,7).setGround(new Door(gameMap.at(6,20),"Limgrave"));
+
+
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(36, 10));
