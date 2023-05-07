@@ -1,16 +1,17 @@
 package game.items;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
 
 /**
  * The Consumables interface
  */
 public interface Consumables {
     /**
-     * A consume action will be done for any item that can be consumed
-     * @return The consume action
+     * The consume the item
+     * @return The description of the consumption
      */
-    Action consume();
+    String consume(Actor actor);
 
     /**
      * The number of uses left for the item
