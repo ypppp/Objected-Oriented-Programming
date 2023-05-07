@@ -35,7 +35,7 @@ public class ActivateAction extends Action {
                 exception.printStackTrace();
             }
         }
-        return activatable + " has been activated";
+        return activatable.getName() + " has been activated";
     }
 
     /**
