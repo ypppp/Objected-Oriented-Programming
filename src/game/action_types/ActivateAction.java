@@ -2,7 +2,9 @@ package game.action_types;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.FancyMessage;
 import game.grounds.Activatable;
 import game.grounds.TheSiteOfLostGrace;
 
@@ -25,6 +27,14 @@ public class ActivateAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         activatable.activate();
+        for (String line : FancyMessage.DISCOVERED.split("\n")) {
+            new Display().println(line);
+            try {
+                Thread.sleep(200);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
         return activatable + " has been activated";
     }
 
