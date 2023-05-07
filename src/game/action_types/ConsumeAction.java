@@ -25,7 +25,7 @@ public class ConsumeAction extends Action {
 
     /**
      * The constructor of the ConsumeAction class
-     * @param consumables
+     * @param consumables The consumable item
      */
     public ConsumeAction(Consumables consumables) {
         this.consumables = consumables;
@@ -43,9 +43,7 @@ public class ConsumeAction extends Action {
         String result = "";
 
         if (consumables.getUses()>0 && player.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            player.heal(consumables.getHealAmount());
-            result += player + " consumed Flask of Crimson Tears" + consumables.printNumberOfUses() + " for " + consumables.getHealAmount() + " hp";
-            consumables.setUses(consumables.getUses()-1);
+            result += consumables.consume(player);
         } else {
             result += consumables + consumables.printNumberOfUses() + " is empty";
         }

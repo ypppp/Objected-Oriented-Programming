@@ -2,6 +2,7 @@ package game.items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.Status;
 import game.action_types.ConsumeAction;
@@ -57,7 +58,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
 
     /**
      * The setter for the number of uses of the item
-     * @param uses
+     * @param uses An integer that represents the uses of the item
      */
     public void setUses(int uses) {
         this.uses = uses;
@@ -77,7 +78,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
     public FlaskOfCrimsonTears() {
         super("Flask of Crimson Tears", ' ', false);
         this.addCapability(Status.HEAL);
-        this.addAction(consume());
+        this.addAction(new ConsumeAction(this));
     }
 
     /**
@@ -86,16 +87,21 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
     @Override
     public void reset() {
         this.setUses(maxUses);
-        //System.out.println(this.getUses());
     }
 
     /**
      * Consumes the flask
-     * @return Consumes the flask
+     * @return A description of consuming the flask
      */
     @Override
-    public Action consume() {
-        return new ConsumeAction(this);
+    public String consume(Actor actor) {
+        String result = "";
+
+        actor.heal(this.getHealAmount());
+        result += actor + " consumed Flask of Crimson Tears" + this.printNumberOfUses() + " for " + this.getHealAmount() + " hp";
+        this.setUses(this.getUses()-1);
+
+        return  result;
     }
 }
 
