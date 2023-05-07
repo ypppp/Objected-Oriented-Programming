@@ -48,7 +48,7 @@ public class Application {
 				"......nn..................................................&................",
 				".......n...................................................................",
 				"..................................###___###..................n.............",
-				".................................+________#.................n..............",
+				"..................................________#.................n..............",
 				"..........&.......................#________..................n.............",
 				"..................................#_______#................................",
 				"..................................###___###................................",
@@ -105,13 +105,12 @@ public class Application {
 		gameMap.at(55, 17).addActor(new LoneWolf());
 		gameMap.at(40, 11).addActor(new Trader());
 
-		gameMap.at(38,11).setGround(new TheSiteOfLostGrace("The First Step"));
-		Rune rune = new Rune();
-		rune.setAmount(200);
-//		gameMap.at(32,10).addItem(rune);
-//		gameMap.at(31, 10).addActor(new GiantCrab());
+		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
+		firstSite.setHasActivate(true);
+		gameMap.at(38,11).setGround(firstSite);
+		gameMap.at(34,8).setGround(new TheSiteOfLostGrace("The Second Step"));
+
 		gameMap.at(28, 10).addActor(new HeavySkeletonSwordsman());
-		RuneManager.getInstance().getRune().setAmount(200);
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(36, 10));

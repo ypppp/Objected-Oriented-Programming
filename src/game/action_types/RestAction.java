@@ -41,6 +41,7 @@ public class RestAction extends Action {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             ResetManager.getInstance().run();
         }
+        ResetManager.getInstance().setSpawnPoint(map.locationOf(actor));
         result += actor + " rests at " + theSiteOfLostGrace.getName();
         return result;
     }
