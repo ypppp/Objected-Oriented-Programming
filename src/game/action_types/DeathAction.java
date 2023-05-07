@@ -64,12 +64,12 @@ public class DeathAction extends Action {
 
         // remove actor
         if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-            if ((!target.hasCapability(Species.BONE))) {
+            if ((!target.hasCapability(Species.BONE)) || target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
             }
-            else if (target.hasCapability(Status.RESPAWNABLE)) {
-                map.removeActor(target);
-            }
+//            else if (target.hasCapability(Status.RESPAWNABLE)) {
+//                map.removeActor(target);
+//            }
             else {
                 Location skeletonLoc = map.locationOf(target);
                 map.removeActor(target);

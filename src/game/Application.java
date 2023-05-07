@@ -7,9 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.entity.enemies.GiantCrab;
-import game.entity.enemies.HeavySkeletonSwordsman;
-import game.entity.enemies.LoneWolf;
+import game.entity.enemies.*;
 import game.entity.players.Bandit;
 import game.entity.npc.Trader;
 import game.entity.players.Player;
@@ -103,7 +101,7 @@ public class Application {
 
 		gameMap.at(38,11).setGround(new TheSiteOfLostGrace("The First Step"));
 
-		RuneManager.getInstance().getRune().setAmount(200);
+
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(36, 10));
