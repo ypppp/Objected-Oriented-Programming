@@ -3,19 +3,22 @@ package game.grounds;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Status;
 import game.action_types.ActivateAction;
 import game.action_types.RestAction;
+import game.action_types.TravelAction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class TheSiteOfLostGrace extends Ground implements Activatable{
+public class TheSiteOfLostGrace extends Ground implements Activatable, Travelable{
 
     private boolean hasActivate = false;
     private String name;
-    private static ArrayList<Location> fastTravelLocation = new ArrayList<Location>();
+    private static HashMap<TheSiteOfLostGrace,Location> fastTravel = new HashMap<>();
 
 
     public TheSiteOfLostGrace(String name) {
@@ -23,20 +26,28 @@ public class TheSiteOfLostGrace extends Ground implements Activatable{
         this.setName(name);
     }
 
-//    @Override
-//    public void tick(Location location) {
-//        if(isHasActivate()){
-//            addFastTravelLocation();
-//        }
-//    }
+    @Override
+    public void tick(Location location) {
+        if(isHasActivate()){
+            TheSiteOfLostGrace.addFastTravelSite(this,location);
+        }
+        for (TheSiteOfLostGrace title : fastTravel.keySet()) {
+            System.out.println(this + " activatedsite: " + title);
+        }
+
+    }
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
 
-
         // if the site has been activated
         if(isHasActivate()){
+            for(TheSiteOfLostGrace activatedSiteLocation: fastTravel.keySet()){
+                if(activatedSiteLocation != this){
+                    actions.add(new TravelAction(activatedSiteLocation));
+                }
+            }
             if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
                 actions.add(new RestAction(this));
                 return actions;
@@ -52,9 +63,10 @@ public class TheSiteOfLostGrace extends Ground implements Activatable{
 
     }
 
-    public static void addFastTravelLocation(Location location){
-        fastTravelLocation.add(location);
+    public static void addFastTravelSite(TheSiteOfLostGrace site, Location location){
+        fastTravel.put(site, location);
     }
+
 
     /**
      *
@@ -80,8 +92,25 @@ public class TheSiteOfLostGrace extends Ground implements Activatable{
      * @return
      */
     @Override
+    public Location getDestinationLocation() {
+        return fastTravel.get(this);
+    }
+
+    /**
+     * @return
+     */
+    @Override
     public String toString() {
         return name;
+    }
+
+    /**
+     * @param actor
+     * @param map
+     */
+    @Override
+    public void travel(Actor actor, GameMap map) {
+        map.moveActor(actor,this.getDestinationLocation());
     }
 
 
