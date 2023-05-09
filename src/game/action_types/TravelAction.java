@@ -4,17 +4,14 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.grounds.Travelable;
 
 public class TravelAction extends Action {
 
-    private Location destination;
+    private Travelable travelable;
 
-    private String name;
-
-
-    public TravelAction(Location destination, String name) {
-        this.destination = destination;
-        this.name = name;
+    public TravelAction(Travelable travelable) {
+        this.travelable = travelable;
     }
 
     /**
@@ -26,7 +23,7 @@ public class TravelAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        map.moveActor(actor,destination);
+        travelable.travel(actor,map);
         return menuDescription(actor);
     }
 
@@ -38,6 +35,6 @@ public class TravelAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " travel to " + name;
+        return actor + " travel to " + travelable;
     }
 }
