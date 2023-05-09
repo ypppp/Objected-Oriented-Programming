@@ -14,9 +14,12 @@ import game.items.Sellable;
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable
- * @Version 1.0
+ * @version 1.0
  */
 public class Scimitar extends WeaponItem implements Purchasable, Sellable {
+    /**
+     * Constructor
+     */
     public Scimitar() {
         super("Scimitar",'s',118,"Slashes",88);
         this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
@@ -53,7 +56,7 @@ public class Scimitar extends WeaponItem implements Purchasable, Sellable {
     }
 
     /**
-     * @return
+     * @return The selling Price of the scimitar
      */
     @Override
     public int getSellPrice() {

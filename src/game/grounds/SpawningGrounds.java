@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.Location;
  * A type of ground that can spawn enemies
  * @author Tong Jet Kit
  * @see Ground
- * @Version 1.0
+ * @version 1.0
  */
 public abstract class SpawningGrounds extends Ground {
 
@@ -38,7 +38,7 @@ public abstract class SpawningGrounds extends Ground {
 
     /**
      * A setter to set the enemy factory of the spawning ground
-     * @param factory
+     * @param factory The factory that spawns enemy of the spawning ground
      */
     public void setFactory(EnemyFactory factory) {
         this.factory = factory;

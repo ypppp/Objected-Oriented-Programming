@@ -5,7 +5,7 @@ import game.weapons.playerweapons.GreatKnife;
 /**
  * A bandit role class that has a greatknife as its signature weapon
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Player
  */
 public class Bandit extends Player{

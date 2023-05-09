@@ -15,7 +15,7 @@ import game.items.Sellable;
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable
- * @Version 1.0
+ * @version 1.0
  */
 public class Uchigatana extends WeaponItem implements Purchasable, Sellable {
 

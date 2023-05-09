@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
- * A resettable interface
+ * A despawnable interface
  * @author Aaren Wong Cong Ming
  * @version 1.0.0
  *

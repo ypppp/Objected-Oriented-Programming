@@ -14,7 +14,7 @@ import java.util.Map;
  * An enemy factory to spawn an enemy at the west
  * @author Tong Jet Kit
  * @see EnemyFactory
- * @Version 1.0
+ * @version 1.0
  */
 public class WestEnemyFactory extends EnemyFactory{
 

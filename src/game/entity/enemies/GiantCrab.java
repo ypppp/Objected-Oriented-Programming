@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * The giant crab that spawns in the puddle of water
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Enemy
  */
 public class GiantCrab extends Enemy{

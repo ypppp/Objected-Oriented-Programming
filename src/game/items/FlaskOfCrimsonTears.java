@@ -42,7 +42,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
 
     /**
      * The setter for the amount healed by the item
-     * @param healAmount
+     * @param healAmount The amount of healing that the flask can heal
      */
     public void setHealAmount(int healAmount) {
         this.healAmount = healAmount;
