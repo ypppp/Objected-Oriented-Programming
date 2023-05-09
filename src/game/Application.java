@@ -33,7 +33,7 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new Cage(), new Barrack());
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
