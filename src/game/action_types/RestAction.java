@@ -42,7 +42,7 @@ public class RestAction extends Action {
             ResetManager.getInstance().run();
         }
         ResetManager.getInstance().setSpawnPoint(map.locationOf(actor));
-        result += actor + " rests at " + theSiteOfLostGrace.getName();
+        result += actor + " rests at " + theSiteOfLostGrace;
         return result;
     }
 
@@ -54,6 +54,6 @@ public class RestAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " rests at " + theSiteOfLostGrace.getName();
+        return actor + " rests at " + theSiteOfLostGrace;
     }
 }
