@@ -23,18 +23,25 @@ import java.util.HashMap;
 */
 public class TheSiteOfLostGrace extends Ground implements Activatable, Travelable{
 
+    /**
+     * To check if the site of lost grace has been activated or not
+     */
     private boolean hasActivate = false;
 
     /**
      * name of the site of lost grace
      */
     private String name;
+
+    /**
+     * A hashmap of site of lost grace - location key value pair
+     */
     private static HashMap<TheSiteOfLostGrace,Location> fastTravel = new HashMap<>();
+
     /**
      * Constructor
      * @param name A string which represents the name of the site of lost grace
      */
-
     public TheSiteOfLostGrace(String name) {
         super('U');
         this.name = name;
@@ -46,6 +53,7 @@ public class TheSiteOfLostGrace extends Ground implements Activatable, Travelabl
     public String getName() {
         return name;
     }
+
     /**
      * To set the name of the site of lost grace
      * @param name The name of the site of lost grace
@@ -53,11 +61,17 @@ public class TheSiteOfLostGrace extends Ground implements Activatable, Travelabl
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * To allow the site of lost grace to experience the flow of time
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
-        if(isHasActivate()){
-            TheSiteOfLostGrace.addFastTravelSite(this,location);
+        if (isHasActivate()) {
+            TheSiteOfLostGrace.addFastTravelSite(this, location);
         }
+    }
 
     /**
      * To return the actions that the actor can be doing while on this ground
@@ -92,33 +106,44 @@ public class TheSiteOfLostGrace extends Ground implements Activatable, Travelabl
 
     }
 
+    /**
+     * To add the newly activated site of lost grace which we can travel to into the static hashmap
+     * @param site The activated Site Of Lost Grace
+     * @param location The location of the Site of Lost Grace
+     */
     public static void addFastTravelSite(TheSiteOfLostGrace site, Location location){
         fastTravel.put(site, location);
     }
 
 
     /**
-     *
+     * To activate the site of lost grace
      */
     @Override
     public void activate() {
         this.setHasActivate(true);
     }
 
+    /**
+     * To check if the site of lost grace has been activated
+     * @return True if its activated; false otherwise
+     */
     public boolean isHasActivate() {
         return hasActivate;
     }
 
+    /**
+     * To set the site of lost grace to be active or not
+     * @param hasActivate A boolean value which represents whether the site is active or not
+     */
     public void setHasActivate(boolean hasActivate) {
         this.hasActivate = hasActivate;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
-     * @return
+     * To get the destination of the fast travel
+     * @return The location of the fast travel
      */
     @Override
     public Location getDestinationLocation() {
@@ -126,7 +151,8 @@ public class TheSiteOfLostGrace extends Ground implements Activatable, Travelabl
     }
 
     /**
-     * @return
+     * To print out the name of the site of lost grace when printing the object
+     * @return A string which is the name of the site of lost grace
      */
     @Override
     public String toString() {
@@ -134,8 +160,9 @@ public class TheSiteOfLostGrace extends Ground implements Activatable, Travelabl
     }
 
     /**
-     * @param actor
-     * @param map
+     * To travel to the location
+     * @param actor The actor that is travelling
+     * @param map The map where the actor is
      */
     @Override
     public void travel(Actor actor, GameMap map) {
