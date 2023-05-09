@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.action_types.TravelAction;
 
-public class Door extends Ground {
+public class GoldenFogDoor extends Ground {
 
     private Location travelDestination;
     private String destinationName;
@@ -14,7 +14,7 @@ public class Door extends Ground {
     /**
      * Constructor.
      */
-    public Door(Location travelDestination, String destinationName) {
+    public GoldenFogDoor(Location travelDestination, String destinationName) {
         super('D');
         this.travelDestination = travelDestination;
         this.destinationName = destinationName;
