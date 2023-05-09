@@ -79,7 +79,7 @@ public class ResetManager{
 
     /**
      * Remove resettable entities
-     * @param resettable
+     * @param resettable A resettable entity
      */
     public void removeResettable(Resettable resettable) {
         resettables.add(resettable);
