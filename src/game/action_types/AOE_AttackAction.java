@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.RandomNumberGenerator;
+import game.Species;
 import game.Status;
 import game.entity.enemies.Enemy;
 
@@ -112,7 +113,7 @@ public class AOE_AttackAction extends Action {
                     }
                     // else if the other target is an enemy of different type
                     else if (destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-                        if (destinationActor.getDisplayChar()!= actor.getDisplayChar()) {
+                        if (!actor.findCapabilitiesByType(Species.class).equals(destinationActor.findCapabilitiesByType(Species.class))) {
                             targets.add(destinationActor);
                         }
                     }

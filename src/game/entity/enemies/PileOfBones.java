@@ -35,6 +35,7 @@ public class PileOfBones extends Enemy{
         super("Pile of Bones", 'X',1);
         this.setBehaviours(new HashMap<>());
         this.addCapability(Status.CAN_DROP_RUNES);
+        this.addCapability(Species.BONE);
         this.addCapability(Status.RESPAWNABLE);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         WeaponItem weapon = enemy.getWeaponInventory().get(0);

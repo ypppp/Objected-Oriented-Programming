@@ -33,22 +33,15 @@ public class TheSiteOfLostGrace extends Ground implements Activatable{
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
+
+
         // if the site has been activated
         if(isHasActivate()){
-            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY) && location.map().locationOf(actor) == location){
+            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
                 actions.add(new RestAction(this));
                 return actions;
             }
-            for (Exit exit : location.getExits()){
-                Location destination = exit.getDestination();
-                if (destination.containsAnActor()) {
-                    Actor destinationActor = destination.getActor();
-                    if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                        actions.add(new RestAction(this));
-                    }
-                }
-
-            }
+            return actions;
 
         }
         else{

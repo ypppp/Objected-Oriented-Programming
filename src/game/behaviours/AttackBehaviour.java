@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.RandomNumberGenerator;
+import game.Species;
 import game.Status;
 import game.action_types.AttackAction;
 import game.entity.enemies.Enemy;
@@ -36,7 +37,7 @@ public class AttackBehaviour implements Behaviour {
             if (destination.containsAnActor()) {
                 Actor destinationActor = destination.getActor();
                 if (destinationActor.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-                    if(destinationActor.getDisplayChar()!= actor.getDisplayChar()){
+                    if(!actor.findCapabilitiesByType(Species.class).equals(destinationActor.findCapabilitiesByType(Species.class))){
                         if(actor.getWeaponInventory().size()!=0){
                             WeaponItem weapon = actor.getWeaponInventory().get(0);
                             if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
