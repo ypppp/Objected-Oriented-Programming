@@ -38,7 +38,7 @@ public abstract class SpawningGrounds extends Ground {
 
     /**
      * A setter to set the enemy factory of the spawning ground
-     * @param factory
+     * @param factory The factory that spawns enemy of the spawning ground
      */
     public void setFactory(EnemyFactory factory) {
         this.factory = factory;

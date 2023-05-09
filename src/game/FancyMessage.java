@@ -9,6 +9,9 @@ package game;
  * Modified by:
  */
 public class FancyMessage {
+    /**
+     * The fancy message for elden ring
+     */
     public static String ELDEN_RING =
             "`7MM\"\"\"YMM  `7MMF'      `7MM\"\"\"Yb. `7MM\"\"\"YMM  `7MN.   `7MF'    `7MM\"\"\"Mq.  `7MMF'`7MN.   `7MF' .g8\"\"\"bgd  \n" +
             "  MM    `7    MM          MM    `Yb. MM    `7    MMN.    M        MM   `MM.   MM    MMN.    M .dP'     `M  \n" +
@@ -18,6 +21,9 @@ public class FancyMessage {
             "  MM     ,M   MM     ,M   MM    ,dP' MM     ,M   M     YMM        MM   `Mb.   MM    M     YMM `Mb.     MM  \n" +
             ".JMMmmmmMMM .JMMmmmmMMM .JMMmmmdP' .JMMmmmmMMM .JML.    YM      .JMML. .JMM..JMML..JML.    YM   `\"bmmmdPY  \n";
 
+    /**
+     * The fancy message for when the player dies
+     */
     public static String YOU_DIED =
             "`YMM'   `MM' .g8\"\"8q. `7MMF'   `7MF'    `7MM\"\"\"Yb. `7MMF'`7MM\"\"\"YMM  `7MM\"\"\"Yb.   \n" +
             "  VMA   ,V .dP'    `YM. MM       M        MM    `Yb. MM    MM    `7    MM    `Yb. \n" +
