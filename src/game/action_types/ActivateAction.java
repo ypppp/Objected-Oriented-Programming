@@ -35,7 +35,8 @@ public class ActivateAction extends Action {
                 exception.printStackTrace();
             }
         }
-        return activatable.getName() + " has been activated";
+
+        return activatable + " has been activated";
     }
 
     /**
@@ -46,6 +47,6 @@ public class ActivateAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " activate " + activatable.getName();
+        return actor + " activate " + activatable;
     }
 }

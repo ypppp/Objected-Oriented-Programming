@@ -9,7 +9,13 @@ import game.Status;
 import game.action_types.ActivateAction;
 import game.action_types.RestAction;
 
-public class TheSiteOfLostGrace extends ActivatableGrounds{
+import java.util.ArrayList;
+
+public class TheSiteOfLostGrace extends Ground implements Activatable{
+
+    private boolean hasActivate = false;
+    private String name;
+    private static ArrayList<Location> fastTravelLocation = new ArrayList<Location>();
 
 
     public TheSiteOfLostGrace(String name) {
@@ -17,6 +23,12 @@ public class TheSiteOfLostGrace extends ActivatableGrounds{
         this.setName(name);
     }
 
+//    @Override
+//    public void tick(Location location) {
+//        if(isHasActivate()){
+//            addFastTravelLocation();
+//        }
+//    }
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
@@ -46,5 +58,38 @@ public class TheSiteOfLostGrace extends ActivatableGrounds{
 
 
     }
+
+    public static void addFastTravelLocation(Location location){
+        fastTravelLocation.add(location);
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void activate() {
+        this.setHasActivate(true);
+    }
+
+    public boolean isHasActivate() {
+        return hasActivate;
+    }
+
+    public void setHasActivate(boolean hasActivate) {
+        this.hasActivate = hasActivate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String toString() {
+        return name;
+    }
+
 
 }

@@ -1,24 +1,19 @@
 package game;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.entity.enemies.GiantCrab;
-import game.entity.enemies.HeavySkeletonSwordsman;
-import game.entity.enemies.LoneWolf;
 import game.entity.players.Bandit;
 import game.entity.npc.Trader;
 import game.entity.players.Player;
 import game.entity.players.Samurai;
 import game.entity.players.Wretch;
 import game.grounds.*;
-import game.items.runes.Rune;
-import game.items.runes.RuneManager;
 import game.action_types.reset.ResetManager;
+import edu.monash.fit2099.engine.positions.Location;
 
 /**
  * The main class to start the game.
@@ -166,6 +161,7 @@ public class Application {
 		// add the first site of lost grace
 		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
 		firstSite.setHasActivate(true);
+		TheSiteOfLostGrace.addFastTravelLocation(new Location(gameMap,38,11));
 		gameMap.at(38,11).setGround(firstSite);
 
 		// created the site of lost grace for all the maps
@@ -174,16 +170,16 @@ public class Application {
 //		bossMap.at(20,4).setGround(new TheSiteOfLostGrace("Godrick the Grafted"));
 
 		//add the doorway to the roundtable map
-		gameMap.at(34,8).setGround(new Door(roundTableMap.at(9,10),"Roundtable Hold"));
-		roundTableMap.at(9,10).setGround(new Door(gameMap.at(34,8),"Limgrave"));
+		gameMap.at(34,8).setGround(new GoldenFogDoor(roundTableMap.at(9,10),"Roundtable Hold"));
+		roundTableMap.at(9,10).setGround(new GoldenFogDoor(gameMap.at(34,8),"Limgrave"));
 
 		//add the doorway to the stormveil map
-//		gameMap.at(28,3).setGround(new Door(stormVeilMap.at(36,23),"StormVeil Castle"));
-//		stormVeilMap.at(28,3).setGround(new Door(gameMap.at(28,3),"Limgrave"));
+//		gameMap.at(28,3).setGround(new GoldenFogDoor(stormVeilMap.at(36,23),"StormVeil Castle"));
+//		stormVeilMap.at(28,3).setGround(new GoldenFogDoor(gameMap.at(28,3),"Limgrave"));
 
 		//add the doorway to the boss room map
-//		gameMap.at(6,20).setGround(new Door(bossMap.at(13,7),"Boss Room"));
-//		BossMap.at(13,7).setGround(new Door(gameMap.at(6,20),"Limgrave"));
+//		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Boss Room"));
+//		BossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(6,20),"Limgrave"));
 
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
