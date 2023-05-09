@@ -22,7 +22,7 @@ public class RestAction extends Action {
 
     /**
      * The constructor of the RestAction class
-     * @param theSiteOfLostGrace
+     * @param theSiteOfLostGrace The site of lost grace
      */
     public RestAction(TheSiteOfLostGrace theSiteOfLostGrace) {
         this.theSiteOfLostGrace = theSiteOfLostGrace;

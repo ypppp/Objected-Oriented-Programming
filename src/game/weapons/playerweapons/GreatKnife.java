@@ -14,7 +14,7 @@ import game.items.Sellable;
  * @see WeaponItem
  * @see Purchasable
  * @see Sellable
- * @Version 1.0
+ * @version 1.0
  */
 public class GreatKnife extends WeaponItem implements Purchasable, Sellable {
 

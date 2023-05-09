@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * The giant dog that spawns in the gust of winds
  * @author Yew Yee Perng
- * @Version 1.0
+ * @version 1.0
  * @see Enemy
  */
 public class GiantDog extends Enemy{

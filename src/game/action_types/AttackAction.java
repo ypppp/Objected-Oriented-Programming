@@ -94,18 +94,34 @@ public class AttackAction extends Action {
 		return result;
 	}
 
+	/**
+	 * Getter to return a Random object
+	 * @return A Random object
+	 */
 	public Random getRand() {
 		return rand;
 	}
 
+	/**
+	 * To get the target
+	 * @return An actor that is the target
+	 */
 	public Actor getTarget() {
 		return target;
 	}
 
+	/**
+	 * To get the direction of the attack
+	 * @return A string which states the direction of the attack
+	 */
 	public String getDirection() {
 		return direction;
 	}
 
+	/**
+	 * To get the weapon of the attack
+	 * @return The weapon of the attack
+	 */
 	public Weapon getWeapon() {
 		return weapon;
 	}

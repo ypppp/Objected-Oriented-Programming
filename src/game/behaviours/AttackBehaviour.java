@@ -18,7 +18,7 @@ import java.util.*;
 /**
  * The behaviour of the enemy to do an attack action on a player or enemy of different type where the player is prioritised first
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Behaviour
  */
 public class AttackBehaviour implements Behaviour {
@@ -27,7 +27,7 @@ public class AttackBehaviour implements Behaviour {
      * Obtain the action to be executed by this behaviour
      * @param actor the Actor acting
      * @param map the GameMap containing the Actor
-     * @return
+     * @return An action if the actor can perform; null otherwise
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {

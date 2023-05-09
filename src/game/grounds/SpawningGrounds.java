@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.Location;
  * A type of ground that can spawn enemies
  * @author Tong Jet Kit
  * @see Ground
- * @Version 1.0
+ * @version 1.0
  */
 public abstract class SpawningGrounds extends Ground {
 

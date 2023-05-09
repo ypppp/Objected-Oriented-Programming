@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * An enemy factory to spawn an enemy
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  */
 public abstract class EnemyFactory {
 

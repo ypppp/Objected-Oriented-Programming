@@ -3,7 +3,7 @@ package game.items;
 /**
  * An interface for items that are sellable
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  */
 public interface Sellable {
 
