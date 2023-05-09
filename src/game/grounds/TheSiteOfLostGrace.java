@@ -31,9 +31,6 @@ public class TheSiteOfLostGrace extends Ground implements Activatable, Travelabl
         if(isHasActivate()){
             TheSiteOfLostGrace.addFastTravelSite(this,location);
         }
-        for (TheSiteOfLostGrace title : fastTravel.keySet()) {
-            System.out.println(this + " activatedsite: " + title);
-        }
 
     }
 
