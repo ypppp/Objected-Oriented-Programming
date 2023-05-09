@@ -54,7 +54,7 @@ public class ResetManager{
 
     /**
      * The setter for the spawn point location of the player
-     * @param spawnPoint
+     * @param spawnPoint The location of the player's spawnpoint
      */
     public void setSpawnPoint(Location spawnPoint) {
         this.spawnPoint = spawnPoint;
@@ -71,7 +71,7 @@ public class ResetManager{
 
     /**
      * Add resettable entities
-     * @param resettable
+     * @param resettable A resettable entity
      */
     public void registerResettable(Resettable resettable) {
         resettables.add(resettable);
