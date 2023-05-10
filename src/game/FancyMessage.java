@@ -111,6 +111,10 @@ public class FancyMessage {
         put("Stormveil Main Gate",FancyMessage.STORMVEILCASTLE);
     }};
 
+    /**
+     * A method to print out the message based on the travel destination
+     * @param message The destination name of the fast travel
+     */
     public static void printMessage(String message){
         for (String line : FancyMessage.fancyMsgMap.get(message).split("\n")) {
             new Display().println(line);
