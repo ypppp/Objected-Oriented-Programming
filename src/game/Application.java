@@ -200,7 +200,6 @@ public class Application {
 		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
 		firstSite.setHasActivate(true);
 		gameMap.at(38,11).setGround(firstSite);
-//		gameMap.at(41,11).setGround(new TheSiteOfLostGrace("test"));
 
 		// created the site of lost grace for all the maps
 		roundTableMap.at(9,5).setGround(new TheSiteOfLostGrace("Table of Lost Grace"));
@@ -223,7 +222,7 @@ public class Application {
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 
-		player.addItemToInventory(new RemembranceOfTheGrafted());
+
 
 		world.addPlayer(player, gameMap.at(37, 10));
 
