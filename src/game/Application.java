@@ -124,7 +124,7 @@ public class Application {
 		eniaAction.add(Status.SELLABLE);
 		eniaAction.add(Status.EXCHANGEABLE);
 
-//		gameMap.at(35,10).addActor(new Trader("Enia", 'E', eniaAction));
+		gameMap.at(35,10).addActor(new Trader("Enia", 'E', eniaAction));
 
 		gameMap.at(38,11).setGround(new TheSiteOfLostGrace("The First Step"));
 
@@ -133,7 +133,7 @@ public class Application {
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(36, 10));
-		player.addItemToInventory(new RemembranceOfTheGrafted());
+
 
 		world.run();
 

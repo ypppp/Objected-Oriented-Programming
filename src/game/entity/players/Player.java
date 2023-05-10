@@ -15,6 +15,7 @@ import game.action_types.reset.ResetManager;
 import game.action_types.reset.Resettable;
 import game.Status;
 
+import game.items.RemembranceOfTheGrafted;
 import game.items.runes.RuneManager;
 
 
@@ -46,7 +47,6 @@ public abstract class Player extends Actor implements Resettable {
 		this.addItemToInventory(flaskOfCrimsonTears);
 		ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
 		ResetManager.getInstance().registerResettable(this);
-
 	}
 
 	/**
