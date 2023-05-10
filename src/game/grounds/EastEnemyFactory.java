@@ -27,12 +27,16 @@ public class EastEnemyFactory extends EnemyFactory{
             put('n', new SkeletonBandit());
             put('&', new GiantDog());
             put('~', new GiantCrayfish());
+            put('B', new GodrickSoldier());
+            put('<', new Dog());
         }};
 
         HashMap<Character, Integer> enemySpawnChance = new HashMap<>(){{
             put('n',27);
             put('&',33);
             put('~',2);
+            put('B',45);
+            put('<',37);
         }};
 
         this.setEnemySpawnChance(enemySpawnChance);

@@ -14,8 +14,6 @@ public enum Species {
      * Canine species
      */
     CANINE,
-    /**
-     * Crustaceans species
-     */
-    CRUSTACEANS
+    CRUSTACEANS,
+    COMPANION
 }
