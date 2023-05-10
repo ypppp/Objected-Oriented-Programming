@@ -19,7 +19,6 @@ import java.util.HashMap;
  * @author Aaren Wong
  * @see Ground
  * @version 1.0
-
 */
 public class TheSiteOfLostGrace extends Ground implements Activatable, Travelable{
 
