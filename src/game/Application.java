@@ -186,7 +186,6 @@ public class Application {
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(37, 10));
-
 		world.run();
 
 	}
