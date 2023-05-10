@@ -93,7 +93,7 @@ public class FancyMessage {
             ",MI    \"Y MM                                  `MA     ,V               MM .dP'     `M                   MM     MM         \n"+
             "`MMb.   mmMMmm ,pW\"Wq.`7Mb,od8 `7MMpMMMb.pMMMb.VM:   ,V .gP\"Ya `7MM    MM dM'       ` ,6\"Yb.  ,pP\"Ybd mmMMmm   MM  .gP\"Ya \n"+
             "  `YMMNq. MM  6W'   `Wb MM' \"'   MM    MM    MM MM.  M',M'   Yb  MM    MM MM         8)   MM  8I   `\"   MM     MM ,M'   Yb\n"+
-            ".     `MM MM  8M     M8 MM       MM    MM    MM `MM A' 8M\"\"\"\"\"\"  MM    MM MM.         ,pm9MM  `YMMMa.   MM     MM 8M\"\"\"\"\"\" "+
+            ".     `MM MM  8M     M8 MM       MM    MM    MM `MM A' 8M\"\"\"\"\"\"  MM    MM MM.         ,pm9MM  `YMMMa.   MM     MM 8M\"\"\"\"\"\" \n"+
             "Mb     dM MM  YA.   ,A9 MM       MM    MM    MM  :MM;  YM.    ,  MM    MM `Mb.     ,'8M   MM  L.   I8   MM     MM YM.    , \n"+
             "P\"Ybmmd\"  `Mbmo`Ybmd9'.JMML.   .JMML  JMML  JMML. VF    `Mbmmd'.JMML..JMML. `\"bmmmd' `Moo9^Yo.M9mmmP'   `Mbmo.JMML.`Mbmmd' \n"+
             "                                                                                                                              \n"+
