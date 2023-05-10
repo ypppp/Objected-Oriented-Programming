@@ -12,7 +12,7 @@ import java.util.List;
  * The currency of the game
  * @author Tong Jet Kit
  * @see Item
- * @Version 1.0
+ * @version 1.0
  */
 public class Rune extends Item {
 

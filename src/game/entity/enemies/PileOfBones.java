@@ -20,16 +20,24 @@ import java.util.HashMap;
 /**
  * The pile of bones that spawns after a skeleton enemy dies and will respawn after not being hit
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Enemy
  */
 public class PileOfBones extends Enemy{
 
+    /**
+     * Integer to represent the turn left to respawn
+     */
     private int counter = 3;
+
+    /**
+     * The actor that the pile of bones will revived to
+     */
     private Actor revivedEnemy;
 
     /**
      * Constructor.
+     * @param enemy The actor which the pile of bones will resurrected to
      */
     public PileOfBones(Actor enemy) {
         super("Pile of Bones", 'X',1);

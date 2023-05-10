@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * An enemy factory to spawn an enemy at the east
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see EnemyFactory
  */
 public class EastEnemyFactory extends EnemyFactory{

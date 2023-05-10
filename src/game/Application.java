@@ -1,6 +1,5 @@
 package game;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 import edu.monash.fit2099.engine.displays.Display;
@@ -14,9 +13,8 @@ import game.entity.players.Player;
 import game.entity.players.Samurai;
 import game.entity.players.Wretch;
 import game.grounds.*;
-import game.items.runes.Rune;
-import game.items.runes.RuneManager;
 import game.action_types.reset.ResetManager;
+import edu.monash.fit2099.engine.positions.Location;
 
 /**
  * The main class to start the game.
@@ -33,7 +31,9 @@ public class Application {
 
 		World world = new World(display);
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new Cage(), new Barrack());
+
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new Cliff(),, new Cage(), new Barrack());
+
 
 		List<String> map = Arrays.asList(
 				"...........................................................................",
@@ -60,8 +60,69 @@ public class Application {
 				"..####__###..................................................._.....__.#...",
 				"..............................................................###..__###...",
 				"...........................................................................");
+
+		List<String> roundTable = Arrays.asList(
+				"##################",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"#________________#",
+				"########___#######"
+		);
+
+//		List<String> StormVeilCastle = Arrays.asList(
+//				"...........................................................................",
+//				"..................<...............<........................................",
+//				"...........................................................................",
+//				"##############################################...##########################",
+//				"............................#................#.......B..............B......",
+//				".....B...............B......#................#.............................",
+//				"...............................<.........<.................................",
+//				".....B...............B......#................#.......B..............B......",
+//				"............................#................#.............................",
+//				"#####################..#############...############.####..#########...#####",
+//				"...............#++++++++++++#................#++++++++++++#................",
+//				"...............#++++++++++++...<.........<...#++++++++++++#................",
+//				"...............#++++++++++++..................++++++++++++#................",
+//				"...............#++++++++++++#................#++++++++++++#................",
+//				"#####...##########.....#############...#############..#############...#####",
+//				".._______........................B......B........................B.....B...",
+//				"_____..._..____....&&........<..............<..............................",
+//				".........____......&&......................................................",
+//				"...._______..................<..............<....................<.....<...",
+//				"#####....##...###..#####...##########___###############......##.....####...",
+//				"+++++++++++++++++++++++++++#........___........#+++++++++++++++++++++++++++",
+//				"+++++++++++++++++++++++++++.........___........#+++++++++++++++++++++++++++",
+//				"+++++++++++++++++++++++++++#........___.........+++++++++++++++++++++++++++",
+//				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++"
+//		);
+//
+//		List<String> bossRoom = Arrays.asList(
+//				"+++++++++++++++++++++++++",
+//				".........................",
+//				"..=......................",
+//				"...................___...",
+//				"...................___...",
+//				"...................___...",
+//				".........................",
+//				".........................",
+//				"+++++++++++++++++++++++++"
+//		);
+
 		GameMap gameMap = new GameMap(groundFactory, map);
+		GameMap roundTableMap = new GameMap(groundFactory,roundTable);
+//		GameMap stormVeilMap = new GameMap(groundFactory,StormVeilCastle);
+//		GameMap bossMap = new GameMap(groundFactory, bossRoom);
+
 		world.addGameMap(gameMap);
+//		world.addGameMap(stormVeilMap);
+//		world.addGameMap(bossMap);
+		world.addGameMap(roundTableMap);
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
@@ -97,15 +158,36 @@ public class Application {
 
 		player = classesMap.get(chosenClass);
 
+		//add the trader to the map
 		gameMap.at(40, 11).addActor(new Trader());
 
-		gameMap.at(38,11).setGround(new TheSiteOfLostGrace("The First Step"));
+		// add the first site of lost grace
+		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
+		firstSite.setHasActivate(true);
+		gameMap.at(38,11).setGround(firstSite);
+//		gameMap.at(41,11).setGround(new TheSiteOfLostGrace("test"));
+
+		// created the site of lost grace for all the maps
+		roundTableMap.at(9,5).setGround(new TheSiteOfLostGrace("Table of Lost Grace"));
+//		stormVeilMap.at(38,20).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
+//		bossMap.at(20,4).setGround(new TheSiteOfLostGrace("Godrick the Grafted"));
+
+		//add the doorway to the roundtable map
+		gameMap.at(34,8).setGround(new GoldenFogDoor(roundTableMap.at(9,10),"Roundtable Hold"));
+		roundTableMap.at(9,10).setGround(new GoldenFogDoor(gameMap.at(34,8),"Limgrave"));
+
+		//add the doorway to the stormveil map
+//		gameMap.at(28,3).setGround(new GoldenFogDoor(stormVeilMap.at(36,23),"StormVeil Castle"));
+//		stormVeilMap.at(28,3).setGround(new GoldenFogDoor(gameMap.at(28,3),"Limgrave"));
+
+		//add the doorway to the boss room map
+//		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Boss Room"));
+//		BossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(6,20),"Limgrave"));
 
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
-		world.addPlayer(player, gameMap.at(36, 10));
-
+		world.addPlayer(player, gameMap.at(37, 10));
 		world.run();
 
 	}

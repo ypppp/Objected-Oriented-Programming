@@ -10,7 +10,7 @@ import game.items.runes.RuneManager;
 /**
  * An action to buy a weapon from the trader
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Action
  */
 public class BuyWeaponAction extends Action {

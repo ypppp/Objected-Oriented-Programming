@@ -22,7 +22,7 @@ public class RecoverRuneAction extends Action {
 
     /**
      * The constructor of the RecoverRuneAction class
-     * @param runes
+     * @param runes The rune object that is recovered
      */
     public RecoverRuneAction(Rune runes) {
         this.runes = runes;

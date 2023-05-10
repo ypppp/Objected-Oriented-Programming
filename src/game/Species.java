@@ -6,7 +6,13 @@ package game;
  * @author Tong Jet Kit
  */
 public enum Species {
+    /**
+     * Bone species
+     */
     BONE,
+    /**
+     * Canine species
+     */
     CANINE,
     CRUSTACEANS,
     COMPANION

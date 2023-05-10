@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * An Action to attack the surrounding area
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Action
  */
 public class AOE_AttackAction extends Action {
