@@ -10,7 +10,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.action_types.BuyWeaponAction;
+import game.action_types.ExchangeAction;
 import game.action_types.SellWeaponAction;
+import game.items.Exchangeable;
 import game.items.Purchasable;
 import game.items.Sellable;
 import game.weapons.enemyweapons.Scimitar;
@@ -39,11 +41,16 @@ public class Trader extends Actor {
      */
     ArrayList<Purchasable> purchasables = new ArrayList<>();
 
+    ArrayList<Exchangeable>exchangeables = new ArrayList<>();
+
     /**
      * Constructor.
      */
-    public Trader() {
-        super("Kale", 'K',0);
+    public Trader(String name, char displayChar,ArrayList<Status>status) {
+        super(name,displayChar,0);
+        for (Status traderStatus:status){
+            this.addCapability(traderStatus);
+        }
         weaponPrice.put("Club",new Club());
         weaponPrice.put("Uchigatana", new Uchigatana());
         weaponPrice.put("Great Knife", new GreatKnife());
@@ -52,6 +59,8 @@ public class Trader extends Actor {
         purchasables.add(new Uchigatana());
         purchasables.add(new GreatKnife());
         purchasables.add(new Scimitar());
+        System.out.println(name + this.capabilitiesList());
+
 
 
     }
@@ -82,18 +91,23 @@ public class Trader extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            for(Purchasable purchasable: purchasables){
-                actions.add(new BuyWeaponAction(this, purchasable.getPurchaseItem(), purchasable.getPurchasePrice()));
-            }
-
-            for(WeaponItem weapon: otherActor.getWeaponInventory()){
-                if(weapon.hasCapability(Status.SELLABLE)){
-                    String weaponName = weapon.toString();
-                    actions.add(new SellWeaponAction(this, weapon,weaponPrice.get(weaponName).getSellPrice()));
+            if (this.hasCapability(Status.PURCHASABLE)){
+                for(Purchasable purchasable: purchasables){
+                    actions.add(new BuyWeaponAction(this, purchasable.getPurchaseItem(), purchasable.getPurchasePrice()));
                 }
-
-
-
+            } if (this.hasCapability(Status.SELLABLE)){
+                for(WeaponItem weapon: otherActor.getWeaponInventory()) {
+                    if (weapon.hasCapability(Status.SELLABLE)) {
+                        String weaponName = weapon.toString();
+                        actions.add(new SellWeaponAction(this, weapon, weaponPrice.get(weaponName).getSellPrice()));
+                    }
+                }
+            } if (this.hasCapability(Status.EXCHANGEABLE)){
+                for (Exchangeable exchangeableItems:exchangeables){
+                    for (String exchangeName: exchangeableItems.getExchangeItem().keySet()){
+                        actions.add((new ExchangeAction(this, exchangeableItems, exchangeName)));
+                    }
+                }
             }
 
         }

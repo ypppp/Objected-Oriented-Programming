@@ -14,6 +14,8 @@ import game.entity.players.Player;
 import game.entity.players.Samurai;
 import game.entity.players.Wretch;
 import game.grounds.*;
+import game.items.GoldenRunes;
+import game.items.RemembranceOfTheGrafted;
 import game.items.runes.Rune;
 import game.items.runes.RuneManager;
 import game.action_types.reset.ResetManager;
@@ -61,6 +63,8 @@ public class Application {
 				"..............................................................###..__###...",
 				"...........................................................................");
 		GameMap gameMap = new GameMap(groundFactory, map);
+		ArrayList<GameMap>maps = new ArrayList<>();
+		maps.add(gameMap);
 		world.addGameMap(gameMap);
 
 		// BEHOLD, ELDEN RING
@@ -97,14 +101,39 @@ public class Application {
 
 		player = classesMap.get(chosenClass);
 
-		gameMap.at(40, 11).addActor(new Trader());
+		for(GameMap gameMaps:maps) {
+			for (int i = 0; i < 25; i++) {
+				int x_coordinate = RandomNumberGenerator.getRandomInt(gameMap.getXRange().min(), gameMap.getXRange().max());
+				int y_coordinate = RandomNumberGenerator.getRandomInt(gameMap.getYRange().min(), gameMap.getYRange().max());
+				if (gameMap.at(x_coordinate, y_coordinate).getGround().hasCapability(Status.CAN_HAVE_GOLDEN_RUNES)) {
+					if (gameMap.at(x_coordinate, y_coordinate).getItems().isEmpty()) {
+						gameMap.at(x_coordinate, y_coordinate).addItem(new GoldenRunes());
+					}
+				}
+			}
+		}
+
+
+		ArrayList<Status>kaleAction = new ArrayList<>();
+		kaleAction.add(Status.SELLABLE);
+		kaleAction.add(Status.PURCHASABLE);
+
+		gameMap.at(40, 11).addActor(new Trader("Kale", 'K', kaleAction));
+
+		ArrayList<Status>eniaAction = new ArrayList<>();
+		eniaAction.add(Status.SELLABLE);
+		eniaAction.add(Status.EXCHANGEABLE);
+
+//		gameMap.at(35,10).addActor(new Trader("Enia", 'E', eniaAction));
 
 		gameMap.at(38,11).setGround(new TheSiteOfLostGrace("The First Step"));
 
+		gameMap.at(35, 11).addItem(new GoldenRunes());
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
 		world.addPlayer(player, gameMap.at(36, 10));
+		player.addItemToInventory(new RemembranceOfTheGrafted());
 
 		world.run();
 

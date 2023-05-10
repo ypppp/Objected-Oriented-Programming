@@ -69,6 +69,6 @@ public class SellWeaponAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return "I am Kale, Purveyor of fine goods. I would like to buy your " + weapon;
+        return "I am " + trader +  ", Purveyor of fine goods. I would like to buy your " + weapon;
     }
 }

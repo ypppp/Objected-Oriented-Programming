@@ -63,5 +63,21 @@ public enum Status {
     /**
      * Heal
      */
-    HEAL
+    HEAL,
+    /**
+     * Can exchange
+     */
+    EXCHANGEABLE,
+    /**
+     * Can have golden runes
+     */
+    CAN_HAVE_GOLDEN_RUNES,
+    /**
+     * Is in inventory
+     */
+    IN_INVENTORY,
+    /**
+     * Can purchase
+     */
+    PURCHASABLE
 }
