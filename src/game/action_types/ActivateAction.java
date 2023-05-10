@@ -8,17 +8,29 @@ import game.FancyMessage;
 import game.grounds.Activatable;
 import game.grounds.TheSiteOfLostGrace;
 
+/**
+ * An action to activate an object
+ * @author Tong Jet Kit
+ * @see Action
+ * @version 1.0
+ */
 public class ActivateAction extends Action {
 
+    /**
+     * An activatable object
+     */
     private Activatable activatable;
 
-
+    /**
+     * Constructor
+     * @param activatable The activable object that we are activating through this action
+     */
     public ActivateAction(Activatable activatable) {
         this.activatable = activatable;
     }
 
     /**
-     * Perform the Action.
+     * Perform the activating action.
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

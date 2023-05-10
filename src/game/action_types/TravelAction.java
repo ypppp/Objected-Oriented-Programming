@@ -4,12 +4,26 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.FancyMessage;
 import game.grounds.Travelable;
 
+/**
+ * An action to fast travel
+ * @author Tong Jet Kit
+ * @see Action
+ */
 public class TravelAction extends Action {
 
+    /**
+     * A travelable object
+     */
     private Travelable travelable;
 
+
+    /**
+     * Constructor
+     * @param travelable The travelable object
+     */
     public TravelAction(Travelable travelable) {
         this.travelable = travelable;
     }
@@ -24,6 +38,7 @@ public class TravelAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         travelable.travel(actor,map);
+        FancyMessage.printMessage(travelable.toString());
         return menuDescription(actor);
     }
 
