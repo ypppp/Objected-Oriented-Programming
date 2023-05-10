@@ -38,7 +38,7 @@ public class Trader extends Actor {
     /**
      * A hashmap of sellable weapons that the trader can buy from the player
      */
-    HashMap<String, Sellable> weaponPrice = new HashMap<>();
+    HashMap<String, Sellable> sellables = new HashMap<>();
 
     /**
      * An arraylist of purchasable weapons that the trader can sell to the player
@@ -55,13 +55,13 @@ public class Trader extends Actor {
         for (Status traderStatus:status){
             this.addCapability(traderStatus);
         }
-        weaponPrice.put("Club",new Club());
-        weaponPrice.put("Uchigatana", new Uchigatana());
-        weaponPrice.put("Great Knife", new GreatKnife());
-        weaponPrice.put("Scimitar", new Scimitar());
-        weaponPrice.put("Remembrance of the Grafted", new RemembranceOfTheGrafted());
-        weaponPrice.put("Axe of Godric", new AxeOfGodric());
-        weaponPrice.put("Grafted Dragon",new GraftedDragon());
+        sellables.put("Club",new Club());
+        sellables.put("Uchigatana", new Uchigatana());
+        sellables.put("Great Knife", new GreatKnife());
+        sellables.put("Scimitar", new Scimitar());
+        sellables.put("Remembrance of the Grafted", new RemembranceOfTheGrafted());
+        sellables.put("Axe of Godric", new AxeOfGodric());
+        sellables.put("Grafted Dragon",new GraftedDragon());
         purchasables.add(new Club());
         purchasables.add(new Uchigatana());
         purchasables.add(new GreatKnife());
@@ -106,12 +106,17 @@ public class Trader extends Actor {
             }
 
 
-
             if (this.hasCapability(Status.SELLABLE)){
                 for(WeaponItem weapon: otherActor.getWeaponInventory()) {
                     if (weapon.hasCapability(Status.SELLABLE)) {
                         String weaponName = weapon.toString();
-                        actions.add(new SellWeaponAction(this, weapon, weaponPrice.get(weaponName).getSellPrice()));
+                        actions.add(new SellWeaponAction(this, weapon, sellables.get(weaponName).getSellPrice()));
+                    }
+                }
+                for(Item item:otherActor.getItemInventory()){
+                    if(item.hasCapability(Status.SELLABLE)){
+                        String itemName = item.toString();
+                        actions.add(new SellWeaponAction(this,item,sellables.get(itemName).getSellPrice()));
                     }
                 }
             }
