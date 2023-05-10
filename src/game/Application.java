@@ -13,6 +13,10 @@ import game.entity.players.Player;
 import game.entity.players.Samurai;
 import game.entity.players.Wretch;
 import game.grounds.*;
+import game.items.GoldenRunes;
+import game.items.RemembranceOfTheGrafted;
+import game.items.runes.Rune;
+import game.items.runes.RuneManager;
 import game.action_types.reset.ResetManager;
 import edu.monash.fit2099.engine.positions.Location;
 
@@ -123,6 +127,9 @@ public class Application {
 		world.addGameMap(stormVeilMap);
 //		world.addGameMap(bossMap);
 		world.addGameMap(roundTableMap);
+		
+		ArrayList<GameMap>maps = new ArrayList<>();
+		maps.add(gameMap);
 
 		// BEHOLD, ELDEN RING
 		for (String line : FancyMessage.ELDEN_RING.split("\n")) {
@@ -158,8 +165,35 @@ public class Application {
 
 		player = classesMap.get(chosenClass);
 
+
+		for(GameMap gameMaps:maps) {
+			for (int i = 0; i < 25; i++) {
+				int x_coordinate = RandomNumberGenerator.getRandomInt(gameMap.getXRange().min(), gameMap.getXRange().max());
+				int y_coordinate = RandomNumberGenerator.getRandomInt(gameMap.getYRange().min(), gameMap.getYRange().max());
+				if (gameMap.at(x_coordinate, y_coordinate).getGround().hasCapability(Status.CAN_HAVE_GOLDEN_RUNES)) {
+					if (gameMap.at(x_coordinate, y_coordinate).getItems().isEmpty()) {
+						gameMap.at(x_coordinate, y_coordinate).addItem(new GoldenRunes());
+					}
+				}
+			}
+		}
+
+
+		ArrayList<Status>kaleAction = new ArrayList<>();
+		kaleAction.add(Status.SELLABLE);
+		kaleAction.add(Status.PURCHASABLE);
+
+		gameMap.at(40, 11).addActor(new Trader("Kale", 'K', kaleAction));
+
+		ArrayList<Status>eniaAction = new ArrayList<>();
+		eniaAction.add(Status.SELLABLE);
+		eniaAction.add(Status.EXCHANGEABLE);
+
+		gameMap.at(35,10).addActor(new Trader("Enia", 'E', eniaAction));
+
 		//add the trader to the map
 		gameMap.at(40, 11).addActor(new Trader());
+
 
 		// add the first site of lost grace
 		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
@@ -184,10 +218,15 @@ public class Application {
 //		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Boss Room"));
 //		bossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(6,20),"Limgrave"));
 
+		gameMap.at(35, 11).addItem(new GoldenRunes());
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
+
+
+
 		world.addPlayer(player, gameMap.at(37, 10));
+
 		world.run();
 
 	}
