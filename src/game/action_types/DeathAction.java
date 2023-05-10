@@ -91,7 +91,7 @@ public class DeathAction extends Action {
 //
             if (target.hasCapability(Status.CAN_DROP_RUNES)) {
                 String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
-                result += attacker + " gets " + runeAmount + "runes from " + target;
+                result += System.lineSeparator() + attacker + " gets " + runeAmount + "runes from " + target;
             }
         }
         return result;

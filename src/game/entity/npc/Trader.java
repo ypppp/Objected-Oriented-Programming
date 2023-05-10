@@ -12,6 +12,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.action_types.BuyWeaponAction;
 import game.action_types.ExchangeAction;
+import game.action_types.SellItemAction;
 import game.action_types.SellWeaponAction;
 import game.items.Exchangeable;
 import game.items.Purchasable;
@@ -116,7 +117,7 @@ public class Trader extends Actor {
                 for(Item item:otherActor.getItemInventory()){
                     if(item.hasCapability(Status.SELLABLE)){
                         String itemName = item.toString();
-                        actions.add(new SellWeaponAction(this,item,sellables.get(itemName).getSellPrice()));
+                        actions.add(new SellItemAction(this,item,sellables.get(itemName).getSellPrice()));
                     }
                 }
             }
