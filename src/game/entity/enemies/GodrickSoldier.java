@@ -6,7 +6,16 @@ import game.Species;
 import game.Status;
 import game.weapons.playerweapons.Club;
 
+/**
+ * The Godrick Soldier that spawns from Barrack
+ * @author Yew Yee Perng
+ * @version 1.0
+ * @see Enemy
+ */
 public class GodrickSoldier extends Enemy{
+    /**
+     * Constructor.
+     */
     public GodrickSoldier() {
         super("Godrick Soldier", 'p', 198);
         this.addCapability(Status.HOSTILE_TO_PLAYER);
@@ -16,7 +25,10 @@ public class GodrickSoldier extends Enemy{
         weapon.togglePortability();
         this.addWeaponToInventory(weapon);
     }
-
+    /**
+     * Creates and returns an intrinsic weapon.
+     * @return A newly instantiated intrinsic weapon
+     */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(80, "punches", 85);
