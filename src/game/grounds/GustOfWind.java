@@ -23,5 +23,11 @@ public class GustOfWind extends SpawningGrounds {
     }
 
 
-
+    @Override
+    public void spawn(Location location) {
+        Actor enemy = getFactory().createCanine(location);
+        if (enemy != null){
+            location.addActor(enemy);
+        }
+    }
 }

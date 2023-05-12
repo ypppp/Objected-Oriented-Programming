@@ -27,12 +27,7 @@ public abstract class SpawningGrounds extends Ground {
         this.factory = factory;
     }
 
-    public void spawn(Location location){
-        Actor enemy = getFactory().spawnEnemy(location, this.getDisplayChar());
-        if(enemy != null){
-            location.addActor(enemy);
-        }
-    }
+    public abstract void spawn(Location location);
 
     @Override
     public void tick(Location location) {
