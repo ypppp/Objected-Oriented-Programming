@@ -76,8 +76,19 @@ public enum Status {
      * Is in inventory
      */
     IN_INVENTORY,
+
+    /**
+     * Is cursed
+     */
+    CURSED,
     /**
      * Can purchase
      */
-    PURCHASABLE
+    PURCHASABLE,
+
+    /**
+     * Is a boss
+     */
+    BOSS
+
 }
