@@ -23,45 +23,37 @@ public class EastEnemyFactory extends EnemyFactory{
      */
     public EastEnemyFactory() {
 
-        HashMap<Character,Actor> enemyInstance = new HashMap<>(){{
-            put('n', new SkeletonBandit());
-            put('&', new GiantDog());
-            put('~', new GiantCrayfish());
-        }};
-
-        HashMap<Character, Integer> enemySpawnChance = new HashMap<>(){{
-            put('n',27);
-            put('&',33);
-            put('~',2);
-        }};
-
-        this.setEnemySpawnChance(enemySpawnChance);
-        this.setEnemyInstance(enemyInstance);
     }
 
-    /**
-     * To return an enemy to be spawned at a certain location at east
-     * @param location The location where the enemy will be spawning
-     * @param displayChar The display character of the ground
-     * @return An actor which will the enemy to be spawned on the location if granted; null otherwise
-     */
-    public Actor spawnEnemy(Location location, Character displayChar){
-        try {
-            Actor actorToAdd = getEnemyInstance().get(displayChar);
-            Class<?> cls = actorToAdd.getClass();
-            Constructor<?> constructor;
-            constructor = cls.getConstructor();
-            int spawnChance = getEnemySpawnChance().get(displayChar);
-
-            if(RandomNumberGenerator.getRandomInt(100)< spawnChance && !location.containsAnActor()){
-                return (Actor) constructor.newInstance();
-            }
-            else{
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    @Override
+    public Actor createSkeleton(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 28 && !location.containsAnActor()){
+            return new SkeletonBandit();
         }
-        return null;
+        else{
+            return null;
+        }
     }
+
+    @Override
+    public Actor createCrustaceans(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 2 && !location.containsAnActor()){
+            return new GiantCrayfish();
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public Actor createCanine(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 5 && !location.containsAnActor()){
+            return new GiantDog();
+        }
+        else{
+            return null;
+        }
+    }
+
 }
+
