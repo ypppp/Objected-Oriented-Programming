@@ -55,7 +55,6 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
         this.addBehaviour(2, new AttackBehaviour());
         this.addBehaviour(999,new WanderBehaviour());
         ResetManager.getInstance().registerResettable(this);
-
     }
 
     /**
@@ -97,6 +96,7 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
         this.addCapability(Status.RESET);
     }
 
+
     /**
      * At each turn, select a valid action to perform.
      *
@@ -109,10 +109,11 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (((RandomNumberGenerator.getRandomInt(100)<10) && !this.isFollow) || this.hasCapability(Status.RESET)){
-            this.removeCapability(Status.RESET);
-            ResetManager.getInstance().removeResettable(this);
-            return despawn();
+        // if the chance have been met, you are not following and you are not a boss or if you are resetting
+        if (((RandomNumberGenerator.getRandomInt(100)<10) && !this.isFollow && !this.hasCapability(Status.BOSS)) || this.hasCapability(Status.RESET)){
+                this.removeCapability(Status.RESET);
+                ResetManager.getInstance().removeResettable(this);
+                return despawn();
         }
 
         for (Behaviour behaviour : getBehaviours().values()) {
