@@ -32,7 +32,6 @@ public class GoldenRunes extends Item implements Consumables{
         }
     }
 
-
     @Override
     public void tick(Location currentLocation, Actor actor) {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
