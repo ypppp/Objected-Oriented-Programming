@@ -18,6 +18,13 @@ public class Graveyard extends SpawningGrounds {
         super('n');
     }
 
+    @Override
+    public void spawn(Location location) {
+        Actor enemy = getFactory().createSkeleton(location);
+        if (enemy != null) {
+            location.addActor(enemy);
+        }
 
 
+    }
 }
