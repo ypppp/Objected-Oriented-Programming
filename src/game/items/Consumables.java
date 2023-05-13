@@ -5,6 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 
 /**
  * The Consumables interface
+ * @author Aaren Wong
+ * @version 1.0
  */
 public interface Consumables {
     /**

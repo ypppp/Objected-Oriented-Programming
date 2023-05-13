@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  * An action to perform the skill of Uchigatana
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Action
  */
 public class UnsheatheAction extends Action {

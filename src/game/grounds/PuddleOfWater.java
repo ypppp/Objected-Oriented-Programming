@@ -15,7 +15,7 @@ import java.util.Random;
  * @author Aaren Wong Cong Ming
  * Modified by: Yew Yee Perng
  * @see SpawningGrounds
- * @Version 1.0
+ * @version 1.0
  */
 public class PuddleOfWater extends SpawningGrounds {
     /**

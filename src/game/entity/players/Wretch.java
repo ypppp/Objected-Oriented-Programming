@@ -5,7 +5,7 @@ import game.weapons.playerweapons.Club;
 /**
  * A Wretch role class that has a club as its signature weapon
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Player
  */
 public class Wretch extends Player{

@@ -15,7 +15,7 @@ import game.items.Sellable;
  * @author Tong Jet Kit
  * @see WeaponItem
  * @see Sellable
- * @Version 1.0
+ * @version 1.0
  */
 public class Grossmesser extends WeaponItem implements Sellable {
 

@@ -12,7 +12,7 @@ import game.action_types.RestAction;
  * A place for the player to rest
  * @author Aaren Wong
  * @see Ground
- * @Version 1.0
+ * @version 1.0
  */
 public class TheSiteOfLostGrace extends Ground {
 

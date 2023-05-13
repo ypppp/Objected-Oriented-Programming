@@ -9,7 +9,7 @@ import game.items.runes.RuneManager;
 
 /**
  * An action to sell a weapon to the trader
- * @Version 1.0
+ * @version 1.0
  * @author Tong Jet Kit
  * @see Action
  */

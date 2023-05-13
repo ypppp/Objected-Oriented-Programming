@@ -5,7 +5,7 @@ import game.weapons.playerweapons.Uchigatana;
 /**
  * A Samurai role class that has an uchigatana as its signature weapon
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Player
  */
 public class Samurai extends Player {

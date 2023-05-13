@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * An enemy abstract class that contains all the attributes/methods of an enemy
  * @author Tong Jet Kit
- * @Version 1.0
+ * @version 1.0
  * @see Actor
  * @see Despawnable
  * @see Resettable
