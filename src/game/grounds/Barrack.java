@@ -17,6 +17,10 @@ public class Barrack extends SpawningGrounds{
         super('B');
     }
 
+    /**
+     * To spawn the enemy at that current location
+     * @param location The location of where the enemy will spawn
+     */
     @Override
     public void spawn(Location location) {
         Actor enemy = getFactory().createGodrick(location);
