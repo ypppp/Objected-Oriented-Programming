@@ -55,6 +55,7 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
         this.addBehaviour(2, new AttackBehaviour());
         this.addBehaviour(999,new WanderBehaviour());
         ResetManager.getInstance().registerResettable(this);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
 
     /**

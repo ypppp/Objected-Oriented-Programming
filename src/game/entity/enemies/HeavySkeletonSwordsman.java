@@ -23,7 +23,6 @@ public class HeavySkeletonSwordsman extends Enemy{
      */
     public HeavySkeletonSwordsman() {
         super("Heavy Skeletal Swordsman", 'q',153);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.BONE);
         WeaponItem weapon = new Grossmesser();
         weapon.togglePortability();

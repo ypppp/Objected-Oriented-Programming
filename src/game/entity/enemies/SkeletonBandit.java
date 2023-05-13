@@ -24,7 +24,6 @@ public class SkeletonBandit extends Enemy{
      */
     public SkeletonBandit() {
         super("Skeleton Bandit", 'b',184);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.BONE);
         WeaponItem weapon = new Scimitar();
         weapon.togglePortability();

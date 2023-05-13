@@ -25,7 +25,6 @@ public class RegalAncestorSpirit extends Enemy{
     public RegalAncestorSpirit(Location hiddenDoorLocation, GoldenFogDoor hiddenDoor) {
         super("Regal Ancestor Spirit", 'Y', 1);
         this.addCapability(Status.BOSS);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addBehaviour(1,new LifestealBehaviour());
         ResetManager.getInstance().removeResettable(this);
         this.hiddenDoorLocation = hiddenDoorLocation;

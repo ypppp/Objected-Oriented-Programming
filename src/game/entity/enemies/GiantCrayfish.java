@@ -24,7 +24,6 @@ public class GiantCrayfish extends Enemy{
          */
         public GiantCrayfish() {
             super("GiantCrayFish", 'R',4803);
-            this.addCapability(Status.HOSTILE_TO_PLAYER);
             this.addCapability(Species.CRUSTACEANS);
             this.addCapability(Status.CAN_DROP_RUNES);
             this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
