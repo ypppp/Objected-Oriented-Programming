@@ -25,5 +25,15 @@ public class PuddleOfWater extends SpawningGrounds {
         super('~');
     }
 
+    @Override
+    public void spawn(Location location) {
+        Actor enemy = getFactory().createCrustaceans(location);
+        if (enemy != null) {
+            location.addActor(enemy);
+        }
 
-}
+    }
+
+
+
+    }
