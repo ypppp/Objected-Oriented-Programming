@@ -16,7 +16,7 @@ import java.util.Map;
  * @Version 1.0
  * @see EnemyFactory
  */
-public class EastEnemyFactory extends EnemyFactory{
+public class EastEnemyFactory implements EnemyFactory{
 
     /**
      * Constructor for the enemy factory
