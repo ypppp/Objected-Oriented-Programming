@@ -45,20 +45,23 @@ public class LifestealAction extends Action {
         if (weapon == null) {
             weapon = actor.getIntrinsicWeapon();
         }
+//
+//        if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
+//            return actor + " misses " + target + ".";
+//        }
+//
+//        int damage =  weapon.damage();
+//        String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage";
+//        target.hurt(damage);
+//
+//        if (!target.isConscious() && target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+//            result += new DeathAction(actor).execute(target, map);
+//        }
 
-        if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
-            return actor + " misses " + target + ".";
-        }
-
-        int damage =  weapon.damage();
-        String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage";
-        target.hurt(damage);
-        Float healAmount = damage*0.4f;
+        String result = new AttackAction(target, direction).execute(actor, map);
+        Float healAmount = weapon.damage()*0.4f;
         actor.heal(Math.round(healAmount));
-        result += " and healed for " + healAmount;
-        if (!target.isConscious() && target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-            result += new DeathAction(actor).execute(target, map);
-        }
+        result += System.lineSeparator() + actor + " healed for " + healAmount;
 
         return result;
     }
