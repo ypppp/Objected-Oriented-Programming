@@ -5,30 +5,57 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.Weapon;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.RandomNumberGenerator;
+import game.Species;
+import game.Status;
+import game.entity.players.Player;
+import game.weapons.playerweapons.Club;
+import game.weapons.playerweapons.GreatKnife;
+import game.weapons.playerweapons.Staff;
+import game.weapons.playerweapons.Uchigatana;
 
-public class Ally extends Actor {
+public class Ally extends Creep {
+
+    private final int randomInt = RandomNumberGenerator.getRandomInt(100);
+
+    private int hp;
+
+    private WeaponItem weapon;
+
+
     /**
      * Constructor.
      *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
      */
-    public Ally(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+    public Ally() {
+        super("Ally", 'a', 0 );
+        this.hitPoints = hp;
+        this.addCapability(Status.HOSTILE_TO_ENEMY);
+        this.addCapability(Species.ALLY);
+        this.addWeaponToInventory(weapon);
     }
 
-    /**
-     * Select and return an action to perform on the current turn.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the Action to be performed
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return null;
+    public void setCharacter(int randomInt){
+
+        if (randomInt < 25){
+            hp = 396;
+            weapon = new Staff();
+        }
+        else if(randomInt < 50){
+            hp = 414;
+            weapon = new GreatKnife();
+        }
+        else if(randomInt < 75){
+            hp = 455;
+            weapon = new Uchigatana();
+        }
+        else{
+            hp = 414;
+            weapon = new Club();
+        }
     }
+
+
 }
