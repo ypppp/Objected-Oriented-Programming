@@ -9,6 +9,9 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
 import game.Status;
+import game.action_types.reset.Resettable;
+import game.entity.creep.Creep;
+import game.entity.creep.SummonedManager;
 import game.entity.enemies.PileOfBones;
 import game.items.runes.Rune;
 import game.items.runes.RuneManager;
@@ -67,23 +70,28 @@ public class DeathAction extends Action {
             if ((!target.hasCapability(Species.BONE)) || target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
             }
-//            else if (target.hasCapability(Status.RESPAWNABLE)) {
-//                map.removeActor(target);
-//            }
+            else if (target.hasCapability(Species.INVADER)) {
+                SummonedManager.getInstance().removeCreep((Creep)target);  // need to change downcast
+            }
             else {
                 Location skeletonLoc = map.locationOf(target);
                 map.removeActor(target);
                 PileOfBones skeleton = new PileOfBones(target);
                 map.addActor(skeleton, skeletonLoc);
             }
+
+        }
+        else if(target.hasCapability(Status.HOSTILE_TO_ENEMY) || target.hasCapability(Species.ALLY)){
+            SummonedManager.getInstance().removeCreep((Creep) target);  // need to change downcast
         }
 
         // drop runes
         else {
             RuneManager.getInstance().dropRuneByDeath();
             map.removeActor(target); // player dies
+            SummonedManager.getInstance().del(map);  // remove ally and invader from the map
 
-            return new ResetAction().execute(target, map);
+            return new ResetAction() .execute(target, map);
         }
         result += System.lineSeparator() + menuDescription(target);
 
