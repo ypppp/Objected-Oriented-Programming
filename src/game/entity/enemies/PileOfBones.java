@@ -45,6 +45,7 @@ public class PileOfBones extends Enemy{
         this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Species.BONE);
         this.addCapability(Status.RESPAWNABLE);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
         WeaponItem weapon = enemy.getWeaponInventory().get(0);
         weapon.togglePortability();
         this.addWeaponToInventory(weapon);

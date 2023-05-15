@@ -20,6 +20,7 @@ public class GodrickSoldier extends Enemy{
         super("Godrick Soldier", 'p', 198);
         this.addCapability(Species.COMPANION);
         this.addCapability(Status.CAN_DROP_RUNES);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
         WeaponItem weapon = new Club();
         weapon.togglePortability();
         this.addWeaponToInventory(weapon);

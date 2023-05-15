@@ -26,6 +26,7 @@ public class GiantDog extends Enemy{
         this.addCapability(Species.CANINE);
         this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Status.HAS_AOE_ATTACK_SKILL);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addBehaviour(1, new AOE_SkillBehaviour());
     }
 
