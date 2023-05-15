@@ -1,4 +1,4 @@
-package game.entity.Summoned;
+package game.entity.creep;
 
 public class SummonedManager {
 }
