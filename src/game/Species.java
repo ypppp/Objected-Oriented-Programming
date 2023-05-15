@@ -15,5 +15,8 @@ public enum Species {
      */
     CANINE,
     CRUSTACEANS,
-    COMPANION
+    COMPANION,
+    ALLY,
+    INVADER,
+
 }
