@@ -7,11 +7,8 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.entity.enemies.*;
-import game.entity.players.Bandit;
+import game.entity.players.*;
 import game.entity.npc.Trader;
-import game.entity.players.Player;
-import game.entity.players.Samurai;
-import game.entity.players.Wretch;
 import game.grounds.*;
 import game.items.GoldenRunes;
 import game.items.RemembranceOfTheGrafted;
@@ -155,13 +152,14 @@ public class Application {
 		classesMap.put('w',new Wretch());
 		classesMap.put('B', new Bandit());
 		classesMap.put('b',new Bandit());
+		classesMap.put('@', new Astrologer());
 
 		// at here add a menu to select who what class
 		char chosenClass;
 		Player player;
 		//use hashmap to storethe classes and use contains key and get(key)
 		do{
-			display.println("Choose a class\n S for Samurai\n B for Bandit\n W for Wretch");
+			display.println("Choose a class\n S for Samurai\n B for Bandit\n W for Wretch\n @ for Wretch");
 			chosenClass = display.readChar();
 		} while(!classesMap.containsKey(chosenClass));
 
