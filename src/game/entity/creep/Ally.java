@@ -18,8 +18,6 @@ import game.weapons.playerweapons.Uchigatana;
 
 public class Ally extends Creep {
 
-    private final int randomInt = RandomNumberGenerator.getRandomInt(100);
-
     private int hp;
 
     private WeaponItem weapon;
@@ -30,14 +28,16 @@ public class Ally extends Creep {
      *
      */
     public Ally() {
-        super("Ally", 'a', 0 );
+        super("Ally", 'a', 1 );
         this.hitPoints = hp;
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.addCapability(Species.ALLY);
         this.addWeaponToInventory(weapon);
     }
 
-    public void setCharacter(int randomInt){
+    public void setCharacter(){
+
+        int randomInt = RandomNumberGenerator.getRandomInt(100);
 
         if (randomInt < 25){  // 0-24 = Astrologer is picked randomly
             hp = 396;
