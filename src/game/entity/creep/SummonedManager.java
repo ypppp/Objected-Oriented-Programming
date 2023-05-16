@@ -1,5 +1,6 @@
 package game.entity.creep;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.action_types.reset.Resettable;
 
@@ -10,7 +11,7 @@ public class SummonedManager {
     /**
      * A list of Creep entities
      */
-    private List<Creep> creeps;
+    private List<Actor> creeps;
 
     /**
      * The SummonedManager class attribute
@@ -39,7 +40,7 @@ public class SummonedManager {
      * Add Creep entities
      * @param creep A Creep entity
      */
-    public void registerCreep(Creep creep) {
+    public void registerCreep(Actor creep) {
         creeps.add(creep);
     }
 
@@ -47,7 +48,7 @@ public class SummonedManager {
      * Remove Creep entities
      * @param creep A creep entity
      */
-    public void removeCreep(Creep creep) {
+    public void removeCreep(Actor creep) {
         creeps.remove(creep);
     }
 
@@ -55,7 +56,7 @@ public class SummonedManager {
      * Causes a reset for all the resettable entities
      */
     public void del(GameMap map) {
-        for (Creep creep : this.creeps){
+        for (Actor creep : this.creeps){
             map.removeActor(creep);
         }
     }

@@ -66,12 +66,12 @@ public class DeathAction extends Action {
         }
 
         // remove actor
-        if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+        if (target.hasCapability(Species.ALLY) || target.hasCapability(Species.INVADER)){
+            SummonedManager.getInstance().removeCreep(target);
+        }
+        else if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             if ((!target.hasCapability(Species.BONE)) || target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
-            }
-            else if (target.hasCapability(Species.INVADER)) {
-                SummonedManager.getInstance().removeCreep((Creep)target);  // need to change downcast
             }
             else {
                 Location skeletonLoc = map.locationOf(target);
@@ -81,9 +81,7 @@ public class DeathAction extends Action {
             }
 
         }
-        else if(target.hasCapability(Status.HOSTILE_TO_ENEMY) || target.hasCapability(Species.ALLY)){
-            SummonedManager.getInstance().removeCreep((Creep) target);  // need to change downcast
-        }
+
 
         // drop runes
         else {
