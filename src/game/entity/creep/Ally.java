@@ -10,6 +10,8 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.RandomNumberGenerator;
 import game.Species;
 import game.Status;
+import game.action_types.AttackAction;
+import game.behaviours.FollowBehaviour;
 import game.entity.players.Player;
 import game.weapons.playerweapons.Club;
 import game.weapons.playerweapons.GreatKnife;
@@ -48,6 +50,29 @@ public class Ally extends Creep {
             this.addWeaponToInventory(new Club());
         }
 
+    }
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) { //unsure
+        ActionList actions = new ActionList();
+        //if this otherActor is a player
+        if(otherActor.hasCapability(Status.HOSTILE_TO_PLAYER)){
+            otherActor.addCapability(Status.IN_COMBAT);
+            actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
+
+            // if the player has more than one weapon then add an AttackAction for each weapon
+            if(otherActor.getWeaponInventory().size()!=0){
+                for(WeaponItem weapon: otherActor.getWeaponInventory()){
+                    if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){ // if this weapon got targeted skill then add the skill action
+                        actions.add(weapon.getSkill(this,direction));
+                    }
+                    actions.add(new AttackAction(this,direction,weapon));
+                }
+            }
+
+
+        }
+
+        return actions;
     }
 
 
