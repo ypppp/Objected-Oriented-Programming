@@ -33,16 +33,11 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
 
-    /**
-     * A boolean value to determine if the enemy is following a player or not
-     */
-    private boolean isFollow = false;
-
     public Creep(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addBehaviour(2, new AttackBehaviour());
         this.addBehaviour(999,new WanderBehaviour());
-        ResetManager.getInstance().registerResettable(this);
+//        ResetManager.getInstance().registerResettable(this);
         SummonedManager.getInstance().registerCreep(this);
 
     }
@@ -104,38 +99,38 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
         return new DoNothingAction();
     }
 
-    /**
-     * To return the actions that the otherActor can do to itself
-     *
-     * @param otherActor the Actor that might be performing attack
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return A list of action that the otherActor can do to you
-     */
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
-        //if this otherActor is a player
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) || this.hasCapability(Status.HOSTILE_TO_PLAYER)){
-
-            otherActor.addCapability(Status.IN_COMBAT);
-            actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
-            this.addBehaviour(3,new FollowBehaviour(otherActor)); // let this enemy follow the player
-            this.isFollow = true;
-
-            // if the player has more than one weapon then add an AttackAction for each weapon
-            if(otherActor.getWeaponInventory().size()!=0){
-                for(WeaponItem weapon: otherActor.getWeaponInventory()){
-                    if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){ // if this weapon got targeted skill then add the skill action
-                        actions.add(weapon.getSkill(this,direction));
-                    }
-                    actions.add(new AttackAction(this,direction,weapon));
-                }
-            }
-
-
-        }
-
-        return actions;
-    }
+//    /**
+//     * To return the actions that the otherActor can do to itself
+//     *
+//     * @param otherActor the Actor that might be performing attack
+//     * @param direction  String representing the direction of the other Actor
+//     * @param map        current GameMap
+//     * @return A list of action that the otherActor can do to you
+//     */
+//    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+//        ActionList actions = new ActionList();
+//        //if this otherActor is a player
+//        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+//
+//            otherActor.addCapability(Status.IN_COMBAT);
+//            actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
+//            this.addBehaviour(3,new FollowBehaviour(otherActor)); // let this enemy follow the player
+//            this.isFollow = true;
+//
+//            // if the player has more than one weapon then add an AttackAction for each weapon
+//            if(otherActor.getWeaponInventory().size()!=0){
+//                for(WeaponItem weapon: otherActor.getWeaponInventory()){
+//                    if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){ // if this weapon got targeted skill then add the skill action
+//                        actions.add(weapon.getSkill(this,direction));
+//                    }
+//                    actions.add(new AttackAction(this,direction,weapon));
+//                }
+//            }
+//
+//
+//        }
+//
+//        return actions;
+//    }
 
 }
