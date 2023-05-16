@@ -5,30 +5,56 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.RandomNumberGenerator;
+import game.Species;
+import game.Status;
+import game.weapons.playerweapons.Club;
+import game.weapons.playerweapons.GreatKnife;
+import game.weapons.playerweapons.Staff;
+import game.weapons.playerweapons.Uchigatana;
 
-public class Invader extends Actor {
+public class Invader extends Creep {
+
+    private int hp;
+
+    private WeaponItem weapon;
+
     /**
      * Constructor.
      *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
      */
-    public Invader(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+    public Invader() {
+        super("Invader", 'ඞ', 1 );
+        this.hitPoints = hp;
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
+        this.addCapability(Species.INVADER);
+        this.addCapability(Status.CAN_DROP_RUNES);
+        this.addWeaponToInventory(weapon);
     }
 
-    /**
-     * Select and return an action to perform on the current turn.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the Action to be performed
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        return null;
+    public void setCharacter(){
+
+        int randomInt = RandomNumberGenerator.getRandomInt(100);
+
+        if (randomInt < 25){  // 0-24 = Astrologer is picked randomly
+            hp = 396;
+            weapon = new Staff();
+        }
+        else if(randomInt < 50){ // 25-49 = Bandit is picked randomly
+            hp = 414;
+            weapon = new GreatKnife();
+        }
+        else if(randomInt < 75){ // 50-74 = Samurai is picked randomly
+            hp = 455;
+            weapon = new Uchigatana();
+        }
+        else{  // 75-99 = Wretch is picked randomly
+            hp = 414;
+            weapon = new Club();
+        }
     }
+
+
+
 }
