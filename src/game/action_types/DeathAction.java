@@ -93,7 +93,7 @@ public class DeathAction extends Action {
         }
         result += System.lineSeparator() + menuDescription(target);
 
-        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) || !attacker.hasCapability(Species.ALLY)) { // if a player but not ally
+        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) && !attacker.hasCapability(Species.ALLY)) { // if a player but not ally
 //
             if (target.hasCapability(Status.CAN_DROP_RUNES)) {
                 String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
