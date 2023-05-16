@@ -25,7 +25,7 @@ public class Ally extends Creep {
      *
      */
     public Ally() {
-        super("Ally", 'a', 1 );
+        super("Ally", 'A', 1 );
         setCharacter();
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.addCapability(Species.ALLY);
