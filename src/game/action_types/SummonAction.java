@@ -69,6 +69,6 @@ public class SummonAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "summons a guest";
+        return actor + " summons a guest";
     }
 }
