@@ -71,16 +71,6 @@ public class GoldenRunes extends Item implements Consumables{
     }
 
     /**
-     * The amount healed by the item
-     *
-     * @return The amount to heal
-     */
-    @Override
-    public int getHealAmount() {
-        return 0;
-    }
-
-    /**
      * To set the number of uses for the item
      *
      * @param uses The number of uses of this item
