@@ -53,7 +53,7 @@ public class AttackBehaviour implements Behaviour {
                     }
 
                 }
-                else if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                else if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY) || !actor.hasCapability(Species.ALLY)){
                     if(actor.getWeaponInventory().size()!=0){
                         WeaponItem weapon = actor.getWeaponInventory().get(0);
                         if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
