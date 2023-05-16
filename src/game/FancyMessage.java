@@ -99,6 +99,18 @@ public class FancyMessage {
             "                                                                                                                              \n"+
             "\n";
 
+    public static String ANCESTRALWOODS =
+            "                                                                            ,,                                                    ,,         \n"+
+            "      db                                             mm                    7MM      7MMF'     A     7MF'                      7MM          \n"+
+            "     ;MM:                                            MM                      MM        MA     ,MA     ,V                          MM         \n"+
+            "    ,V^MM.    7MMpMMMb.  ,p6\"bo   .gP\"Ya  ,pP\"Ybd mmMMmm 7Mb,od8 ,6\"Yb.    MM         VM:   ,VVM:   ,V ,pW\"Wq.   ,pW\"Wq.    ,M\"\"bMM  ,pP\"Ybd\n"+
+            "   ,M  MM      MM    MM 6M'  OO  ,M'   Yb 8I   \"   MM     MM' \"'8)   MM    MM          MM.  M' MM.  M'6W'   Wb 6W'   Wb ,AP    MM  8I   \" \n"+
+            "   AbmmmqMA     MM    MM 8M       8M\"\"\"\"\"\" YMMMa.   MM     MM     ,pm9MM    MM          MM A'  MM A' 8M     M8 8M     M8 8MI    MM  YMMMa. \n"+
+            "  A'     VML    MM    MM YM.    , YM.    , L.   I8   MM     MM    8M   MM    MM           :MM;    :MM;  YA.   ,A9 YA.   ,A9 Mb    MM  L.   I8 \n"+
+            ".AMA.   .AMMA..JMML  JMML.YMbmd'   Mbmmd' M9mmmP'   Mbmo.JMML.  Moo9^Yo..JMML.          VF      VF    Ybmd9'   Ybmd9'   `Wbmd\"MML.M9mmmP'\n"+
+            "                                                                                                                                               \n"+
+            "\n";
+
     /**
      * A hashmap to link the map name to the fancy message
      */
@@ -109,6 +121,7 @@ public class FancyMessage {
         put("Roundtable Hold", FancyMessage.ROUNDTABLE_HOLD);
         put("StormVeil Castle", FancyMessage.STORMVEILCASTLE);
         put("Stormveil Main Gate",FancyMessage.STORMVEILCASTLE);
+        put("Ancestral Woods", FancyMessage.ANCESTRALWOODS);
     }};
 
     /**

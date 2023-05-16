@@ -23,6 +23,7 @@ import game.weapons.exchangeableweapons.AxeOfGodric;
 import game.weapons.exchangeableweapons.GraftedDragon;
 import game.weapons.playerweapons.Club;
 import game.weapons.playerweapons.GreatKnife;
+import game.weapons.playerweapons.Staff;
 import game.weapons.playerweapons.Uchigatana;
 
 import java.util.ArrayList;
@@ -62,15 +63,15 @@ public class Trader extends Actor {
         sellables.put("Scimitar", new Scimitar());
         sellables.put("Remembrance of the Grafted", new RemembranceOfTheGrafted());
         sellables.put("Axe of Godric", new AxeOfGodric());
-        sellables.put("Grafted Dragon",new GraftedDragon());
+        sellables.put("Grafted Dragon", new GraftedDragon());
+        sellables.put("Astrologer's Staff", new Staff());
         purchasables.add(new Club());
         purchasables.add(new Uchigatana());
         purchasables.add(new GreatKnife());
         purchasables.add(new Scimitar());
+        purchasables.add(new Staff());
         exchangeables.put("Remembrance of the Grafted", new RemembranceOfTheGrafted());
         System.out.println(name + this.capabilitiesList());
-
-
 
     }
 

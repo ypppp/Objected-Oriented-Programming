@@ -14,38 +14,35 @@ import game.entity.creep.Creep;
 import game.entity.creep.SummonedManager;
 import game.entity.enemies.LoneWolf;
 
-public class SummonSign extends Ground {
+public class SummonSign extends Ground implements Summonable {
+    private Location location;
+
     /**
      * Constructor.
      *
-     * @param displayChar character to display for this type of terrain
      */
-    public SummonSign(char displayChar) {
+    public SummonSign(Location location) {
         super('=');
+        this.location = location;
+
     }
 
-//    @Override
-//    public void tick(Location location) {  // need to create summon action since its manual summon
-//        if(location.containsAnActor()){
-//            Actor currentActor = location.getActor();
-//            if(currentActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-//                if(RandomNumberGenerator.getRandomInt(100)< 51){
-//                    SummonedManager.getInstance().registerCreep(new Ally());
-//                }
-//                else{
-//                    location.addActor(new LoneWolf()); // put invader here
-//                }
-//            }
-//        }
-//    }
-
+    @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        if (location.containsAnActor()){
-            }
-            if (actor.hasCapability(Status.HOSTILE_TO_ENEMY) && !actor.hasCapability(Species.ALLY)){
-                actions.add(new SummonAction(this));
-            }
-            return actions;
+        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            actions.add(new SummonAction(this));
+        }
+        return actions;
+    }
+
+    @Override
+    public void summon(Location location, Actor actor) {
+        location.addActor(actor);
+    }
+
+    @Override
+    public Location getLocation() {
+        return location;
     }
 }

@@ -13,7 +13,7 @@ public class Astrologer extends Player{
      * Constructor for an Astrologer class
      */
     public Astrologer() {
-        super("Astrologer", '@', 396);
+        super("Tarnished", '@', 396);
         this.addWeaponToInventory(new Staff());
     }
 }

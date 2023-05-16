@@ -103,26 +103,26 @@ public class Application {
 				"+++++++++++++++++++++++++++#...................#+++++++++++++++++++++++++++"
 		);
 
-//		List<String> bossRoom = Arrays.asList(
-//				"+++++++++++++++++++++++++",
-//				".........................",
-//				"..=......................",
-//				"...................___...",
-//				"...................___...",
-//				"...................___...",
-//				".........................",
-//				".........................",
-//				"+++++++++++++++++++++++++"
-//		);
+		List<String> bossRoom = Arrays.asList(
+				"+++++++++++++++++++++++++",
+				".........................",
+				".........................",
+				"...................___...",
+				"...................___...",
+				"...................___...",
+				".........................",
+				".........................",
+				"+++++++++++++++++++++++++"
+		);
 
 		GameMap gameMap = new GameMap(groundFactory, map);
 		GameMap roundTableMap = new GameMap(groundFactory,roundTable);
 		GameMap stormVeilMap = new GameMap(groundFactory,StormVeilCastle);
-//		GameMap bossMap = new GameMap(groundFactory, bossRoom);
+		GameMap bossMap = new GameMap(groundFactory, bossRoom);
 
 		world.addGameMap(gameMap);
 		world.addGameMap(stormVeilMap);
-//		world.addGameMap(bossMap);
+		world.addGameMap(bossMap);
 		world.addGameMap(roundTableMap);
 		
 		ArrayList<GameMap>maps = new ArrayList<>();
@@ -152,14 +152,15 @@ public class Application {
 		classesMap.put('w',new Wretch());
 		classesMap.put('B', new Bandit());
 		classesMap.put('b',new Bandit());
-		classesMap.put('@', new Astrologer());
+		classesMap.put('A', new Astrologer());
+		classesMap.put('a', new Astrologer());
 
 		// at here add a menu to select who what class
 		char chosenClass;
 		Player player;
-		//use hashmap to storethe classes and use contains key and get(key)
+		//use hashmap to store the classes and use contains key and get(key)
 		do{
-			display.println("Choose a class\n S for Samurai\n B for Bandit\n W for Wretch\n @ for Wretch");
+			display.println("Choose a class\n S for Samurai\n B for Bandit\n W for Wretch\n A for Astrologer");
 			chosenClass = display.readChar();
 		} while(!classesMap.containsKey(chosenClass));
 
@@ -199,6 +200,10 @@ public class Application {
 		firstSite.setHasActivate(true);
 		gameMap.at(38,11).setGround(firstSite);
 
+//		add the SummonSign
+		SummonSign summonSign = new SummonSign(bossMap.at(2,2));
+		bossMap.at(2,2).setGround(summonSign);
+
 		// created the site of lost grace for all the maps
 		roundTableMap.at(9,5).setGround(new TheSiteOfLostGrace("Table of Lost Grace"));
 		stormVeilMap.at(38,20).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
@@ -213,8 +218,8 @@ public class Application {
 		stormVeilMap.at(36,23).setGround(new GoldenFogDoor(gameMap.at(28,3),"Limgrave"));
 
 //		add the doorway to the boss room map
-//		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Boss Room"));
-//		bossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(6,20),"Limgrave"));
+		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Ancestral Woods"));
+		bossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(6,20),"Limgrave"));
 
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
