@@ -18,43 +18,36 @@ import game.weapons.playerweapons.Uchigatana;
 
 public class Ally extends Creep {
 
-    private int hp;
-
-    private WeaponItem weapon;
-
-
     /**
      * Constructor.
      *
      */
     public Ally() {
         super("Ally", 'a', 1 );
-        this.hitPoints = hp;
+        setCharacter();
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.addCapability(Species.ALLY);
-        this.addWeaponToInventory(weapon);
+
     }
 
-    public void setCharacter(){
+    public void setCharacter() {
 
         int randomInt = RandomNumberGenerator.getRandomInt(100);
 
-        if (randomInt < 25){  // 0-24 = Astrologer is picked randomly
-            hp = 396;
-            weapon = new Staff();
+        if (randomInt < 25) {  // 0-24 = Astrologer is picked randomly
+            this.hitPoints = 396;
+            this.addWeaponToInventory(new Staff());
+        } else if (randomInt < 50) { // 25-49 = Bandit is picked randomly
+            this.hitPoints = 414;
+            this.addWeaponToInventory(new GreatKnife());
+        } else if (randomInt < 75) { // 50-74 = Samurai is picked randomly
+            this.hitPoints = 455;
+            this.addWeaponToInventory(new Uchigatana());
+        } else {  // 75-99 = Wretch is picked randomly
+            this.hitPoints = 414;
+            this.addWeaponToInventory(new Club());
         }
-        else if(randomInt < 50){ // 25-49 = Bandit is picked randomly
-            hp = 414;
-            weapon = new GreatKnife();
-        }
-        else if(randomInt < 75){ // 50-74 = Samurai is picked randomly
-            hp = 455;
-            weapon = new Uchigatana();
-        }
-        else{  // 75-99 = Wretch is picked randomly
-            hp = 414;
-            weapon = new Club();
-        }
+
     }
 
 

@@ -16,21 +16,16 @@ import game.weapons.playerweapons.Uchigatana;
 
 public class Invader extends Creep {
 
-    private int hp;
-
-    private WeaponItem weapon;
-
     /**
      * Constructor.
      *
      */
     public Invader() {
         super("Invader", 'ඞ', 1 );
-        this.hitPoints = hp;
+        setCharacter();
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.INVADER);
         this.addCapability(Status.CAN_DROP_RUNES);
-        this.addWeaponToInventory(weapon);
     }
 
     public void setCharacter(){
@@ -38,20 +33,20 @@ public class Invader extends Creep {
         int randomInt = RandomNumberGenerator.getRandomInt(100);
 
         if (randomInt < 25){  // 0-24 = Astrologer is picked randomly
-            hp = 396;
-            weapon = new Staff();
+            this.hitPoints = 396;
+            this.addWeaponToInventory(new Staff());
         }
         else if(randomInt < 50){ // 25-49 = Bandit is picked randomly
-            hp = 414;
-            weapon = new GreatKnife();
+            this.hitPoints = 414;
+            this.addWeaponToInventory(new GreatKnife());
         }
         else if(randomInt < 75){ // 50-74 = Samurai is picked randomly
-            hp = 455;
-            weapon = new Uchigatana();
+            this.hitPoints = 455;
+            this.addWeaponToInventory(new Uchigatana());
         }
         else{  // 75-99 = Wretch is picked randomly
-            hp = 414;
-            weapon = new Club();
+            this.hitPoints = 414;
+            this.addWeaponToInventory(new Club());
         }
     }
 
