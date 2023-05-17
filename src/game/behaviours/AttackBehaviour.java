@@ -41,10 +41,12 @@ public class AttackBehaviour implements Behaviour {
                         if(actor.getWeaponInventory().size()!=0){
                             WeaponItem weapon = actor.getWeaponInventory().get(0);
                             if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
-                                actions.add(weapon.getSkill(actor));
-                            }
-                            else{
-                                actions.add(new AttackAction(destinationActor,exit.getName(),weapon));
+                                if(RandomNumberGenerator.getRandomInt(100)<50){
+                                    actions.add(weapon.getSkill(actor));
+                                }
+                                else{
+                                    actions.add(new AttackAction(destinationActor,exit.getName(),weapon));
+                                }
                             }
                         }
                         actions.add(new AttackAction(destinationActor, exit.getName()));
@@ -57,7 +59,10 @@ public class AttackBehaviour implements Behaviour {
                     if(actor.getWeaponInventory().size()!=0){
                         WeaponItem weapon = actor.getWeaponInventory().get(0);
                         if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
-                            return weapon.getSkill(actor);
+                            if(RandomNumberGenerator.getRandomInt(100)<50){
+                                return weapon.getSkill(actor);
+                            }
+
                         }
                         else{
                             return new AttackAction(destinationActor,exit.getName(),weapon);
