@@ -106,6 +106,7 @@ public class RuneManager {
         runeAmount.put('R',new int[]{500,2374});
         runeAmount.put('a', new int[]{52,1390});
         runeAmount.put('p', new int[]{38,70});
+        runeAmount.put('ඞ', new int[]{1358,5578});
     }
 
     /**

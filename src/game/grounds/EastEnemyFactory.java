@@ -29,7 +29,7 @@ public class EastEnemyFactory implements EnemyFactory{
      */
     @Override
     public Actor createSkeleton(Location location) {
-        if(RandomNumberGenerator.getRandomInt(100)< 28 && !location.containsAnActor()){
+        if(RandomNumberGenerator.getRandomInt(100)< 27 && !location.containsAnActor()){
             return new SkeletonBandit();
         }
         else{
@@ -44,7 +44,7 @@ public class EastEnemyFactory implements EnemyFactory{
      */
     @Override
     public Actor createCrustaceans(Location location) {
-        if(RandomNumberGenerator.getRandomInt(100)< 2 && !location.containsAnActor()){
+        if(RandomNumberGenerator.getRandomInt(100)< 1 && !location.containsAnActor()){
             return new GiantCrayfish();
         }
         else{
@@ -59,7 +59,7 @@ public class EastEnemyFactory implements EnemyFactory{
      */
     @Override
     public Actor createCanine(Location location) {
-        if(RandomNumberGenerator.getRandomInt(100)< 5 && !location.containsAnActor()){
+        if(RandomNumberGenerator.getRandomInt(100)< 4 && !location.containsAnActor()){
             return new GiantDog();
         }
         else{
@@ -74,7 +74,7 @@ public class EastEnemyFactory implements EnemyFactory{
      */
     @Override
     public Actor createGodrick(Location location) {
-        if(RandomNumberGenerator.getRandomInt(100)< 46 && !location.containsAnActor()){
+        if(RandomNumberGenerator.getRandomInt(100)< 45 && !location.containsAnActor()){
             return new GodrickSoldier();
         }
         else{
@@ -89,7 +89,7 @@ public class EastEnemyFactory implements EnemyFactory{
      */
     @Override
     public Actor createDog(Location location) {
-        if(RandomNumberGenerator.getRandomInt(100)< 38 && !location.containsAnActor()){
+        if(RandomNumberGenerator.getRandomInt(100)< 37 && !location.containsAnActor()){
             return new Dog();
         }
         else{
