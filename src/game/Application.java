@@ -33,7 +33,7 @@ public class Application {
 		World world = new World(display);
 
 
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new Cliff(), new Cage(), new Barrack());
+		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new PuddleOfWater(), new Graveyard(), new GustOfWind(), new Cliff(), new Cage(), new Barrack(), new ChurchOfIrith());
 
 
 		List<String> map = Arrays.asList(
@@ -115,15 +115,26 @@ public class Application {
 				"+++++++++++++++++++++++++"
 		);
 
+		List<String> church = Arrays.asList(
+				"#############",
+				"#___________#",
+				"#_____^_____#",
+				"#___________#",
+				"#___________#",
+				"##_________##"
+		);
+
 		GameMap gameMap = new GameMap(groundFactory, map);
 		GameMap roundTableMap = new GameMap(groundFactory,roundTable);
 		GameMap stormVeilMap = new GameMap(groundFactory,StormVeilCastle);
 		GameMap bossMap = new GameMap(groundFactory, bossRoom);
+		GameMap churchMap = new GameMap(groundFactory, church);
 
 		world.addGameMap(gameMap);
 		world.addGameMap(stormVeilMap);
 		world.addGameMap(bossMap);
 		world.addGameMap(roundTableMap);
+		world.addGameMap(churchMap);
 		
 		ArrayList<GameMap>maps = new ArrayList<>();
 		maps.add(gameMap);
@@ -140,7 +151,7 @@ public class Application {
 			}
 		}
 
-//		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
+		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
 //
 //		gameMap.at(56, 17).addActor(new LoneWolf());
 //		gameMap.at(56, 16).addActor(new LoneWolf());
@@ -193,8 +204,6 @@ public class Application {
 		gameMap.at(35,11).addActor(new Trader("Enia", 'E', eniaAction));
 
 
-
-
 		// add the first site of lost grace
 		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
 		firstSite.setHasActivate(true);
@@ -206,8 +215,8 @@ public class Application {
 
 		// created the site of lost grace for all the maps
 		roundTableMap.at(9,5).setGround(new TheSiteOfLostGrace("Table of Lost Grace"));
-		stormVeilMap.at(38,20).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
-//		bossMap.at(20,4).setGround(new TheSiteOfLostGrace("Godrick the Grafted"));
+		stormVeilMap.at(37,21).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
+		bossMap.at(20,4).setGround(new TheSiteOfLostGrace("Godrick the Grafted"));
 
 		//add the doorway to the roundtable map
 		gameMap.at(34,8).setGround(new GoldenFogDoor(roundTableMap.at(9,10),"Roundtable Hold"));
@@ -218,14 +227,18 @@ public class Application {
 		stormVeilMap.at(36,23).setGround(new GoldenFogDoor(gameMap.at(28,3),"Limgrave"));
 
 //		add the doorway to the boss room map
-		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Ancestral Woods"));
-		bossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(6,20),"Limgrave"));
+		stormVeilMap.at(50,1).setGround(new GoldenFogDoor(bossMap.at(13,7),"Ancestral Woods"));
+		bossMap.at(13,7).setGround(new GoldenFogDoor(stormVeilMap.at(50,1),"StormVeil Castle"));
 
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
+		RuneManager.getInstance().getRune().setAmount(200);
 
+		GoldenFogDoor churchDoor = new GoldenFogDoor(churchMap.at(6,5),"Church of Irith");
+		churchMap.at(6,5).setGround(new GoldenFogDoor(bossMap.at(23,1),"Ancestral Woods"));
 
+		bossMap.at(5,5).addActor(new RegalAncestorSpirit(bossMap.at(23,1),churchDoor));
 
 		world.addPlayer(player, gameMap.at(37, 10));
 

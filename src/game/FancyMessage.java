@@ -101,14 +101,26 @@ public class FancyMessage {
 
     public static String ANCESTRALWOODS =
             "                                                                            ,,                                                    ,,         \n"+
-            "      db                                             mm                    7MM      7MMF'     A     7MF'                      7MM          \n"+
-            "     ;MM:                                            MM                      MM        MA     ,MA     ,V                          MM         \n"+
-            "    ,V^MM.    7MMpMMMb.  ,p6\"bo   .gP\"Ya  ,pP\"Ybd mmMMmm 7Mb,od8 ,6\"Yb.    MM         VM:   ,VVM:   ,V ,pW\"Wq.   ,pW\"Wq.    ,M\"\"bMM  ,pP\"Ybd\n"+
-            "   ,M  MM      MM    MM 6M'  OO  ,M'   Yb 8I   \"   MM     MM' \"'8)   MM    MM          MM.  M' MM.  M'6W'   Wb 6W'   Wb ,AP    MM  8I   \" \n"+
-            "   AbmmmqMA     MM    MM 8M       8M\"\"\"\"\"\" YMMMa.   MM     MM     ,pm9MM    MM          MM A'  MM A' 8M     M8 8M     M8 8MI    MM  YMMMa. \n"+
-            "  A'     VML    MM    MM YM.    , YM.    , L.   I8   MM     MM    8M   MM    MM           :MM;    :MM;  YA.   ,A9 YA.   ,A9 Mb    MM  L.   I8 \n"+
-            ".AMA.   .AMMA..JMML  JMML.YMbmd'   Mbmmd' M9mmmP'   Mbmo.JMML.  Moo9^Yo..JMML.          VF      VF    Ybmd9'   Ybmd9'   `Wbmd\"MML.M9mmmP'\n"+
+            "      db                                             mm                    `7MM      `7MMF'     A     `7MF'                      `7MM          \n"+
+            "     ;MM:                                            MM                      MM        `MA     ,MA     ,V                          MM         \n"+
+            "    ,V^MM.    `7MMpMMMb.  ,p6\"bo   .gP\"Ya  ,pP\"Ybd mmMMmm `7Mb,od8 ,6\"Yb.    MM         VM:   ,VVM:   ,V ,pW\"Wq.   ,pW\"Wq.    ,M\"\"bMM  ,pP\"Ybd\n"+
+            "   ,M  `MM      MM    MM 6M'  OO  ,M'   Yb 8I   `\"   MM     MM' \"'8)   MM    MM          MM.  M' MM.  M'6W'   `Wb 6W'   `Wb ,AP    MM  8I   `\" \n"+
+            "   AbmmmqMA     MM    MM 8M       8M\"\"\"\"\"\" `YMMMa.   MM     MM     ,pm9MM    MM          `MM A'  `MM A' 8M     M8 8M     M8 8MI    MM  `YMMMa. \n"+
+            "  A'     VML    MM    MM YM.    , YM.    , L.   I8   MM     MM    8M   MM    MM           :MM;    :MM;  YA.   ,A9 YA.   ,A9 `Mb    MM  L.   I8 \n"+
+            ".AMA.   .AMMA..JMML  JMML.YMbmd'   `Mbmmd' M9mmmP'   `Mbmo.JMML.  `Moo9^Yo..JMML.          VF      VF    `Ybmd9'   `Ybmd9'   `Wbmd\"MML.M9mmmP'\n"+
             "                                                                                                                                               \n"+
+            "\n";
+
+    public static String CHURCH_OF_IRITH=
+            "              ,,                                   ,,                            ,...                     ,,           ,,     \n"+
+            "  .g8\"\"\"bgd `7MM                                 `7MM              .g8\"\"8q.    .d' \"\"    `7MMF'           db         `7MM       \n"+
+            ".dP'     `M   MM                                   MM            .dP'    `YM.  dM`         MM                          MM       \n"+
+            "dM'       `   MMpMMMb.`7MM  `7MM  `7Mb,od8 ,p6\"bo  MMpMMMb.      dM'      `MM mMMmm        MM  `7Mb,od8 `7MM  `7Mb,od8 MMpMMMb.\n"+
+            "MM            MM    MM  MM    MM    MM' \"'6M'  OO  MM    MM      MM        MM  MM          MM    MM' \"'   MM    MM' \"' MM    MM \n"+
+            "MM.           MM    MM  MM    MM    MM    8M       MM    MM      MM.      ,MP  MM          MM    MM       MM    MM     MM    MM  \n"+
+            "`Mb.     ,'   MM    MM  MM    MM    MM    YM.    , MM    MM      `Mb.    ,dP'  MM          MM    MM       MM    MM     MM    MM \n"+
+            "  `\"bmmmd'  .JMML  JMML.`Mbod\"YML..JMML.   YMbmd'.JMML  JMML.      `\"bmmd\"'  .JMML.      .JMML..JMML.   .JMML..JMML. .JMML  JMML.\n"+
+            "                                                                                                                                     \n"+
             "\n";
 
     /**
@@ -122,6 +134,8 @@ public class FancyMessage {
         put("StormVeil Castle", FancyMessage.STORMVEILCASTLE);
         put("Stormveil Main Gate",FancyMessage.STORMVEILCASTLE);
         put("Ancestral Woods", FancyMessage.ANCESTRALWOODS);
+        put("Godrick the Grafted", FancyMessage.ANCESTRALWOODS);
+        put("Church of Irith", FancyMessage.CHURCH_OF_IRITH);
     }};
 
     /**

@@ -67,17 +67,18 @@ public class AOE_AttackAction extends Action {
         }
 
         for(Actor target: targets){
-            if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
-                result += actor + " misses " + target + ".\n" ;
-            }
-            else{
-                int damage = weapon.damage();
-                result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
-                target.hurt(damage);
-                if (!target.isConscious() && target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
-                    result += new DeathAction(actor).execute(target, map)+ "\n";
-                }
-            }
+//            if (!(RandomNumberGenerator.getRandomInt(100) <= weapon.chanceToHit())) {
+//                result += actor + " misses " + target + ".\n" ;
+//            }
+//            else{
+//                int damage = weapon.damage();
+//                result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+//                target.hurt(damage);
+//                if (!target.isConscious() && target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+//                    result += new DeathAction(actor).execute(target, map)+ "\n";
+//                }
+//            }
+            result += new AttackAction(target,"around",weapon).execute(actor,map) + "\n";
         }
         return result;
 

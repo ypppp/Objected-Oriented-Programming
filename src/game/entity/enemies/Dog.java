@@ -17,9 +17,9 @@ public class Dog extends Enemy{
      */
     public Dog() {
         super("Dog", 'a', 104);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.COMPANION);
         this.addCapability(Status.CAN_DROP_RUNES);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
 
 
     }
