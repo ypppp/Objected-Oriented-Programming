@@ -162,4 +162,12 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
         return actions;
     }
 
+    @Override
+    public boolean isConscious() {
+        boolean status = super.isConscious();
+        if(!status){
+            ResetManager.getInstance().removeResettable(this);
+        };
+        return status;
+    }
 }
