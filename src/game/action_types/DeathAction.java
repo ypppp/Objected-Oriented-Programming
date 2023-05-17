@@ -68,6 +68,7 @@ public class DeathAction extends Action {
         // remove actor
         if (target.hasCapability(Species.ALLY) || target.hasCapability(Species.INVADER)){
             SummonedManager.getInstance().removeCreep(target);
+            map.removeActor(target);
         }
         else if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             if ((!target.hasCapability(Species.BONE)) || target.hasCapability(Status.RESPAWNABLE)) {
