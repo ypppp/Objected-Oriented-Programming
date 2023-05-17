@@ -16,7 +16,17 @@ import game.items.runes.RuneManager;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The GoldenRunes class which can be found on the map
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Item
+ * @see Consumables
+ */
 public class GoldenRunes extends Item implements Consumables{
+    /**
+     * The number of uses of the GoldenRunes
+     */
     private int uses = 1;
     /***
      * Constructor.
@@ -25,6 +35,10 @@ public class GoldenRunes extends Item implements Consumables{
         super("Golden Runes", '*', true);
     }
 
+    /**
+     * Remove the ConsumeAction
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         if (!getAllowableActions().isEmpty()) {
@@ -32,7 +46,11 @@ public class GoldenRunes extends Item implements Consumables{
         }
     }
 
-
+    /**
+     * Adds the ConsumeAction to the player
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
@@ -43,8 +61,7 @@ public class GoldenRunes extends Item implements Consumables{
     }
 
     /**
-     * The consume the item
-     *
+     * Consume the item
      * @param actor The actor that is consuming this item
      * @return The description of the consumption
      */
@@ -62,7 +79,6 @@ public class GoldenRunes extends Item implements Consumables{
 
     /**
      * The number of uses left for the item
-     *
      * @return The number of uses left for the item
      */
     @Override
@@ -72,7 +88,6 @@ public class GoldenRunes extends Item implements Consumables{
 
     /**
      * To set the number of uses for the item
-     *
      * @param uses The number of uses of this item
      */
     @Override
@@ -82,7 +97,6 @@ public class GoldenRunes extends Item implements Consumables{
 
     /**
      * The total current amount of uses left for the item
-     *
      * @return The current amount of uses left for the item
      */
     @Override

@@ -191,10 +191,6 @@ public class Application {
 
 		gameMap.at(35,10).addActor(new Trader("Enia", 'E', eniaAction));
 
-		//add the trader to the map
-		gameMap.at(40, 11).addActor(new Trader());
-
-
 		// add the first site of lost grace
 		TheSiteOfLostGrace firstSite = new TheSiteOfLostGrace("The First Step");
 		firstSite.setHasActivate(true);

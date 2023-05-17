@@ -10,6 +10,9 @@ import game.items.Exchangeable;
 import game.items.Sellable;
 import game.weapons.playerweapons.Club;
 
+/**
+ * The AxeOfGodric class which is a weapon
+ */
 public class AxeOfGodric extends WeaponItem implements Sellable{
     /**
      * Constructor.
@@ -24,10 +27,9 @@ public class AxeOfGodric extends WeaponItem implements Sellable{
     public void tick(Location currentLocation, Actor actor) {}
 
     /**
-     * To get the purchase price of the weapon
-     * @return An integer that is the purchase price of this weapon
+     * To get the selling price of the weapon
+     * @return An integer that is the selling price of this weapon
      */
-
     @Override
     public int getSellPrice() {
         return 100;

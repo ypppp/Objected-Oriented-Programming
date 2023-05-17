@@ -29,9 +29,6 @@ public class Club extends WeaponItem implements Purchasable, Sellable {
         this.addCapability(Status.SELLABLE);
     }
 
-
-
-
     @Override
     public void tick(Location currentLocation, Actor actor) {}
 
