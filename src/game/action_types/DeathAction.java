@@ -90,7 +90,7 @@ public class DeathAction extends Action {
             map.removeActor(target); // player dies
             SummonedManager.getInstance().del(map);  // remove ally and invader from the map
 
-            return new ResetAction() .execute(target, map);
+            return new ResetAction().execute(target, map);
         }
         result += System.lineSeparator() + menuDescription(target);
 
