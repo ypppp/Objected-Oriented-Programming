@@ -75,9 +75,7 @@ public class PrayAction extends Action {
                 }
             }
 
-
         }
-
 
         return result;
     }
