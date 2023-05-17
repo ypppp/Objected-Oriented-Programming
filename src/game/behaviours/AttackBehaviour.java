@@ -44,9 +44,14 @@ public class AttackBehaviour implements Behaviour {
                                 if(RandomNumberGenerator.getRandomInt(100)<50){
                                     actions.add(weapon.getSkill(actor));
                                 }
-                                else{
-                                    actions.add(new AttackAction(destinationActor,exit.getName(),weapon));
+                            }
+                            else if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){
+                                if(RandomNumberGenerator.getRandomInt(100)<50){
+                                    actions.add(weapon.getSkill(destinationActor,exit.getName()));
                                 }
+                            }
+                            else{
+                                actions.add(new AttackAction(destinationActor,exit.getName(),weapon));
                             }
                         }
                         actions.add(new AttackAction(destinationActor, exit.getName()));
@@ -55,14 +60,18 @@ public class AttackBehaviour implements Behaviour {
                     }
 
                 }
-                else if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                else if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !actor.hasCapability(Species.ALLY)){
                     if(actor.getWeaponInventory().size()!=0){
                         WeaponItem weapon = actor.getWeaponInventory().get(0);
                         if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
                             if(RandomNumberGenerator.getRandomInt(100)<50){
                                 return weapon.getSkill(actor);
                             }
-
+                        }
+                        else if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)) {
+                            if(RandomNumberGenerator.getRandomInt(100)<50){
+                                return (weapon.getSkill(destinationActor, exit.getName()));
+                            }
                         }
                         else{
                             return new AttackAction(destinationActor,exit.getName(),weapon);

@@ -3,6 +3,8 @@ package game.grounds;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.entity.enemies.Enemy;
+import game.entity.enemies.SkeletonBandit;
 import game.items.runes.RuneManager;
 
 import java.lang.reflect.Constructor;
@@ -10,62 +12,49 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * An enemy factory to spawn an enemy
- * @author Tong Jet Kit
+ * The EnemyFactory interface
+ * @author Yew Yee Perng
  * @version 1.0
  */
-public abstract class EnemyFactory {
+public interface EnemyFactory {
 
     /**
-     * A map of enemy Instance that is paired with the character of it's spawning ground
+     * To create skeleton species enemies
+     * @param location The location of where the enemy will spawn
+     * @return A Skeleton species object added to the location in the map
      */
-    private  Map<Character, Actor> enemyInstance;
+    Actor createSkeleton(Location location);
 
     /**
-     * A hashmap of the spawn chance of an enemy that is paired with the character of it's spawning ground
+     * To create Crustaceans species enemies
+     * @param location The location of where the enemy will spawn
+     * @return A Crustacean species object added to the location in the map
      */
-    private  HashMap<Character,Integer> enemySpawnChance;
+    Actor createCrustaceans(Location location);
 
     /**
-     * To return the hashmap of the Character Enemy instance pair
-     * @return A hashmap of the Character Enemy instance pair
+     * To create Canine species enemies
+     * @param location The location of where the enemy will spawn
+     * @return A Canine species object added to the location in the map
      */
-    public Map<Character, Actor> getEnemyInstance() {
-        return enemyInstance;
-    }
+    Actor createCanine(Location location);
 
     /**
-     * To set the hashmap of the Character Enemy instance pair
-     * @param enemyInstance the hashmap of the Character Enemy instance pair
+     * To create Godrick Soldiers
+     * @param location The location of where the enemy will spawn
+     * @return A Godrick soldier added to the location in the map
      */
-    public void setEnemyInstance(Map<Character, Actor> enemyInstance) {
-        this.enemyInstance = enemyInstance;
-    }
+    Actor createGodrick(Location location);
 
     /**
-     * To return the hashmap of the Character enemy spawn chance pair
-     * @return the hashmap of the Character enemy spawn chance pair
+     * To create Dogs
+     * @param location The location of where the enemy will spawn
+     * @return A Dog added to the location in the map
      */
-    public HashMap<Character, Integer> getEnemySpawnChance() {
-        return enemySpawnChance;
-    }
-
-    /**
-     * To set the hashmap of the Character enemy spawn chance pair
-     * @param enemySpawnChance the hashmap of the Character enemy spawn chance pair
-     */
-    public void setEnemySpawnChance(HashMap<Character, Integer> enemySpawnChance) {
-        this.enemySpawnChance = enemySpawnChance;
-    }
-
-    /**
-     * An abstract method to return an enemy to be spawned at a certain location
-     * @param location The location where the enemy will be spawning
-     * @param displayChar The display character of the ground
-     * @return An actor which will the enemy to be spawned on the location if granted; null otherwise
-     */
-    public abstract Actor spawnEnemy(Location location, Character displayChar);
+    Actor createDog(Location location);
 
 
 
 }
+
+
