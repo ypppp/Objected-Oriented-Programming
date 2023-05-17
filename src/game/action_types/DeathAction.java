@@ -56,7 +56,7 @@ public class DeathAction extends Action {
         ActionList dropActions = new ActionList();
         // drop all items
 
-        if (!target.hasCapability(Status.HOSTILE_TO_ENEMY) && !target.hasCapability(Species.INVADER)){
+        if (!target.hasCapability(Status.HOSTILE_TO_ENEMY) || target.hasCapability(Species.ALLY)){
             for (Item item : target.getItemInventory())
                 dropActions.add(item.getDropAction(target));
             for (WeaponItem weapon : target.getWeaponInventory())
