@@ -212,7 +212,7 @@ public class Application {
 
 		// created the site of lost grace for all the maps
 		roundTableMap.at(9,5).setGround(new TheSiteOfLostGrace("Table of Lost Grace"));
-		stormVeilMap.at(38,20).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
+		stormVeilMap.at(37,21).setGround(new TheSiteOfLostGrace("Stormveil Main Gate"));
 		bossMap.at(20,4).setGround(new TheSiteOfLostGrace("Godrick the Grafted"));
 
 		//add the doorway to the roundtable map
@@ -224,8 +224,8 @@ public class Application {
 		stormVeilMap.at(36,23).setGround(new GoldenFogDoor(gameMap.at(28,3),"Limgrave"));
 
 //		add the doorway to the boss room map
-		gameMap.at(6,20).setGround(new GoldenFogDoor(bossMap.at(13,7),"Ancestral Woods"));
-		bossMap.at(13,7).setGround(new GoldenFogDoor(gameMap.at(38,10),"Limgrave"));
+		stormVeilMap.at(50,1).setGround(new GoldenFogDoor(bossMap.at(13,7),"Ancestral Woods"));
+		bossMap.at(13,7).setGround(new GoldenFogDoor(stormVeilMap.at(50,1),"StormVeil Castle"));
 
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
