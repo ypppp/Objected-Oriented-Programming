@@ -8,6 +8,13 @@ import game.action_types.reset.ResetManager;
 import game.behaviours.LifestealBehaviour;
 import game.grounds.GoldenFogDoor;
 
+/**
+ * A boss to fight which will unlock a new map once defeated
+ *
+ * @author Tong Jet Kit
+ * @see Enemy
+ * @version 1.0
+ */
 public class RegalAncestorSpirit extends Enemy{
 
     /**
@@ -32,12 +39,20 @@ public class RegalAncestorSpirit extends Enemy{
         this.hiddenDoor = hiddenDoor;
     }
 
+    /**
+     * To get the intrinsic weapon of the boss
+     * @return A newly instantiated intrinsic weapon
+     */
 
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(100,"charges",89);
     }
 
+    /**
+     * To determine if the boss is dead or not to spawn the door
+     * @return True if the boss is dead; false otherwise
+     */
     @Override
     public boolean isConscious() {
         boolean status = super.isConscious();

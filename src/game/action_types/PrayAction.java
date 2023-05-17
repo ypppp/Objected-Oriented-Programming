@@ -8,6 +8,13 @@ import game.Status;
 import game.items.RemembranceOfTheGrafted;
 import game.items.runes.RuneManager;
 
+/**
+ * An action to pray to the Church of Irith to get a blessing or a curse
+ *
+ * @author Tong Jet Kit
+ * @see Action
+ * @version 1.0
+ */
 public class PrayAction extends Action {
     /**
      * Perform the Action.
