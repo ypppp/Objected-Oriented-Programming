@@ -140,7 +140,6 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
         ActionList actions = new ActionList();
         //if this otherActor is a player
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-
             otherActor.addCapability(Status.IN_COMBAT);
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
             this.addBehaviour(3,new FollowBehaviour(otherActor)); // let this enemy follow the player
@@ -155,7 +154,6 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
                     actions.add(new AttackAction(this,direction,weapon));
                 }
             }
-
 
         }
 
