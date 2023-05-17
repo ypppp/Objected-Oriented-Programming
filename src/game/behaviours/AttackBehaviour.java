@@ -56,7 +56,6 @@ public class AttackBehaviour implements Behaviour {
                         }
                         actions.add(new AttackAction(destinationActor, exit.getName()));
 
-
                     }
 
                 }
