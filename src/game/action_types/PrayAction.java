@@ -63,7 +63,7 @@ public class PrayAction extends Action {
                     result += actor + " got smitten for " + damageAmount;
                 }
                 else if(chance < 66){
-                    int runeAmount = Math.min(RandomNumberGenerator.getRandomInt(200,501),RuneManager.getInstance().getRune().getAmount());
+                    int runeAmount = Math.min(RandomNumberGenerator.getRandomInt(500,1501),RuneManager.getInstance().getRune().getAmount());
                     RuneManager.getInstance().removeRunes(runeAmount);
                     result += "Godrick the Grafted has reject your prayers and cursed you with poverty \n";
                     result += actor + " loses " + runeAmount + " runes";
