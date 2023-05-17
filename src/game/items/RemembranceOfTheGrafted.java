@@ -10,8 +10,18 @@ import game.weapons.exchangeableweapons.GraftedDragon;
 
 import java.util.HashMap;
 
+/**
+ * The RemembranceOfTheGrafted class that can be exchanged and sold
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Item
+ * @see Sellable
+ * @see Exchangeable
+ */
 public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangeable{
-
+    /**
+     * A hashmap to hold the weapons that it can be exchanged with
+     */
     HashMap<String,WeaponItem> exchangeItem = new HashMap<>(){{
         put("Axe of Godric", new AxeOfGodric());
         put("Grafted Dragon", new GraftedDragon());
@@ -30,27 +40,37 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
     public void tick(Location currentLocation, Actor actor) {}
 
     /**
-     * To get the purchase price of the weapon
-     * @return An integer that is the purchase price of this weapon
+     * Gets the selling price of the item
+     * @return An integer that is the selling price of this weapon
      */
-
     @Override
     public int getSellPrice() {
         return 20000;
     }
 
-
-
+    /**
+     * The item that can be exchanged
+     * @return TheRemembranceOfGodric
+     */
     @Override
     public Item getExchangeableItem() {
         return this;
     }
 
+    /**
+     * The weapon to be exchanged with
+     * @param weaponName
+     * @return A weapon in the HashMap
+     */
     @Override
     public WeaponItem getExchangableWeapon(String weaponName) {
         return exchangeItem.get(weaponName);
     }
 
+    /**
+     * The item to exchange with
+     * @return The HashMap
+     */
     public HashMap<String, WeaponItem> getExchangeItem() {
         return exchangeItem;
     }

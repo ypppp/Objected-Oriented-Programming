@@ -7,7 +7,13 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.items.Exchangeable;
 import game.items.Sellable;
-
+/**
+ * The GraftedDragon class which is a weapon
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see WeaponItem
+ * @see Sellable
+ */
 public class GraftedDragon extends WeaponItem implements Sellable{
     /**
      * Constructor.
@@ -22,10 +28,9 @@ public class GraftedDragon extends WeaponItem implements Sellable{
     public void tick(Location currentLocation, Actor actor) {}
 
     /**
-     * To get the purchase price of the weapon
-     * @return An integer that is the purchase price of this weapon
+     * Get the selling price of the weapon
+     * @return The selling price
      */
-
     @Override
     public int getSellPrice() {
         return 200;
