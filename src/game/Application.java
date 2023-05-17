@@ -151,7 +151,7 @@ public class Application {
 			}
 		}
 
-		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
+//		gameMap.at(23, 17).addActor(new PileOfBones(new HeavySkeletonSwordsman()));
 //
 //		gameMap.at(56, 17).addActor(new LoneWolf());
 //		gameMap.at(56, 16).addActor(new LoneWolf());
@@ -233,7 +233,7 @@ public class Application {
 
 		ResetManager.getInstance().setSpawnPoint(gameMap.at(38,11));
 		// HINT: what does it mean to prefer composition to inheritance?
-		RuneManager.getInstance().getRune().setAmount(200);
+//		RuneManager.getInstance().getRune().setAmount(200);
 
 		GoldenFogDoor churchDoor = new GoldenFogDoor(churchMap.at(6,5),"Church of Irith");
 		churchMap.at(6,5).setGround(new GoldenFogDoor(bossMap.at(23,1),"Ancestral Woods"));
