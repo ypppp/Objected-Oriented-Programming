@@ -19,7 +19,7 @@ public class Cliff extends Ground {
         if(location.containsAnActor()){
             Actor currentActor = location.getActor();
             if(currentActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                currentActor.hurt(999999999);
+                currentActor.hurt(Integer.MAX_VALUE);
             }
         }
     }
