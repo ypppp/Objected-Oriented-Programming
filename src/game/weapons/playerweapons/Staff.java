@@ -24,7 +24,6 @@ public class Staff extends WeaponItem implements Purchasable, Sellable {
 
     /**
      * To get the purchase price of the staff
-     *
      * @return An integer that is the purchase price of the staff
      */
     @Override
@@ -34,7 +33,6 @@ public class Staff extends WeaponItem implements Purchasable, Sellable {
 
     /**
      * To return a newly instantiated staff
-     *
      * @return a newly instantiated staff
      */
     @Override
@@ -44,7 +42,6 @@ public class Staff extends WeaponItem implements Purchasable, Sellable {
 
     /**
      * To return the selling price of the staff
-     *
      * @return An integer which is the selling price of the staff
      */
     @Override

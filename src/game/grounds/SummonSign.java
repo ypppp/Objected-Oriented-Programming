@@ -14,7 +14,17 @@ import game.entity.creep.Creep;
 import game.entity.creep.SummonedManager;
 import game.entity.enemies.LoneWolf;
 
+/**
+ * The SummonSign class which is a ground that allows the player to summon an ally or invader by chance
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Ground
+ * @see Summonable
+ */
 public class SummonSign extends Ground implements Summonable {
+    /**
+     * A private instance of the Location class
+     */
     private Location location;
 
     /**
@@ -27,6 +37,13 @@ public class SummonSign extends Ground implements Summonable {
 
     }
 
+    /**
+     * Allows a SummonAction if a player is near it
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
@@ -36,11 +53,20 @@ public class SummonSign extends Ground implements Summonable {
         return actions;
     }
 
+    /**
+     * The location to summon
+     * @param location
+     * @param actor
+     */
     @Override
     public void summon(Location location, Actor actor) {
         location.addActor(actor);
     }
 
+    /**
+     * The location of the summon sign
+     * @return
+     */
     @Override
     public Location getLocation() {
         return location;

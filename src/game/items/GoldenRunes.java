@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.NumberRange;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.RandomNumberGenerator;
 //import game.action_types.PickUpGoldenRunesAction;
 import game.Status;
@@ -15,8 +16,17 @@ import game.items.runes.RuneManager;
 
 import java.util.List;
 import java.util.Random;
-
+/**
+ * The GoldenRunes class which is a consumable item
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Item
+ * @see Consumables
+ */
 public class GoldenRunes extends Item implements Consumables{
+    /**
+     * The number of uses of the item
+     */
     private int uses = 1;
     /***
      * Constructor.
@@ -25,6 +35,10 @@ public class GoldenRunes extends Item implements Consumables{
         super("Golden Runes", '*', true);
     }
 
+    /**
+     * Remove the consume action
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         if (!getAllowableActions().isEmpty()) {
@@ -32,6 +46,11 @@ public class GoldenRunes extends Item implements Consumables{
         }
     }
 
+    /**
+     * Add consume action if allowed
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
@@ -42,8 +61,7 @@ public class GoldenRunes extends Item implements Consumables{
     }
 
     /**
-     * The consume the item
-     *
+     * To consume the rune
      * @param actor The actor that is consuming this item
      * @return The description of the consumption
      */
@@ -61,7 +79,6 @@ public class GoldenRunes extends Item implements Consumables{
 
     /**
      * The number of uses left for the item
-     *
      * @return The number of uses left for the item
      */
     @Override
@@ -70,18 +87,7 @@ public class GoldenRunes extends Item implements Consumables{
     }
 
     /**
-     * The amount healed by the item
-     *
-     * @return The amount to heal
-     */
-    @Override
-    public int getHealAmount() {
-        return 0;
-    }
-
-    /**
      * To set the number of uses for the item
-     *
      * @param uses The number of uses of this item
      */
     @Override
@@ -91,7 +97,6 @@ public class GoldenRunes extends Item implements Consumables{
 
     /**
      * The total current amount of uses left for the item
-     *
      * @return The current amount of uses left for the item
      */
     @Override

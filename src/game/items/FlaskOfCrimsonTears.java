@@ -33,22 +33,6 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
     private int healAmount = 250;
 
     /**
-     * The getter for the amount healed by the item
-     * @return The amount healed by the item
-     */
-    public int getHealAmount() {
-        return healAmount;
-    }
-
-    /**
-     * The setter for the amount healed by the item
-     * @param healAmount The amount of healing that the flask can heal
-     */
-    public void setHealAmount(int healAmount) {
-        this.healAmount = healAmount;
-    }
-
-    /**
      * The getter for the number of uses of the item
      * @return The number of uses of the item
      */
@@ -97,11 +81,11 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
     public String consume(Actor actor) {
         String result = "";
 
-        actor.heal(this.getHealAmount());
-        result += actor + " consumed Flask of Crimson Tears" + this.printNumberOfUses() + " for " + this.getHealAmount() + " hp";
+        actor.heal(this.healAmount);
+        result += actor + " consumed Flask of Crimson Tears" + this.printNumberOfUses() + " for " + this.healAmount + " hp";
         this.setUses(this.getUses()-1);
 
-        return  result;
+        return result;
     }
 }
 

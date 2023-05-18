@@ -17,15 +17,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * The SummonAction class which handles what happens when it is called
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Action
+ */
 public class SummonAction extends Action {
+    /**
+     * A private instance of the Summonable class
+     */
     private Summonable summonable;
 
+    /**
+     * Constructor.
+     * @param summonable
+     */
     public SummonAction(Summonable summonable){
         this.summonable = summonable;
     }
     /**
-     * Perform the Action.
-     *
+     * Perform the SummonAction which summons an ally or invader by chance at an empty spot around the summon sign if there is one
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
      * @return a description of what happened that can be displayed to the user.
@@ -63,7 +75,6 @@ public class SummonAction extends Action {
 
     /**
      * Returns a descriptive string
-     *
      * @param actor The actor performing the action.
      * @return the text we put on the menu
      */

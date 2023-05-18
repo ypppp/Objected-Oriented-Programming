@@ -23,12 +23,6 @@ public interface Consumables {
     int getUses();
 
     /**
-     * The amount healed by the item
-     * @return The amount to heal
-     */
-    int getHealAmount();
-
-    /**
      * To set the number of uses for the item
      * @param uses The number of uses of this item
      */
