@@ -71,7 +71,6 @@ public class Trader extends Actor {
         purchasables.add(new Scimitar());
         purchasables.add(new Staff());
         exchangeables.put("Remembrance of the Grafted", new RemembranceOfTheGrafted());
-        System.out.println(name + this.capabilitiesList());
 
     }
 
