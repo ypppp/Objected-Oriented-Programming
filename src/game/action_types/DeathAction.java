@@ -9,14 +9,9 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
 import game.Status;
-import game.action_types.reset.Resettable;
-import game.entity.creep.Creep;
-import game.entity.creep.SummonedManager;
 import game.entity.enemies.PileOfBones;
-import game.items.runes.Rune;
 import game.items.runes.RuneManager;
 import game.action_types.reset.ResetAction;
-import game.action_types.reset.ResetManager;
 
 /**
  * An action executed if an actor is killed.
@@ -67,7 +62,6 @@ public class DeathAction extends Action {
 
         // remove actor
         if (target.hasCapability(Species.ALLY) || target.hasCapability(Species.INVADER)){
-//            SummonedManager.getInstance().removeCreep(target);
             map.removeActor(target);
         }
         else if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
@@ -88,7 +82,6 @@ public class DeathAction extends Action {
         else {
             RuneManager.getInstance().dropRuneByDeath();
             map.removeActor(target); // player dies
-//            SummonedManager.getInstance().del(map);  // remove ally and invader from the map
 
             return new ResetAction().execute(target, map);
         }
