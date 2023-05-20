@@ -18,6 +18,13 @@ import game.weapons.playerweapons.GreatKnife;
 import game.weapons.playerweapons.Staff;
 import game.weapons.playerweapons.Uchigatana;
 
+/**
+ * The Invader class that is spawned randomly as a character-liked enemy to the player
+ * @author Yew Yee Perng
+ * @version 1.0
+ * @see Creep
+ */
+
 public class Invader extends Creep {
 
     /**
@@ -38,6 +45,10 @@ public class Invader extends Creep {
         this.isFollow = false;
     }
 
+    /**
+     * To randomly select a character for the invader
+     *
+     */
     public void setCharacter(){
 
         int randomInt = RandomNumberGenerator.getRandomInt(100);
@@ -59,6 +70,15 @@ public class Invader extends Creep {
             this.addWeaponToInventory(new Club());
         }
     }
+
+    /**
+     * To return the actions that the otherActor can do to itself
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return A list of action that the otherActor can do to you
+     */
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
