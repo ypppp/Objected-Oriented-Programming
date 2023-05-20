@@ -14,9 +14,21 @@ public enum Species {
      * Canine species
      */
     CANINE,
+    /**
+     * Crustaceans species
+     */
     CRUSTACEANS,
+    /**
+     * Companion species
+     */
     COMPANION,
+    /**
+     * Ally species
+     */
     ALLY,
+    /**
+     * Invader species
+     */
     INVADER,
 
 }
