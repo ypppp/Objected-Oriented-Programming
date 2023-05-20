@@ -26,13 +26,27 @@ import game.weapons.playerweapons.Uchigatana;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An Creep abstract class that contains all the attributes/methods of an ally or invader
+ * @author Yew Yee Perng
+ * @version 1.0
+ * @see Actor
+ * @see Despawnable
+ * @see Resettable
+ */
 public abstract class Creep extends Actor implements Despawnable, Resettable {
     /**
      * A hashmap of behaviours that is sorted against its priority which will be the key
      */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
-
+    /**
+     * Constructor.
+     *
+     * @param name        the name of the Actor
+     * @param displayChar the character that will represent the Actor in the display
+     * @param hitPoints   the Actor's starting hit points
+     */
     public Creep(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addBehaviour(2, new AttackBehaviour());
@@ -68,13 +82,13 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
     }
 
     /**
-     * To despawn the enemy
-     * @return An action to despawn the enemy
+     * To despawn the ally or invader
+     * @return An action to despawn the ally or invader
      */
     public Action despawn() { return new DespawnAction(); }
 
     /**
-     * To reset the enemy
+     * To reset the ally or invader
      */
     @Override
     public void reset(Status status) {
@@ -85,6 +99,15 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
 
     }
 
+    /**
+     * At each turn, select a valid action to perform.
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the valid action that can be performed in that iteration or null if no valid action is found
+     */
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
