@@ -93,7 +93,7 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
      * To reset the enemy
      */
     @Override
-    public void reset() {
+    public void reset(Status status) {
         this.addCapability(Status.RESET);
     }
 

@@ -20,6 +20,8 @@ import game.weapons.playerweapons.Uchigatana;
 
 public class Ally extends Creep {
 
+
+
     /**
      * Constructor.
      *

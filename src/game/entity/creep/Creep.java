@@ -37,8 +37,8 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
         super(name, displayChar, hitPoints);
         this.addBehaviour(2, new AttackBehaviour());
         this.addBehaviour(999,new WanderBehaviour());
-//        ResetManager.getInstance().registerResettable(this);
-        SummonedManager.getInstance().registerCreep(this);
+        ResetManager.getInstance().registerResettable(this);
+//        SummonedManager.getInstance().registerCreep(this);
 
     }
 
@@ -77,8 +77,12 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
      * To reset the enemy
      */
     @Override
-    public void reset() {
-        this.addCapability(Status.RESET);
+    public void reset(Status status) {
+        if (status == Status.PLAYER_DEATH) {
+            this.addCapability(Status.RESET);
+            ResetManager.getInstance().registerResettable(this);
+        }
+
     }
 
 
@@ -86,7 +90,8 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if(this.hasCapability(Status.RESET)){
             this.removeCapability(Status.RESET);
-            SummonedManager.getInstance().removeCreep(this);
+//            SummonedManager.getInstance().removeCreep(this);
+            ResetManager.getInstance().removeResettable(this);
             return despawn();
 
         }
