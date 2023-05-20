@@ -60,14 +60,14 @@ public class SummonAction extends Action {
             if (RandomNumberGenerator.getRandomInt(0,100)<50){
     //            spawn ally
                 Ally ally = new Ally();
-                summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())).addActor(ally);
+                summonable.summon(summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())), ally);
                 ResetManager.getInstance().registerResettable(ally);
 //                SummonedManager.getInstance().registerCreep(ally);
                 result += "Spawned an " + ally;
             } else {
     //            spawn invader
                 Invader invader = new Invader();
-                summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())).addActor(invader);
+                summonable.summon(summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())), invader);
                 ResetManager.getInstance().registerResettable(invader);
 //                SummonedManager.getInstance().registerCreep(invader);
                 result += "Spawned an " + invader;
