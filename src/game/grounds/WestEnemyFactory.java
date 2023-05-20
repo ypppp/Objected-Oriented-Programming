@@ -14,6 +14,7 @@ import java.util.Map;
  * The Enemy Factory that spawns enemies for the west side of the map. It implements the EnemyFactory.
  * @author Yew Yee Perng
  * @version 1.0
+ * @see EnemyFactory
  */
 public class WestEnemyFactory implements EnemyFactory{
 

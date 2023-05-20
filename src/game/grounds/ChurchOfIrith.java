@@ -7,6 +7,12 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.action_types.PrayAction;
 
+/**
+ * The ground for which the player can pray upon to obtain a blessing or a curse from Godrick the Grafted
+ * @author Tong Jet Kit
+ * @see Ground
+ * @version 1.0
+ */
 public class ChurchOfIrith extends Ground {
     /**
      * Constructor.

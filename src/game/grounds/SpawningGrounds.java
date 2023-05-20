@@ -4,6 +4,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * The ground that spawns the enemy
+ * @author Tong Jet Kit
+ * @see Ground
+ * @version 1.0
+ */
 public abstract class SpawningGrounds extends Ground {
 
     /**
@@ -11,6 +17,9 @@ public abstract class SpawningGrounds extends Ground {
      */
     private EnemyFactory factory;
 
+    /**
+     * To determine if there is an enemy factor on this ground
+     */
     private boolean hasFactory = false;
 
     /**
