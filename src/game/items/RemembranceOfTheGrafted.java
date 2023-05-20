@@ -36,8 +36,6 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
         this.addCapability((Status.SELLABLE));
     }
 
-    @Override
-    public void tick(Location currentLocation, Actor actor) {}
 
     /**
      * Gets the selling price of the item
