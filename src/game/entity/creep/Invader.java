@@ -86,6 +86,4 @@ public class Invader extends Creep {
         return actions;
     }
 
-
-
 }
