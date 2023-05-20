@@ -4,15 +4,8 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.RandomNumberGenerator;
-import game.Species;
 import game.Status;
-import game.action_types.ConsumeAction;
 import game.action_types.SummonAction;
-import game.entity.creep.Ally;
-import game.entity.creep.Creep;
-import game.entity.creep.SummonedManager;
-import game.entity.enemies.LoneWolf;
 
 /**
  * The SummonSign class which is a ground that allows the player to summon an ally or invader by chance
