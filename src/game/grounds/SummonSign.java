@@ -55,8 +55,8 @@ public class SummonSign extends Ground implements Summonable {
 
     /**
      * The location to summon
-     * @param location
-     * @param actor
+     * @param location the location to summon
+     * @param actor the actor to be summoned
      */
     @Override
     public void summon(Location location, Actor actor) {
@@ -65,7 +65,7 @@ public class SummonSign extends Ground implements Summonable {
 
     /**
      * The location of the summon sign
-     * @return
+     * @return the location of the summon sign
      */
     @Override
     public Location getLocation() {

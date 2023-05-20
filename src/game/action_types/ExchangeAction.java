@@ -31,9 +31,9 @@ public class ExchangeAction extends Action {
 
     /**
      * The constructor for the ExchangeAction class
-     * @param trader
-     * @param item
-     * @param weapon
+     * @param trader the trader
+     * @param item the items
+     * @param weapon the weapons
      */
     public ExchangeAction(Trader trader, Item item, WeaponItem weapon){
         this.trader = trader;
@@ -42,7 +42,7 @@ public class ExchangeAction extends Action {
     }
 
     /**
-     * Perform the Action.
+     * Perform the exchange action
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

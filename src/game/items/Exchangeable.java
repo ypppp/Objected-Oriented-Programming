@@ -13,7 +13,7 @@ import java.util.HashMap;
 public interface Exchangeable {
     /**
      * A HashMap containing the key and the weapon item to be exchanged with
-     * @return
+     * @return the item to exchange
      */
     HashMap<String, WeaponItem> getExchangeItem();
 

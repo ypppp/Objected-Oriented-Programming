@@ -52,12 +52,6 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
     public int getSellPrice() {
         return 20000;
     }
-
-    /**
-     * The item that can be exchanged
-     * @return TheRemembranceOfGodric
-     */
-
     /**
      * The item to exchange with
      * @return The HashMap
