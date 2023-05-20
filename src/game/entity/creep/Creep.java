@@ -113,7 +113,6 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if(this.hasCapability(Status.RESET)){
             this.removeCapability(Status.RESET);
-//            SummonedManager.getInstance().removeCreep(this);
             ResetManager.getInstance().removeResettable(this);
             return despawn();
 
