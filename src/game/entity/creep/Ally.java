@@ -11,12 +11,21 @@ import game.RandomNumberGenerator;
 import game.Species;
 import game.Status;
 import game.action_types.AttackAction;
+import game.action_types.despawn.Despawnable;
+import game.action_types.reset.Resettable;
 import game.behaviours.FollowBehaviour;
 import game.entity.players.Player;
 import game.weapons.playerweapons.Club;
 import game.weapons.playerweapons.GreatKnife;
 import game.weapons.playerweapons.Staff;
 import game.weapons.playerweapons.Uchigatana;
+
+/**
+ * The Ally class that is spawned to assist the player
+ * @author Yew Yee Perng
+ * @version 1.0
+ * @see Creep
+ */
 
 public class Ally extends Creep {
 
@@ -34,6 +43,10 @@ public class Ally extends Creep {
 
     }
 
+    /**
+     * To randomly select a character for the invader
+     *
+     */
     public void setCharacter() {
 
         int randomInt = RandomNumberGenerator.getRandomInt(100);
@@ -53,6 +66,15 @@ public class Ally extends Creep {
         }
 
     }
+
+    /**
+     * To return the actions that the otherActor can do to itself
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return A list of action that the otherActor can do to you
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) { //unsure
         ActionList actions = new ActionList();
