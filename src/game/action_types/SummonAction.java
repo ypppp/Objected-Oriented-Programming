@@ -8,15 +8,10 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
 import game.action_types.reset.ResetManager;
 import game.entity.creep.Ally;
-import game.entity.creep.Creep;
 import game.entity.creep.Invader;
-import game.entity.creep.SummonedManager;
-import game.grounds.SummonSign;
 import game.grounds.Summonable;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * The SummonAction class which handles what happens when it is called
@@ -62,14 +57,12 @@ public class SummonAction extends Action {
                 Ally ally = new Ally();
                 summonable.summon(summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())), ally);
                 ResetManager.getInstance().registerResettable(ally);
-//                SummonedManager.getInstance().registerCreep(ally);
                 result += "Spawned an " + ally;
             } else {
     //            spawn invader
                 Invader invader = new Invader();
                 summonable.summon(summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())), invader);
                 ResetManager.getInstance().registerResettable(invader);
-//                SummonedManager.getInstance().registerCreep(invader);
                 result += "Spawned an " + invader;
                 }
             }
