@@ -57,20 +57,6 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
      * The item that can be exchanged
      * @return TheRemembranceOfGodric
      */
-    @Override
-    public Item getExchangeableItem() {
-        return this;
-    }
-
-    /**
-     * The weapon to be exchanged with
-     * @param weaponName
-     * @return A weapon in the HashMap
-     */
-    @Override
-    public WeaponItem getExchangableWeapon(String weaponName) {
-        return exchangeItem.get(weaponName);
-    }
 
     /**
      * The item to exchange with
