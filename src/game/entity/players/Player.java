@@ -108,7 +108,7 @@ public abstract class Player extends Actor implements Resettable {
 	 * To reset the player's hp to full
 	 */
 	@Override
-	public void reset() {
+	public void reset(Status status) {
 		this.resetMaxHp(getMaxHp());
 	}
 
