@@ -36,6 +36,11 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
         this.addCapability((Status.SELLABLE));
     }
 
+    /**
+     * The tick method
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {}
 
