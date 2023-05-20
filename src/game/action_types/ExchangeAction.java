@@ -9,12 +9,32 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.entity.npc.Trader;
 import game.items.Exchangeable;
 
+/**
+ * The ExchangeAction class that allows the exchange af weapons and items
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Action
+ */
 public class ExchangeAction extends Action {
+    /**
+     * The private instance of the Item class
+     */
     private Item item;
+    /**
+     * The private instance of the Trader class
+     */
     private Trader trader;
+    /**
+     * The private instance of the WeaponItem class
+     */
     private WeaponItem weapon;
 
-
+    /**
+     * The constructor for the ExchangeAction class
+     * @param trader the trader
+     * @param item the items
+     * @param weapon the weapons
+     */
     public ExchangeAction(Trader trader, Item item, WeaponItem weapon){
         this.trader = trader;
         this.item = item;
@@ -22,7 +42,7 @@ public class ExchangeAction extends Action {
     }
 
     /**
-     * Perform the Action.
+     * Perform the exchange action
      *
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.

@@ -29,7 +29,6 @@ public class SummonSign extends Ground implements Summonable {
 
     /**
      * Constructor.
-     *
      */
     public SummonSign(Location location) {
         super('=');
@@ -42,7 +41,7 @@ public class SummonSign extends Ground implements Summonable {
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return
+     * @return the summon action
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
@@ -55,8 +54,8 @@ public class SummonSign extends Ground implements Summonable {
 
     /**
      * The location to summon
-     * @param location
-     * @param actor
+     * @param location the location to summon
+     * @param actor the actor to be summoned
      */
     @Override
     public void summon(Location location, Actor actor) {
@@ -65,7 +64,7 @@ public class SummonSign extends Ground implements Summonable {
 
     /**
      * The location of the summon sign
-     * @return
+     * @return the location of the summon sign
      */
     @Override
     public Location getLocation() {

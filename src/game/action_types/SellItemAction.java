@@ -7,6 +7,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.entity.npc.Trader;
 import game.items.runes.RuneManager;
 
+/**
+ * The SellItemAction class which allows the selling of an item
+ * @author Aaren Wong
+ * @version 1.0.0
+ * @see Action
+ */
 public class SellItemAction extends Action {
     /**
      * The trader that the player will be selling its item to

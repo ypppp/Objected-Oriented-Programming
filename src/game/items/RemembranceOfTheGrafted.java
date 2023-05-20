@@ -36,6 +36,11 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
         this.addCapability((Status.SELLABLE));
     }
 
+    /**
+     * The tick method
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {}
 
@@ -47,26 +52,6 @@ public class RemembranceOfTheGrafted extends Item implements Sellable, Exchangea
     public int getSellPrice() {
         return 20000;
     }
-
-    /**
-     * The item that can be exchanged
-     * @return TheRemembranceOfGodric
-     */
-    @Override
-    public Item getExchangeableItem() {
-        return this;
-    }
-
-    /**
-     * The weapon to be exchanged with
-     * @param weaponName
-     * @return A weapon in the HashMap
-     */
-    @Override
-    public WeaponItem getExchangableWeapon(String weaponName) {
-        return exchangeItem.get(weaponName);
-    }
-
     /**
      * The item to exchange with
      * @return The HashMap

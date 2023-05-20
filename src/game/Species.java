@@ -31,4 +31,9 @@ public enum Species {
      */
     INVADER,
 
+    /**
+     * Deer species
+     */
+    DEER
+
 }
