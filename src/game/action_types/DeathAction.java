@@ -67,7 +67,7 @@ public class DeathAction extends Action {
 
         // remove actor
         if (target.hasCapability(Species.ALLY) || target.hasCapability(Species.INVADER)){
-            SummonedManager.getInstance().removeCreep(target);
+//            SummonedManager.getInstance().removeCreep(target);
             map.removeActor(target);
         }
         else if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
@@ -88,7 +88,7 @@ public class DeathAction extends Action {
         else {
             RuneManager.getInstance().dropRuneByDeath();
             map.removeActor(target); // player dies
-            SummonedManager.getInstance().del(map);  // remove ally and invader from the map
+//            SummonedManager.getInstance().del(map);  // remove ally and invader from the map
 
             return new ResetAction().execute(target, map);
         }

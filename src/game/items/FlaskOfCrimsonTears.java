@@ -69,7 +69,7 @@ public class FlaskOfCrimsonTears extends Item implements Resettable, Consumables
      * Sets the number of uses to the max uses when a reset happens
      */
     @Override
-    public void reset() {
+    public void reset(Status status) {
         this.setUses(maxUses);
     }
 
