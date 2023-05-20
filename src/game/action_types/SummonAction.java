@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.RandomNumberGenerator;
+import game.action_types.reset.ResetManager;
 import game.entity.creep.Ally;
 import game.entity.creep.Creep;
 import game.entity.creep.Invader;
@@ -60,13 +61,15 @@ public class SummonAction extends Action {
     //            spawn ally
                 Ally ally = new Ally();
                 summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())).addActor(ally);
-                SummonedManager.getInstance().registerCreep(ally);
+                ResetManager.getInstance().registerResettable(ally);
+//                SummonedManager.getInstance().registerCreep(ally);
                 result += "Spawned an " + ally;
             } else {
     //            spawn invader
                 Invader invader = new Invader();
                 summonSignExits.get(RandomNumberGenerator.getRandomInt(summonSignExits.size())).addActor(invader);
-                SummonedManager.getInstance().registerCreep(invader);
+                ResetManager.getInstance().registerResettable(invader);
+//                SummonedManager.getInstance().registerCreep(invader);
                 result += "Spawned an " + invader;
                 }
             }

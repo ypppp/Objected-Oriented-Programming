@@ -1,6 +1,7 @@
 package game.action_types.reset;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,10 +64,11 @@ public class ResetManager{
     /**
      * Causes a reset for all the resettable entities
      */
-    public void run() {
-        for (Resettable resettable : this.resettables){
-            resettable.reset();
+    public void run(Status status) {
+            for (Resettable resettable : this.resettables){
+                resettable.reset(status);
         }
+
     }
 
     /**

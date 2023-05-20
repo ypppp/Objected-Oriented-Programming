@@ -1,5 +1,7 @@
 package game.action_types.reset;
 
+import game.Status;
+
 /**
  * A resettable interface
  * Created by:
@@ -11,6 +13,6 @@ public interface Resettable {
     /**
      * Causes a reset for all the resettable entities
      */
-    void reset();
+    void reset(Status status);
 
 }
