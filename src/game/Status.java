@@ -89,6 +89,14 @@ public enum Status {
     /**
      * Is a boss
      */
-    BOSS
+    BOSS,
+    /**
+     * Player dies
+     */
+    PLAYER_DEATH,
+    /**
+     * player rests
+     */
+    PLAYER_REST,
 
 }
