@@ -17,7 +17,7 @@ public class ResetManager{
     /**
      * A list of resettable entities
      */
-    private List<Resettable> resettables;
+    private ArrayList<Resettable> resettables;
     /**
      * The ResetMamanger class attribute
      */
