@@ -86,7 +86,6 @@ public abstract class Creep extends Actor implements Despawnable, Resettable {
     public void reset(Status status) {
         if (status == Status.PLAYER_DEATH) {
             this.addCapability(Status.RESET);
-            ResetManager.getInstance().registerResettable(this);
         }
 
     }
