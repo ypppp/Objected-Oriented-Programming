@@ -5,6 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Species;
+import game.Status;
 import game.action_types.TravelAction;
 
 /**
@@ -77,5 +79,10 @@ public class GoldenFogDoor extends Ground implements Travelable{
     @Override
     public void travel(Actor actor, GameMap map) {
         map.moveActor(actor,getDestinationLocation());
+    }
+
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return (actor.hasCapability(Status.HOSTILE_TO_ENEMY) && !actor.hasCapability(Species.ALLY));
     }
 }
