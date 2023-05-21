@@ -37,7 +37,7 @@ public class DeathAction extends Action {
 
     /**
      * Perform the action to die if killed
-     * When the target is killed, the items & weapons carried by target
+     * When the target is killed, the items and weapons carried by target
      * will be dropped to the location in the game map where the target was
      *
      * @param target The actor performing the action.

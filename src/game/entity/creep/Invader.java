@@ -37,7 +37,7 @@ public class Invader extends Creep {
      *
      */
     public Invader() {
-        super("Invader", 'ඞ', 1 );
+        super("Invader", 'ඞ', 1);
         setCharacter();
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Species.INVADER);

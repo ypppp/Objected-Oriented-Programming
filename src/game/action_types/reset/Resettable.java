@@ -12,6 +12,7 @@ import game.Status;
 public interface Resettable {
     /**
      * Causes a reset for all the resettable entities
+     * @param status The reset status (player resting/player death)
      */
     void reset(Status status);
 

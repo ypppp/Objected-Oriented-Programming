@@ -39,6 +39,9 @@ public class FancyMessage {
             "     MM    `Mb.    ,dP' YM.     ,M        MM    ,dP' MM    MM     ,M   MM    ,dP' \n" +
             "   .JMML.    `\"bmmd\"'    `bmmmmd\"'      .JMMmmmdP' .JMML..JMMmmmmMMM .JMMmmmdP'   \n";
 
+    /**
+     * The fancy message for when a site of lost grace is found
+     */
     public static String DISCOVERED =
             "\n" +
                     "                                                                                                                                                                                                                                     \n" +
@@ -54,7 +57,7 @@ public class FancyMessage {
                     "                                                                                                                                                                                                                                     \n" +
                     "\n";
     /**
-     * Fancy message when the player go to limgrave
+     * Fancy message when the player go to Limgrave
      */
     public static String LIMGRAVE =
                     "              ,,                                                               \n"+
@@ -69,7 +72,7 @@ public class FancyMessage {
                     "\n";
 
     /**
-     * Fancy message when the player go to roundtable
+     * Fancy message when the player go to RoundTable
      */
     public static String ROUNDTABLE_HOLD =
             "                                                 ,,                   ,,        ,,          \n"+
@@ -85,7 +88,7 @@ public class FancyMessage {
 
 
     /**
-     * Fancy message when the player go to storm veil castle
+     * Fancy message when the player go to StormVeil Castle
      */
     public static String STORMVEILCASTLE =
             "                                                                 ,,    ,,                                      ,,         \n"+
@@ -99,6 +102,9 @@ public class FancyMessage {
             "                                                                                                                              \n"+
             "\n";
 
+    /**
+     * Fancy message when the player go to the Ancestral Woods
+     */
     public static String ANCESTRALWOODS =
             "                                                                            ,,                                                    ,,         \n"+
             "      db                                             mm                    `7MM      `7MMF'     A     `7MF'                      `7MM          \n"+
@@ -111,6 +117,9 @@ public class FancyMessage {
             "                                                                                                                                               \n"+
             "\n";
 
+    /**
+     * Fancy message when the player go to the Church of Irith
+     */
     public static String CHURCH_OF_IRITH=
             "              ,,                                   ,,                            ,...                     ,,           ,,     \n"+
             "  .g8\"\"\"bgd `7MM                                 `7MM              .g8\"\"8q.    .d' \"\"    `7MMF'           db         `7MM       \n"+

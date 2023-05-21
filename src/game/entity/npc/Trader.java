@@ -47,10 +47,16 @@ public class Trader extends Actor {
      */
     ArrayList<Purchasable> purchasables = new ArrayList<>();
 
+    /**
+     * An arraylist of exchangable weapons that the trader can exchange with the player
+     */
     HashMap<String,Exchangeable>exchangeables = new HashMap<>();
 
     /**
      * Constructor.
+     * @param name The trader's name
+     * @param displayChar The display character of the trader
+     * @param status A list of status that the trader has
      */
     public Trader(String name, char displayChar,ArrayList<Status>status) {
         super(name,displayChar,0);

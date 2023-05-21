@@ -63,6 +63,7 @@ public class ResetManager{
 
     /**
      * Causes a reset for all the resettable entities
+     * @param status The reset status (player resting or player died)
      */
     public void run(Status status) {
             for (Resettable resettable : this.resettables){

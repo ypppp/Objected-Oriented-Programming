@@ -30,6 +30,8 @@ public class RegalAncestorSpirit extends Enemy{
     private GoldenFogDoor hiddenDoor;
     /**
      * Constructor.
+     * @param hiddenDoorLocation The location of the hidden door to the Church of Irith
+     * @param hiddenDoor  The hidden door to the Church of Irith
      */
     public RegalAncestorSpirit(Location hiddenDoorLocation, GoldenFogDoor hiddenDoor) {
         super("Regal Ancestor Spirit", 'Y', 6000);

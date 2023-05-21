@@ -6,6 +6,12 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Species;
 import game.Status;
 
+/**
+ * A terrain which is a cliff that kills the player when the step on it
+ * @author Tong Jet Kit
+ * @see Ground
+ * @version 1.0
+ */
 public class Cliff extends Ground {
     /**
      * Constructor.
@@ -14,6 +20,10 @@ public class Cliff extends Ground {
         super('+');
     }
 
+    /**
+     * To allow the cliff to experience the joy of time.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         if(location.containsAnActor()){

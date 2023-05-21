@@ -112,18 +112,4 @@ public abstract class Player extends Actor implements Resettable {
 		this.resetMaxHp(getMaxHp());
 	}
 
-	public Action died(){
-
-		for (String line : FancyMessage.YOU_DIED.split("\n")) { // display "YOU DIED"
-			new Display().println(line);
-			try {
-				Thread.sleep(200);
-			} catch (Exception exception) {
-				exception.printStackTrace();
-			}
-		}
-		return new DeathAction(this);
-
-	}
-
 }

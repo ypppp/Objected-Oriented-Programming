@@ -27,7 +27,7 @@ public class SummonAction extends Action {
 
     /**
      * Constructor.
-     * @param summonable
+     * @param summonable A summonable ground
      */
     public SummonAction(Summonable summonable){
         this.summonable = summonable;

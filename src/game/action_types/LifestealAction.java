@@ -9,8 +9,17 @@ import game.Status;
 
 import java.util.Random;
 
+/**
+ * An attack that not only damages the target but heal the user
+ * @author Tong Jet Kit
+ * @see Action
+ * @version 1.0
+ */
 public class LifestealAction extends Action {
 
+    /**
+     * The target of the attack
+     */
     private Actor target;
 
     /**
@@ -24,11 +33,22 @@ public class LifestealAction extends Action {
      */
     private Weapon weapon;
 
+    /**
+     * Constructor for when the action warrants an intrinsic weapon
+     * @param target The target which we will be attacking
+     * @param direction The direction of the attack
+     */
     public LifestealAction(Actor target, String direction) {
         this.target = target;
         this.direction = direction;
     }
 
+    /**
+     * Constructor for when the action uses a weapon
+     * @param target The target which we will be attacking
+     * @param direction The direction of the attack
+     * @param weapon The weapon used in the attack
+     */
     public LifestealAction(Actor target, String direction, Weapon weapon) {
         this.target = target;
         this.direction = direction;
@@ -38,7 +58,7 @@ public class LifestealAction extends Action {
     /**
      * @param actor The actor performing the action.
      * @param map   The map the actor is on.
-     * @return
+     * @return A description of the lifesteal attack
      */
     @Override
     public String execute(Actor actor, GameMap map) {
@@ -68,7 +88,7 @@ public class LifestealAction extends Action {
 
     /**
      * @param actor The actor performing the action.
-     * @return
+     * @return a description used for the menu UI
      */
     @Override
     public String menuDescription(Actor actor) {

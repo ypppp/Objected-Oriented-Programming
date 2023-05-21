@@ -22,6 +22,7 @@ public class SummonSign extends Ground implements Summonable {
 
     /**
      * Constructor.
+     * @param location The location of the summon sign
      */
     public SummonSign(Location location) {
         super('=');
