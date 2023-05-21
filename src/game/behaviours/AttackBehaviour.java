@@ -16,7 +16,7 @@ import java.util.*;
 
 
 /**
- * The behaviour of the enemy to do an attack action on a player or enemy of different type where the player is prioritised first
+ * The behaviour of the enemy to do an attack action on a player or enemy of different type where the player or ally is prioritised first
  * @author Tong Jet Kit
  * @version 1.0
  * @see Behaviour
@@ -41,7 +41,14 @@ public class AttackBehaviour implements Behaviour {
                         if(actor.getWeaponInventory().size()!=0){
                             WeaponItem weapon = actor.getWeaponInventory().get(0);
                             if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
-                                actions.add(weapon.getSkill(actor));
+                                if(RandomNumberGenerator.getRandomInt(100)<50){
+                                    actions.add(weapon.getSkill(actor));
+                                }
+                            }
+                            else if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)){
+                                if(RandomNumberGenerator.getRandomInt(100)<50){
+                                    actions.add(weapon.getSkill(destinationActor,exit.getName()));
+                                }
                             }
                             else{
                                 actions.add(new AttackAction(destinationActor,exit.getName(),weapon));
@@ -49,15 +56,21 @@ public class AttackBehaviour implements Behaviour {
                         }
                         actions.add(new AttackAction(destinationActor, exit.getName()));
 
-
                     }
 
                 }
-                else if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                else if (destinationActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !actor.hasCapability(Species.ALLY)){
                     if(actor.getWeaponInventory().size()!=0){
                         WeaponItem weapon = actor.getWeaponInventory().get(0);
                         if(weapon.hasCapability(Status.HAS_AOE_ATTACK_SKILL)){
-                            return weapon.getSkill(actor);
+                            if(RandomNumberGenerator.getRandomInt(100)<50){
+                                return weapon.getSkill(actor);
+                            }
+                        }
+                        else if(weapon.hasCapability(Status.HAS_ATTACK_SKILL)) {
+                            if(RandomNumberGenerator.getRandomInt(100)<50){
+                                return (weapon.getSkill(destinationActor, exit.getName()));
+                            }
                         }
                         else{
                             return new AttackAction(destinationActor,exit.getName(),weapon);

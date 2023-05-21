@@ -10,10 +10,8 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Species;
 import game.Status;
 import game.entity.enemies.PileOfBones;
-import game.items.runes.Rune;
 import game.items.runes.RuneManager;
 import game.action_types.reset.ResetAction;
-import game.action_types.reset.ResetManager;
 
 /**
  * An action executed if an actor is killed.
@@ -39,7 +37,7 @@ public class DeathAction extends Action {
 
     /**
      * Perform the action to die if killed
-     * When the target is killed, the items & weapons carried by target
+     * When the target is killed, the items and weapons carried by target
      * will be dropped to the location in the game map where the target was
      *
      * @param target The actor performing the action.
@@ -53,7 +51,7 @@ public class DeathAction extends Action {
         ActionList dropActions = new ActionList();
         // drop all items
 
-        if (!target.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if (!target.hasCapability(Status.HOSTILE_TO_ENEMY) || target.hasCapability(Species.ALLY)){
             for (Item item : target.getItemInventory())
                 dropActions.add(item.getDropAction(target));
             for (WeaponItem weapon : target.getWeaponInventory())
@@ -63,20 +61,22 @@ public class DeathAction extends Action {
         }
 
         // remove actor
-        if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
+        if (target.hasCapability(Species.ALLY) || target.hasCapability(Species.INVADER)){
+            map.removeActor(target);
+        }
+        else if (target.hasCapability(Status.HOSTILE_TO_PLAYER)) {
             if ((!target.hasCapability(Species.BONE)) || target.hasCapability(Status.RESPAWNABLE)) {
                 map.removeActor(target);
             }
-//            else if (target.hasCapability(Status.RESPAWNABLE)) {
-//                map.removeActor(target);
-//            }
             else {
                 Location skeletonLoc = map.locationOf(target);
                 map.removeActor(target);
                 PileOfBones skeleton = new PileOfBones(target);
                 map.addActor(skeleton, skeletonLoc);
             }
+
         }
+
 
         // drop runes
         else {
@@ -87,11 +87,11 @@ public class DeathAction extends Action {
         }
         result += System.lineSeparator() + menuDescription(target);
 
-        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+        if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY) && !attacker.hasCapability(Species.ALLY)) { // if a player but not ally
 //
             if (target.hasCapability(Status.CAN_DROP_RUNES)) {
                 String runeAmount = RuneManager.getInstance().runesDroppedByEnemies(target.getDisplayChar());
-                result += attacker + " gets " + runeAmount + "runes from " + target;
+                result += System.lineSeparator() + attacker + " gets " + runeAmount + "runes from " + target;
             }
         }
         return result;

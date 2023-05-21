@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Species;
 import game.Status;
 
 /**
@@ -22,12 +23,13 @@ public class ResetAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if (actor.hasCapability(Status.HOSTILE_TO_ENEMY) || actor.hasCapability(Species.ALLY)){
              Location spawnpoint = ResetManager.getInstance().getSpawnPoint();
-             map.at(spawnpoint.x(), spawnpoint.y()).addActor(actor);
+             GameMap respawnMap = spawnpoint.map();
+             respawnMap.at(spawnpoint.x(), spawnpoint.y()).addActor(actor);
         }
-        ResetManager.getInstance().run();
-        return actor + " respawn at The First Step";
+        ResetManager.getInstance().run(Status.PLAYER_DEATH);
+        return actor + " respawned";
     }
 
     /**

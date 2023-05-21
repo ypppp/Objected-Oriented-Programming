@@ -93,9 +93,10 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
      * To reset the enemy
      */
     @Override
-    public void reset() {
+    public void reset(Status status) {
         this.addCapability(Status.RESET);
     }
+
 
     /**
      * At each turn, select a valid action to perform.
@@ -109,10 +110,11 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (((RandomNumberGenerator.getRandomInt(100)<10) && !this.isFollow) || this.hasCapability(Status.RESET)){
-            this.removeCapability(Status.RESET);
-            ResetManager.getInstance().removeResettable(this);
-            return despawn();
+        // if the chance have been met, you are not following and you are not a boss or if you are resetting
+        if (((RandomNumberGenerator.getRandomInt(100)<10) && !this.isFollow && !this.hasCapability(Status.BOSS)) || this.hasCapability(Status.RESET)){
+                this.removeCapability(Status.RESET);
+                ResetManager.getInstance().removeResettable(this);
+                return despawn();
         }
 
         for (Behaviour behaviour : getBehaviours().values()) {
@@ -138,7 +140,6 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
         ActionList actions = new ActionList();
         //if this otherActor is a player
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-
             otherActor.addCapability(Status.IN_COMBAT);
             actions.add(new AttackAction(this, direction)); // add the intrinsic weapon attack
             this.addBehaviour(3,new FollowBehaviour(otherActor)); // let this enemy follow the player
@@ -154,10 +155,17 @@ public abstract class Enemy extends Actor implements Despawnable, Resettable {
                 }
             }
 
-
         }
 
         return actions;
     }
 
+    @Override
+    public boolean isConscious() {
+        boolean status = super.isConscious();
+        if(!status){
+            ResetManager.getInstance().removeResettable(this);
+        };
+        return status;
+    }
 }

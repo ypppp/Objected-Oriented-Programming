@@ -18,6 +18,7 @@ public class Floor extends Ground {
 	 */
 	public Floor() {
 		super('_');
+		this.addCapability(Status.CAN_HAVE_GOLDEN_RUNES);
 	}
 
 	/**

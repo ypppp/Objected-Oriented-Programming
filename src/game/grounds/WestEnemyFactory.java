@@ -11,57 +11,95 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * An enemy factory to spawn an enemy at the west
- * @author Tong Jet Kit
- * @see EnemyFactory
+ * The Enemy Factory that spawns enemies for the west side of the map. It implements the EnemyFactory.
+ * @author Yew Yee Perng
  * @version 1.0
+ * @see EnemyFactory
  */
-public class WestEnemyFactory extends EnemyFactory{
+public class WestEnemyFactory implements EnemyFactory{
 
     /**
-     * Constructor for the enemy factory
+     * Constructor.
      */
     public WestEnemyFactory() {
-        HashMap<Character,Actor> enemyInstance = new HashMap<>(){{
-            put('n', new HeavySkeletonSwordsman());
-            put('&', new LoneWolf());
-            put('~', new GiantCrab());
-        }};
-        HashMap<Character, Integer> enemySpawnChance = new HashMap<>(){{
-            put('n',27);
-            put('&',33);
-            put('~',2);
-        }};
-
-        this.setEnemySpawnChance(enemySpawnChance);
-        this.setEnemyInstance(enemyInstance);
     }
 
     /**
-     * To return an enemy to be spawned at a certain location at west
-     * @param location The location where the enemy will be spawning
-     * @param displayChar The display character of the ground
-     * @return An actor which will the enemy to be spawned on the location if granted; null otherwise
+     * If the probability allows and the location has no actor, an enemy will be spawned on the spot.
+     * @param location The location of where the enemy will spawn
+     * @return returns a Heavy Skeleton Swordsman if the condition is met otherwise null.
      */
-    public Actor spawnEnemy(Location location, Character displayChar){
-        try {
-            Actor actorToAdd = getEnemyInstance().get(displayChar);
-            Class<?> cls = actorToAdd.getClass();
-            Constructor<?> constructor;
-            constructor = cls.getConstructor();
-            int spawnChance = getEnemySpawnChance().get(displayChar);
-
-            if(RandomNumberGenerator.getRandomInt(100)< spawnChance && !location.containsAnActor()){
-                return (Actor) constructor.newInstance();
-            }
-            else{
-                return null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    @Override
+    public Actor createSkeleton(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 27 && !location.containsAnActor()){
+            return new HeavySkeletonSwordsman();
         }
-        return null;
+        else{
+            return null;
+        }
     }
+
+    /**
+     * If the probability allows and the location has no actor, an enemy will be spawned on the spot.
+     * @param location The location of where the enemy will spawn
+     * @return returns a GiantCrab if the condition is met otherwise null.
+     */
+    @Override
+    public Actor createCrustaceans(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 2 && !location.containsAnActor()){
+            return new GiantCrab();
+        }
+        else{
+            return null;
+        }
+    }
+
+    /**
+     * If the probability allows and the location has no actor, an enemy will be spawned on the spot.
+     * @param location The location of where the enemy will spawn
+     * @return returns a LoneWolf if the condition is met otherwise null.
+     */
+    @Override
+    public Actor createCanine(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 33 && !location.containsAnActor()){
+            return new LoneWolf();
+        }
+        else{
+            return null;
+        }
+    }
+
+    /**
+     * If the probability allows and the location has no actor, an enemy Soldier will be spawned on the spot.
+     * @param location The location of where the enemy will spawn
+     * @return returns a Godrick Soldier if the condition is met otherwise null.
+     */
+    @Override
+    public Actor createGodrick(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 45 && !location.containsAnActor()){
+            return new GodrickSoldier();
+        }
+        else{
+            return null;
+        }
+    }
+
+    /**
+     * If the probability allows and the location has no actor, an enemy will be spawned on the spot.
+     * @param location The location of where the enemy will spawn
+     * @return returns a Dog if the condition is met otherwise null.
+     */
+    @Override
+    public Actor createDog(Location location) {
+        if(RandomNumberGenerator.getRandomInt(100)< 37 && !location.containsAnActor()){
+            return new Dog();
+        }
+        else{
+            return null;
+        }
+    }
+
+
 
 }
 

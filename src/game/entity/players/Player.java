@@ -15,6 +15,7 @@ import game.action_types.reset.ResetManager;
 import game.action_types.reset.Resettable;
 import game.Status;
 
+import game.items.RemembranceOfTheGrafted;
 import game.items.runes.RuneManager;
 
 
@@ -32,6 +33,8 @@ public abstract class Player extends Actor implements Resettable {
 	 */
 	private final Menu menu = new Menu();
 
+	private int cursed_counter = 3;
+
 	/**
 	 * Constructor.
 	 *
@@ -46,7 +49,6 @@ public abstract class Player extends Actor implements Resettable {
 		this.addItemToInventory(flaskOfCrimsonTears);
 		ResetManager.getInstance().registerResettable(flaskOfCrimsonTears);
 		ResetManager.getInstance().registerResettable(this);
-
 	}
 
 	/**
@@ -60,6 +62,15 @@ public abstract class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+		if(this.hasCapability(Status.CURSED)){
+			this.hurt(10);
+			cursed_counter -=1;
+		}
+		if(cursed_counter == 0){
+			this.removeCapability(Status.CURSED);
+			cursed_counter = 3;
+		}
+
 		if (!this.isConscious()){
 			for (String line : FancyMessage.YOU_DIED.split("\n")) { // display "YOU DIED"
 				new Display().println(line);
@@ -71,6 +82,7 @@ public abstract class Player extends Actor implements Resettable {
 			}
 			return new DeathAction(this);
 		}
+
 		RuneManager.getInstance().setPreviousLocation(map.locationOf(this));
 		// Handle multi-turn Actions
 		if(this.hasCapability(Status.IN_COMBAT)){
@@ -96,7 +108,8 @@ public abstract class Player extends Actor implements Resettable {
 	 * To reset the player's hp to full
 	 */
 	@Override
-	public void reset() {
+	public void reset(Status status) {
 		this.resetMaxHp(getMaxHp());
 	}
+
 }

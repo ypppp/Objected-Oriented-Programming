@@ -24,9 +24,9 @@ public class LoneWolf extends Enemy {
      */
     public LoneWolf() {
         super("Lone Wolf", 'h', 102);
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
         this.addCapability(Status.CAN_DROP_RUNES);
         this.addCapability(Species.CANINE);
+        this.addCapability(Status.HOSTILE_TO_PLAYER);
     }
 
     /**

@@ -12,7 +12,7 @@ import game.items.FlaskOfCrimsonTears;
 import java.nio.file.StandardCopyOption;
 
 /**
- * The ConsumeActionclass that will allow the player to consume an item
+ * The ConsumeAction class that will allow the player to consume an item
  * @author Aaren Wong
  * @see Action
  * @version 1.0.0

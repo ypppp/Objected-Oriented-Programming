@@ -65,9 +65,6 @@ public class QuickStepAction extends Action {
             return actor + " misses " + target + ".";
         }
 
-
-
-
         int damage =  weapon.damage();
         result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage."+"\n";
         target.hurt(damage);

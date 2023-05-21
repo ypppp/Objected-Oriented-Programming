@@ -17,5 +17,23 @@ public enum Species {
     /**
      * Crustaceans species
      */
-    CRUSTACEANS
+    CRUSTACEANS,
+    /**
+     * Companion species
+     */
+    COMPANION,
+    /**
+     * Ally species
+     */
+    ALLY,
+    /**
+     * Invader species
+     */
+    INVADER,
+
+    /**
+     * Deer species
+     */
+    DEER
+
 }
